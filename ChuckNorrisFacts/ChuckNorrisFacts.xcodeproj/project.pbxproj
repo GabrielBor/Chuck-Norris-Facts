@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF35899E2445EB9200A4E36A /* ChuckNorrisParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF35899D2445EB9200A4E36A /* ChuckNorrisParse.swift */; };
 		DF40FDD5244493AE00CBD522 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FDD4244493AE00CBD522 /* AppDelegate.swift */; };
 		DF40FDD7244493AE00CBD522 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FDD6244493AE00CBD522 /* SceneDelegate.swift */; };
 		DF40FDDE244493AF00CBD522 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF40FDDD244493AF00CBD522 /* Assets.xcassets */; };
@@ -17,6 +18,14 @@
 		DF40FE082444965B00CBD522 /* HomeFactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FE042444965B00CBD522 /* HomeFactsViewController.swift */; };
 		DF40FE092444965B00CBD522 /* HomeFactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF40FE062444965B00CBD522 /* HomeFactsViewController.xib */; };
 		DF40FE0E2444967300CBD522 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FE0D2444967300CBD522 /* BaseCoordinator.swift */; };
+		DF40FE1124449F8200CBD522 /* ChuckNorrisAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FE1024449F8200CBD522 /* ChuckNorrisAPI.swift */; };
+		DF40FE132444A8A600CBD522 /* ChuckServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FE122444A8A600CBD522 /* ChuckServices.swift */; };
+		DF40FE1724452DF800CBD522 /* ChuckNorrisRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FE1624452DF800CBD522 /* ChuckNorrisRequest.swift */; };
+		DF40FE1A2445391C00CBD522 /* ChuckNorrisFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FE192445391C00CBD522 /* ChuckNorrisFetch.swift */; };
+		DF593D4E2447A5FD0045AEA6 /* ChuckNorrisParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D4D2447A5FD0045AEA6 /* ChuckNorrisParseError.swift */; };
+		DFE9C12124460C1400872527 /* ChuckNorrisError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12024460C1400872527 /* ChuckNorrisError.swift */; };
+		DFE9C12324460E8700872527 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12224460E8700872527 /* NetworkError.swift */; };
+		DFE9C12524463C2E00872527 /* ChuckNorrisGenericError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12424463C2E00872527 /* ChuckNorrisGenericError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF35899D2445EB9200A4E36A /* ChuckNorrisParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisParse.swift; sourceTree = "<group>"; };
 		DF40FDD1244493AE00CBD522 /* ChuckNorrisFacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChuckNorrisFacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF40FDD4244493AE00CBD522 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF40FDD6244493AE00CBD522 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +54,14 @@
 		DF40FE042444965B00CBD522 /* HomeFactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeFactsViewController.swift; sourceTree = "<group>"; };
 		DF40FE062444965B00CBD522 /* HomeFactsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeFactsViewController.xib; sourceTree = "<group>"; };
 		DF40FE0D2444967300CBD522 /* BaseCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		DF40FE1024449F8200CBD522 /* ChuckNorrisAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisAPI.swift; sourceTree = "<group>"; };
+		DF40FE122444A8A600CBD522 /* ChuckServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckServices.swift; sourceTree = "<group>"; };
+		DF40FE1624452DF800CBD522 /* ChuckNorrisRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisRequest.swift; sourceTree = "<group>"; };
+		DF40FE192445391C00CBD522 /* ChuckNorrisFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisFetch.swift; sourceTree = "<group>"; };
+		DF593D4D2447A5FD0045AEA6 /* ChuckNorrisParseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisParseError.swift; sourceTree = "<group>"; };
+		DFE9C12024460C1400872527 /* ChuckNorrisError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisError.swift; sourceTree = "<group>"; };
+		DFE9C12224460E8700872527 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		DFE9C12424463C2E00872527 /* ChuckNorrisGenericError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisGenericError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +144,12 @@
 		DF40FDFA244495E100CBD522 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				DFE9C11F24460BEC00872527 /* Request */,
+				DFE9C11E24460BE100872527 /* Parse */,
+				DFE9C11D24460BD300872527 /* Fetch */,
+				DFE9C11C24460BC800872527 /* Error */,
+				DFE9C11B24460BB100872527 /* Services */,
+				DFE9C11A24460BA700872527 /* API */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -210,6 +234,65 @@
 				DF40FDDF244493AF00CBD522 /* LaunchScreen.storyboard */,
 			);
 			path = Launch;
+			sourceTree = "<group>";
+		};
+		DFE9C11A24460BA700872527 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				DF40FE1024449F8200CBD522 /* ChuckNorrisAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		DFE9C11B24460BB100872527 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DF40FE122444A8A600CBD522 /* ChuckServices.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		DFE9C11C24460BC800872527 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				DFE9C12624464A9800872527 /* Generic */,
+				DFE9C12024460C1400872527 /* ChuckNorrisError.swift */,
+				DFE9C12224460E8700872527 /* NetworkError.swift */,
+				DF593D4D2447A5FD0045AEA6 /* ChuckNorrisParseError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		DFE9C11D24460BD300872527 /* Fetch */ = {
+			isa = PBXGroup;
+			children = (
+				DF40FE192445391C00CBD522 /* ChuckNorrisFetch.swift */,
+			);
+			path = Fetch;
+			sourceTree = "<group>";
+		};
+		DFE9C11E24460BE100872527 /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+				DF35899D2445EB9200A4E36A /* ChuckNorrisParse.swift */,
+			);
+			path = Parse;
+			sourceTree = "<group>";
+		};
+		DFE9C11F24460BEC00872527 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				DF40FE1624452DF800CBD522 /* ChuckNorrisRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		DFE9C12624464A9800872527 /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				DFE9C12424463C2E00872527 /* ChuckNorrisGenericError.swift */,
+			);
+			path = Generic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,11 +396,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF40FE1A2445391C00CBD522 /* ChuckNorrisFetch.swift in Sources */,
+				DF40FE132444A8A600CBD522 /* ChuckServices.swift in Sources */,
 				DF40FE072444965B00CBD522 /* HomeFactsViewModel.swift in Sources */,
 				DF40FDF92444955B00CBD522 /* AppCoordinator.swift in Sources */,
+				DF40FE1724452DF800CBD522 /* ChuckNorrisRequest.swift in Sources */,
+				DF40FE1124449F8200CBD522 /* ChuckNorrisAPI.swift in Sources */,
+				DFE9C12524463C2E00872527 /* ChuckNorrisGenericError.swift in Sources */,
 				DF40FE082444965B00CBD522 /* HomeFactsViewController.swift in Sources */,
+				DF35899E2445EB9200A4E36A /* ChuckNorrisParse.swift in Sources */,
 				DF40FE0E2444967300CBD522 /* BaseCoordinator.swift in Sources */,
+				DF593D4E2447A5FD0045AEA6 /* ChuckNorrisParseError.swift in Sources */,
 				DF40FDD5244493AE00CBD522 /* AppDelegate.swift in Sources */,
+				DFE9C12324460E8700872527 /* NetworkError.swift in Sources */,
+				DFE9C12124460C1400872527 /* ChuckNorrisError.swift in Sources */,
 				DF40FDD7244493AE00CBD522 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
