@@ -8,19 +8,19 @@
 
 import Foundation
 
-enum ChuckNorrisParseError: Error {
+public enum ChuckNorrisParseError: Error {
     case parse(AnyObject?)
 }
 
 extension ChuckNorrisParseError: ChuckNorrisGenericError, Equatable {
-    var code: Int {
+    public var code: Int {
         switch self {
         case .parse(_):
             return -1
         }
     }
     
-    var message: String {
+    public var message: String {
         switch self {
         case .parse(_):
             return ChuckNorrisGenericMessages.parse.rawValue

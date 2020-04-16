@@ -9,6 +9,8 @@
 import Foundation
 
 public enum ChuckNorrisError: Error {
+    case parse(ChuckNorrisParseError?)
+    case network(NetworkError)
     case api(_ error: Error?, _ statusCode: Int)
     case server(_ error: Error?, _ statusCode: Int)
     case unknown
@@ -38,6 +40,10 @@ extension ChuckNorrisError: ChuckNorrisGenericError, Equatable {
             return HTTPURLResponse.localizedString(forStatusCode: code)
         case .unknown:
             return ChuckNorrisGenericMessages.unknown.rawValue
+        case .network(let error):
+            return error.message
+        case .parse(let error):
+            return error?.message ?? ""
         }
     }
     
@@ -49,6 +55,10 @@ extension ChuckNorrisError: ChuckNorrisGenericError, Equatable {
             return code
         case .unknown:
             return -1
+        case .network(let error):
+            return error.code
+        case .parse(let error):
+            return error?.code ?? 0
         }
     }
 }

@@ -10,29 +10,6 @@ import Foundation
 
 class ChuckNorrisAPI {
     
-    // MARK: - HTTPMethod
-
-    enum HTTPMethod: String {
-        case get = "GET"
-    }
-    
-    // MARK: - URLComponents for baseURL
-
-    enum ChuckNorrisComponent: String {
-        case https = "https"
-        case host = "api.chucknorris.io"
-        case path = "jokes"
-    }
-    
-    // MARK: - Path of Services
-    
-    enum Path: String {
-        case random = "random"
-        case category = "random?category="
-        case listCategory = "categories"
-        case freeText = "search?query="
-    }
-    
     // MARK: - Property
 
     var baseURLComponents: URLComponents {
@@ -40,5 +17,54 @@ class ChuckNorrisAPI {
         urlComponent.scheme = ChuckNorrisComponent.https.rawValue
         urlComponent.host = ChuckNorrisComponent.host.rawValue
         return urlComponent
+    }
+    
+    // MARK: - HTTPMethod
+
+     enum HTTPMethod: String {
+         case get = "GET"
+     }
+     
+     // MARK: - URLComponents for baseURL
+
+     enum ChuckNorrisComponent: String {
+         case https = "https"
+         case host = "api.chucknorris.io"
+         case path = "jokes"
+     }
+     
+    // MARK: - Path of Services
+    
+    enum Services {
+        case random
+        case category(value: String)
+        case listCategory
+        case freeText(value: String)
+    }
+    
+    enum Path: String {
+        case random = "random"
+        case listCategory = "categories"
+        case freeText = "search"
+    }
+    
+    func urlService(_ services: Services) -> URL? {
+        var urlComponent = baseURLComponents
+        switch services {
+        case .random:
+            urlComponent.path = Path.random.rawValue
+            return urlComponent.url
+        case .category(let value):
+            urlComponent.path = Path.random.rawValue
+            urlComponent.queryItems = [URLQueryItem(name: "category", value: value)]
+            return urlComponent.url
+        case .listCategory:
+            urlComponent.path = Path.listCategory.rawValue
+            return urlComponent.url
+        case .freeText(let value):
+            urlComponent.path = Path.freeText.rawValue
+            urlComponent.queryItems = [URLQueryItem(name: "query", value: value)]
+            return urlComponent.url
+        }
     }
 }
