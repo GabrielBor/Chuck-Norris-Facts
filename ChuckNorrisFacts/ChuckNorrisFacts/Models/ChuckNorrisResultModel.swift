@@ -1,5 +1,5 @@
 //
-//  ChuckNorrisFreeTextModel.swift
+//  ChuckNorrisResultModel.swift
 //  ChuckNorrisFacts
 //
 //  Created by Gabriel Borges on 15/04/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ChuckNorrisFreeTextModel: Codable {
+struct ChuckNorrisResultModel: Codable {
     let total: Int
     let result: [ChuckNorrisRandomModel]
 }

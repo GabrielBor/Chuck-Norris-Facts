@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF0B5FBB244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0B5FB9244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.swift */; };
+		DF0B5FBC244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF0B5FBA244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.xib */; };
+		DF0CA8A9244B85190038BFC0 /* ChuckNorrisSearchFactsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0CA8A8244B85190038BFC0 /* ChuckNorrisSearchFactsCoordinator.swift */; };
 		DF35899E2445EB9200A4E36A /* ChuckNorrisParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF35899D2445EB9200A4E36A /* ChuckNorrisParse.swift */; };
 		DF40FDD5244493AE00CBD522 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FDD4244493AE00CBD522 /* AppDelegate.swift */; };
 		DF40FDD7244493AE00CBD522 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FDD6244493AE00CBD522 /* SceneDelegate.swift */; };
@@ -24,7 +27,8 @@
 		DF40FE1A2445391C00CBD522 /* ChuckNorrisFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FE192445391C00CBD522 /* ChuckNorrisFetch.swift */; };
 		DF593D4E2447A5FD0045AEA6 /* ChuckNorrisParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D4D2447A5FD0045AEA6 /* ChuckNorrisParseError.swift */; };
 		DF593D512447D7820045AEA6 /* ChuckNorrisRandomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D502447D7820045AEA6 /* ChuckNorrisRandomModel.swift */; };
-		DF593D532447E5F40045AEA6 /* ChuckNorrisFreeTextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D522447E5F40045AEA6 /* ChuckNorrisFreeTextModel.swift */; };
+		DF593D532447E5F40045AEA6 /* ChuckNorrisResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D522447E5F40045AEA6 /* ChuckNorrisResultModel.swift */; };
+		DFCB02722448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCB02712448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift */; };
 		DFE9C12124460C1400872527 /* ChuckNorrisError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12024460C1400872527 /* ChuckNorrisError.swift */; };
 		DFE9C12324460E8700872527 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12224460E8700872527 /* NetworkError.swift */; };
 		DFE9C12524463C2E00872527 /* ChuckNorrisGenericError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12424463C2E00872527 /* ChuckNorrisGenericError.swift */; };
@@ -41,6 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF0B5FB9244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisSearchFactsViewController.swift; sourceTree = "<group>"; };
+		DF0B5FBA244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChuckNorrisSearchFactsViewController.xib; sourceTree = "<group>"; };
+		DF0CA8A8244B85190038BFC0 /* ChuckNorrisSearchFactsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisSearchFactsCoordinator.swift; sourceTree = "<group>"; };
 		DF35899D2445EB9200A4E36A /* ChuckNorrisParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisParse.swift; sourceTree = "<group>"; };
 		DF40FDD1244493AE00CBD522 /* ChuckNorrisFacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChuckNorrisFacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF40FDD4244493AE00CBD522 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,7 +69,8 @@
 		DF40FE192445391C00CBD522 /* ChuckNorrisFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisFetch.swift; sourceTree = "<group>"; };
 		DF593D4D2447A5FD0045AEA6 /* ChuckNorrisParseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisParseError.swift; sourceTree = "<group>"; };
 		DF593D502447D7820045AEA6 /* ChuckNorrisRandomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisRandomModel.swift; sourceTree = "<group>"; };
-		DF593D522447E5F40045AEA6 /* ChuckNorrisFreeTextModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisFreeTextModel.swift; sourceTree = "<group>"; };
+		DF593D522447E5F40045AEA6 /* ChuckNorrisResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisResultModel.swift; sourceTree = "<group>"; };
+		DFCB02712448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisSearchFactsViewModel.swift; sourceTree = "<group>"; };
 		DFE9C12024460C1400872527 /* ChuckNorrisError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisError.swift; sourceTree = "<group>"; };
 		DFE9C12224460E8700872527 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		DFE9C12424463C2E00872527 /* ChuckNorrisGenericError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisGenericError.swift; sourceTree = "<group>"; };
@@ -86,6 +94,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF0CA8AA244B9EF20038BFC0 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		DF40FDC8244493AE00CBD522 = {
 			isa = PBXGroup;
 			children = (
@@ -107,10 +122,11 @@
 		DF40FDD3244493AE00CBD522 /* ChuckNorrisFacts */ = {
 			isa = PBXGroup;
 			children = (
+				DF0CA8AA244B9EF20038BFC0 /* UI */,
 				DF40FDE2244493AF00CBD522 /* Info.plist */,
 				DF40FDF6244494CF00CBD522 /* Application */,
 				DF40FE0F244498E900CBD522 /* Launch */,
-				DF40FE0A2444967300CBD522 /* Base+Extensions */,
+				DF40FE0A2444967300CBD522 /* Base */,
 				DF40FDFB244495F100CBD522 /* Images */,
 				DF593D4F2447D4450045AEA6 /* Models */,
 				DF40FDFA244495E100CBD522 /* Network */,
@@ -170,6 +186,7 @@
 		DF40FDFF2444965B00CBD522 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DFCB026B2448EA8A00B995E0 /* SearchFacts */,
 				DF40FE002444965B00CBD522 /* HomeFacts */,
 			);
 			path = Views;
@@ -178,6 +195,7 @@
 		DF40FE002444965B00CBD522 /* HomeFacts */ = {
 			isa = PBXGroup;
 			children = (
+				DFCB02702448EBFF00B995E0 /* Coordinator */,
 				DF40FE012444965B00CBD522 /* ViewModel */,
 				DF40FE032444965B00CBD522 /* Controller */,
 				DF40FE052444965B00CBD522 /* View */,
@@ -209,20 +227,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		DF40FE0A2444967300CBD522 /* Base+Extensions */ = {
+		DF40FE0A2444967300CBD522 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				DF40FE0B2444967300CBD522 /* Extensions */,
 				DF40FE0C2444967300CBD522 /* Base */,
 			);
-			path = "Base+Extensions";
-			sourceTree = "<group>";
-		};
-		DF40FE0B2444967300CBD522 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
+			path = Base;
 			sourceTree = "<group>";
 		};
 		DF40FE0C2444967300CBD522 /* Base */ = {
@@ -245,9 +255,59 @@
 			isa = PBXGroup;
 			children = (
 				DF593D502447D7820045AEA6 /* ChuckNorrisRandomModel.swift */,
-				DF593D522447E5F40045AEA6 /* ChuckNorrisFreeTextModel.swift */,
+				DF593D522447E5F40045AEA6 /* ChuckNorrisResultModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		DFCB026B2448EA8A00B995E0 /* SearchFacts */ = {
+			isa = PBXGroup;
+			children = (
+				DFCB026F2448EBF700B995E0 /* Coordinator */,
+				DFCB026E2448EBEC00B995E0 /* Controller */,
+				DFCB026D2448EBD400B995E0 /* View */,
+				DFCB026C2448EBC400B995E0 /* ViewModel */,
+			);
+			path = SearchFacts;
+			sourceTree = "<group>";
+		};
+		DFCB026C2448EBC400B995E0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DFCB02712448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DFCB026D2448EBD400B995E0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DF0B5FBA244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DFCB026E2448EBEC00B995E0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DF0B5FB9244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DFCB026F2448EBF700B995E0 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				DF0CA8A8244B85190038BFC0 /* ChuckNorrisSearchFactsCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		DFCB02702448EBFF00B995E0 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		DFE9C11A24460BA700872527 /* API */ = {
@@ -392,6 +452,7 @@
 			files = (
 				DF40FDE1244493AF00CBD522 /* LaunchScreen.storyboard in Resources */,
 				DF40FE092444965B00CBD522 /* HomeFactsViewController.xib in Resources */,
+				DF0B5FBC244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.xib in Resources */,
 				DF40FDDE244493AF00CBD522 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,21 +472,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF40FE1A2445391C00CBD522 /* ChuckNorrisFetch.swift in Sources */,
+				DF0B5FBB244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.swift in Sources */,
 				DF40FE132444A8A600CBD522 /* ChuckNorrisServices.swift in Sources */,
 				DF40FE072444965B00CBD522 /* HomeFactsViewModel.swift in Sources */,
 				DF40FDF92444955B00CBD522 /* AppCoordinator.swift in Sources */,
 				DF593D512447D7820045AEA6 /* ChuckNorrisRandomModel.swift in Sources */,
 				DF40FE1724452DF800CBD522 /* ChuckNorrisRequest.swift in Sources */,
 				DF40FE1124449F8200CBD522 /* ChuckNorrisAPI.swift in Sources */,
+				DF0CA8A9244B85190038BFC0 /* ChuckNorrisSearchFactsCoordinator.swift in Sources */,
 				DFE9C12524463C2E00872527 /* ChuckNorrisGenericError.swift in Sources */,
 				DF40FE082444965B00CBD522 /* HomeFactsViewController.swift in Sources */,
-				DF593D532447E5F40045AEA6 /* ChuckNorrisFreeTextModel.swift in Sources */,
+				DF593D532447E5F40045AEA6 /* ChuckNorrisResultModel.swift in Sources */,
 				DF35899E2445EB9200A4E36A /* ChuckNorrisParse.swift in Sources */,
 				DF40FE0E2444967300CBD522 /* BaseCoordinator.swift in Sources */,
 				DF593D4E2447A5FD0045AEA6 /* ChuckNorrisParseError.swift in Sources */,
 				DF40FDD5244493AE00CBD522 /* AppDelegate.swift in Sources */,
 				DFE9C12324460E8700872527 /* NetworkError.swift in Sources */,
 				DFE9C12124460C1400872527 /* ChuckNorrisError.swift in Sources */,
+				DFCB02722448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift in Sources */,
 				DF40FDD7244493AE00CBD522 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

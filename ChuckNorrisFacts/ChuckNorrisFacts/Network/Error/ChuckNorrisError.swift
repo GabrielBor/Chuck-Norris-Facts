@@ -11,7 +11,7 @@ import Foundation
 public enum ChuckNorrisError: Error {
     case parse(ChuckNorrisParseError?)
     case network(NetworkError)
-    case api(_ error: Error?, _ statusCode: Int)
+    case client(_ error: Error?, _ statusCode: Int)
     case server(_ error: Error?, _ statusCode: Int)
     case unknown
     
@@ -20,7 +20,7 @@ public enum ChuckNorrisError: Error {
         if let httpResponse = response as? HTTPURLResponse {
             switch httpResponse.statusCode {
             case 400...499:
-                self = .api(error, httpResponse.statusCode)
+                self = .client(error, httpResponse.statusCode)
             case 500...599:
                 self = .server(error, httpResponse.statusCode)
             default:
@@ -34,7 +34,7 @@ extension ChuckNorrisError: ChuckNorrisGenericError, Equatable {
     
     public var message: String {
         switch self {
-        case .api(_, let code):
+        case .client(_, let code):
             return HTTPURLResponse.localizedString(forStatusCode: code)
         case .server(_, let code):
             return HTTPURLResponse.localizedString(forStatusCode: code)
@@ -51,7 +51,7 @@ extension ChuckNorrisError: ChuckNorrisGenericError, Equatable {
         switch self {
         case .server(_ , let code):
             return code
-        case .api(_ , let code):
+        case .client(_ , let code):
             return code
         case .unknown:
             return -1

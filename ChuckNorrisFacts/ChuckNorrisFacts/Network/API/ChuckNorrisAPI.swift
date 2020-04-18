@@ -39,13 +39,13 @@ class ChuckNorrisAPI {
         case random
         case category(value: String)
         case listCategory
-        case freeText(value: String)
+        case searchCategory(value: String)
     }
     
     enum Path: String {
         case random = "random"
         case listCategory = "categories"
-        case freeText = "search"
+        case searchCategory = "search"
     }
     
     func urlService(_ services: Services) -> URL? {
@@ -61,8 +61,8 @@ class ChuckNorrisAPI {
         case .listCategory:
             urlComponent.path = Path.listCategory.rawValue
             return urlComponent.url
-        case .freeText(let value):
-            urlComponent.path = Path.freeText.rawValue
+        case .searchCategory(let value):
+            urlComponent.path = Path.searchCategory.rawValue
             urlComponent.queryItems = [URLQueryItem(name: "query", value: value)]
             return urlComponent.url
         }

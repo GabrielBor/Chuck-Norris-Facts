@@ -41,15 +41,17 @@ class ChuckNorrisRequest {
                  chuckNorrisFailure: @escaping CompletionChuckNorrisFailure) {
         let request = createRequest(from: url, httpMethod: httpMethod)
         let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                if error is URLError {
-                    networkFailure(data, response, NetworkError(response, error: error))
-                } else {
-                    chuckNorrisFailure(data, response, ChuckNorrisError(response, error: error))
+            DispatchQueue.main.async {
+                if let error = error {
+                    if error is URLError {
+                        networkFailure(data, response, NetworkError(response, error: error))
+                    } else {
+                        chuckNorrisFailure(data, response, ChuckNorrisError(response, error: error))
+                    }
+                    return
                 }
-                return
+                success(data, response)
             }
-            success(data, response)
         }
         dataTask.resume()
     }
