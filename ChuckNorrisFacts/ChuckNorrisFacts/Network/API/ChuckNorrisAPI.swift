@@ -30,7 +30,6 @@ class ChuckNorrisAPI {
      enum ChuckNorrisComponent: String {
          case https = "https"
          case host = "api.chucknorris.io"
-         case path = "jokes"
      }
      
     // MARK: - Path of Services
@@ -43,9 +42,9 @@ class ChuckNorrisAPI {
     }
     
     enum Path: String {
-        case random = "random"
-        case listCategory = "categories"
-        case searchCategory = "search"
+        case random = "/jokes/random"
+        case listCategory = "/jokes/categories"
+        case searchCategory = "/jokes/search"
     }
     
     func urlService(_ services: Services) -> URL? {

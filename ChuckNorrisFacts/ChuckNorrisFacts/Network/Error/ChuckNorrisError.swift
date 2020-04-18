@@ -58,7 +58,7 @@ extension ChuckNorrisError: ChuckNorrisGenericError, Equatable {
         case .network(let error):
             return error.code
         case .parse(let error):
-            return error?.code ?? 0
+            return error?.code ?? 9999
         }
     }
 }

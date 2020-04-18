@@ -41,18 +41,48 @@ class ChuckNorrisRequest {
                  chuckNorrisFailure: @escaping CompletionChuckNorrisFailure) {
         let request = createRequest(from: url, httpMethod: httpMethod)
         let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            DispatchQueue.main.async {
-                if let error = error {
-                    if error is URLError {
-                        networkFailure(data, response, NetworkError(response, error: error))
-                    } else {
-                        chuckNorrisFailure(data, response, ChuckNorrisError(response, error: error))
-                    }
-                    return
-                }
-                success(data, response)
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.handlerDataTaskResponse(data,
+                                             response: response,
+                                             error: error,
+                                             success: success,
+                                             networkFailure: networkFailure,
+                                             chuckNorrisFailure: chuckNorrisFailure)
             }
         }
         dataTask.resume()
+    }
+}
+
+// MARK: Extension
+
+extension ChuckNorrisRequest {
+    
+    private func handlerDataTaskResponse(_ data: Data?,
+                                         response: URLResponse?,
+                                         error: Error?,
+                                         success: @escaping CompletionSuccess,
+                                         networkFailure: @escaping CompletionNetworkFailure,
+                                         chuckNorrisFailure: @escaping CompletionChuckNorrisFailure) {
+        if let httpResponse = response as? HTTPURLResponse {
+            switch httpResponse.statusCode {
+            case 200...299:
+                success(data, response)
+            case 400...599:
+                chuckNorrisFailure(data, response, ChuckNorrisError(response, error: error))
+            default: return
+            }
+        } else {
+            if let error = error {
+                if error is URLError {
+                    let urlError = error as? URLError
+                    networkFailure(data, response, NetworkError(error: urlError))
+                } else {
+                    chuckNorrisFailure(data, response, ChuckNorrisError(response, error: error))
+                }
+                return
+            }
+        }
     }
 }

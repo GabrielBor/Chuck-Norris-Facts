@@ -16,7 +16,7 @@ extension ChuckNorrisParseError: ChuckNorrisGenericError, Equatable {
     public var code: Int {
         switch self {
         case .parse(_):
-            return -1
+            return 9999
         }
     }
     
