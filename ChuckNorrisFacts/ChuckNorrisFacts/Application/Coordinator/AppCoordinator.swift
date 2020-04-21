@@ -15,7 +15,7 @@ class AppCoordinator: BaseCoordinator {
     var viewController: UIViewController?
     
     init() {
-        let viewModel = HomeFactsViewModel()
+        let viewModel = HomeFactsViewModel([])
         let viewController = HomeFactsViewController(viewModel)
         self.viewController = viewController
     }

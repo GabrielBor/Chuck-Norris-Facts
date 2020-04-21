@@ -8,8 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeFactsViewController" customModule="ChuckNorris" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeFactsViewController" customModule="ChuckNorrisFacts" customModuleProvider="target">
             <connections>
+                <outlet property="factsTableView" destination="fRX-sQ-fTk" id="OXU-sm-rOx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,9 +18,25 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fRX-sQ-fTk">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="hgE-OX-k9N"/>
+                        <outlet property="delegate" destination="-1" id="Mii-9V-XIn"/>
+                    </connections>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fRX-sQ-fTk" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="GWN-Ai-mso"/>
+                <constraint firstItem="fRX-sQ-fTk" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="b1c-NK-8or"/>
+                <constraint firstItem="fRX-sQ-fTk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="gtm-Tr-atn"/>
+                <constraint firstItem="fRX-sQ-fTk" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="rlH-Ab-5Pq"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="132" y="154"/>
+            <point key="canvasLocation" x="132" y="152.47376311844079"/>
         </view>
     </objects>
 </document>

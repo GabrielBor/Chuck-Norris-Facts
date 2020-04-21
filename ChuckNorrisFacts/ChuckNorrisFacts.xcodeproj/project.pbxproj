@@ -10,6 +10,9 @@
 		DF0B5FBB244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0B5FB9244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.swift */; };
 		DF0B5FBC244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF0B5FBA244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.xib */; };
 		DF0CA8A9244B85190038BFC0 /* ChuckNorrisSearchFactsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0CA8A8244B85190038BFC0 /* ChuckNorrisSearchFactsCoordinator.swift */; };
+		DF0FA7C0244E45E7006C9170 /* ChuckNorrisLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0FA7BF244E45E7006C9170 /* ChuckNorrisLinkView.swift */; };
+		DF0FA7C4244E603C006C9170 /* HomeFactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0FA7C2244E603C006C9170 /* HomeFactTableViewCell.swift */; };
+		DF0FA7C5244E603C006C9170 /* HomeFactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF0FA7C3244E603C006C9170 /* HomeFactTableViewCell.xib */; };
 		DF35899E2445EB9200A4E36A /* ChuckNorrisParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF35899D2445EB9200A4E36A /* ChuckNorrisParse.swift */; };
 		DF40FDD5244493AE00CBD522 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FDD4244493AE00CBD522 /* AppDelegate.swift */; };
 		DF40FDD7244493AE00CBD522 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FDD6244493AE00CBD522 /* SceneDelegate.swift */; };
@@ -29,6 +32,7 @@
 		DF593D512447D7820045AEA6 /* ChuckNorrisRandomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D502447D7820045AEA6 /* ChuckNorrisRandomModel.swift */; };
 		DF593D532447E5F40045AEA6 /* ChuckNorrisResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D522447E5F40045AEA6 /* ChuckNorrisResultModel.swift */; };
 		DFCB02722448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCB02712448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift */; };
+		DFCC4FC0244DF2BC002E9A2B /* ChuckNorrisLinkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFCC4FBF244DF2BC002E9A2B /* ChuckNorrisLinkView.xib */; };
 		DFE9C12124460C1400872527 /* ChuckNorrisError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12024460C1400872527 /* ChuckNorrisError.swift */; };
 		DFE9C12324460E8700872527 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12224460E8700872527 /* NetworkError.swift */; };
 		DFE9C12524463C2E00872527 /* ChuckNorrisGenericError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12424463C2E00872527 /* ChuckNorrisGenericError.swift */; };
@@ -48,6 +52,9 @@
 		DF0B5FB9244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisSearchFactsViewController.swift; sourceTree = "<group>"; };
 		DF0B5FBA244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChuckNorrisSearchFactsViewController.xib; sourceTree = "<group>"; };
 		DF0CA8A8244B85190038BFC0 /* ChuckNorrisSearchFactsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisSearchFactsCoordinator.swift; sourceTree = "<group>"; };
+		DF0FA7BF244E45E7006C9170 /* ChuckNorrisLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChuckNorrisLinkView.swift; sourceTree = "<group>"; };
+		DF0FA7C2244E603C006C9170 /* HomeFactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFactTableViewCell.swift; sourceTree = "<group>"; };
+		DF0FA7C3244E603C006C9170 /* HomeFactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFactTableViewCell.xib; sourceTree = "<group>"; };
 		DF35899D2445EB9200A4E36A /* ChuckNorrisParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisParse.swift; sourceTree = "<group>"; };
 		DF40FDD1244493AE00CBD522 /* ChuckNorrisFacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChuckNorrisFacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF40FDD4244493AE00CBD522 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +78,7 @@
 		DF593D502447D7820045AEA6 /* ChuckNorrisRandomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisRandomModel.swift; sourceTree = "<group>"; };
 		DF593D522447E5F40045AEA6 /* ChuckNorrisResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisResultModel.swift; sourceTree = "<group>"; };
 		DFCB02712448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisSearchFactsViewModel.swift; sourceTree = "<group>"; };
+		DFCC4FBF244DF2BC002E9A2B /* ChuckNorrisLinkView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChuckNorrisLinkView.xib; sourceTree = "<group>"; };
 		DFE9C12024460C1400872527 /* ChuckNorrisError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisError.swift; sourceTree = "<group>"; };
 		DFE9C12224460E8700872527 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		DFE9C12424463C2E00872527 /* ChuckNorrisGenericError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisGenericError.swift; sourceTree = "<group>"; };
@@ -94,11 +102,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DF0CA8AA244B9EF20038BFC0 /* UI */ = {
+		DF0FA7C1244E5FF7006C9170 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				DF0FA7C2244E603C006C9170 /* HomeFactTableViewCell.swift */,
+				DF0FA7C3244E603C006C9170 /* HomeFactTableViewCell.xib */,
 			);
-			path = UI;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		DF40FDC8244493AE00CBD522 = {
@@ -122,14 +132,14 @@
 		DF40FDD3244493AE00CBD522 /* ChuckNorrisFacts */ = {
 			isa = PBXGroup;
 			children = (
-				DF0CA8AA244B9EF20038BFC0 /* UI */,
 				DF40FDE2244493AF00CBD522 /* Info.plist */,
 				DF40FDF6244494CF00CBD522 /* Application */,
-				DF40FE0F244498E900CBD522 /* Launch */,
 				DF40FE0A2444967300CBD522 /* Base */,
 				DF40FDFB244495F100CBD522 /* Images */,
+				DF40FE0F244498E900CBD522 /* Launch */,
 				DF593D4F2447D4450045AEA6 /* Models */,
 				DF40FDFA244495E100CBD522 /* Network */,
+				DFCC4FBB244DF20F002E9A2B /* UI */,
 				DF40FDFF2444965B00CBD522 /* Views */,
 			);
 			path = ChuckNorrisFacts;
@@ -222,6 +232,7 @@
 		DF40FE052444965B00CBD522 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DF0FA7C1244E5FF7006C9170 /* Cells */,
 				DF40FE062444965B00CBD522 /* HomeFactsViewController.xib */,
 			);
 			path = View;
@@ -230,17 +241,17 @@
 		DF40FE0A2444967300CBD522 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				DF40FE0C2444967300CBD522 /* Base */,
+				DF40FE0C2444967300CBD522 /* Coordinator */,
 			);
 			path = Base;
 			sourceTree = "<group>";
 		};
-		DF40FE0C2444967300CBD522 /* Base */ = {
+		DF40FE0C2444967300CBD522 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
 				DF40FE0D2444967300CBD522 /* BaseCoordinator.swift */,
 			);
-			path = Base;
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		DF40FE0F244498E900CBD522 /* Launch */ = {
@@ -308,6 +319,23 @@
 			children = (
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		DFCC4FBB244DF20F002E9A2B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				DFCC4FBC244DF218002E9A2B /* ChuckNorrisLinkView */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		DFCC4FBC244DF218002E9A2B /* ChuckNorrisLinkView */ = {
+			isa = PBXGroup;
+			children = (
+				DF0FA7BF244E45E7006C9170 /* ChuckNorrisLinkView.swift */,
+				DFCC4FBF244DF2BC002E9A2B /* ChuckNorrisLinkView.xib */,
+			);
+			path = ChuckNorrisLinkView;
 			sourceTree = "<group>";
 		};
 		DFE9C11A24460BA700872527 /* API */ = {
@@ -454,6 +482,8 @@
 				DF40FE092444965B00CBD522 /* HomeFactsViewController.xib in Resources */,
 				DF0B5FBC244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.xib in Resources */,
 				DF40FDDE244493AF00CBD522 /* Assets.xcassets in Resources */,
+				DF0FA7C5244E603C006C9170 /* HomeFactTableViewCell.xib in Resources */,
+				DFCC4FC0244DF2BC002E9A2B /* ChuckNorrisLinkView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +509,7 @@
 				DF593D512447D7820045AEA6 /* ChuckNorrisRandomModel.swift in Sources */,
 				DF40FE1724452DF800CBD522 /* ChuckNorrisRequest.swift in Sources */,
 				DF40FE1124449F8200CBD522 /* ChuckNorrisAPI.swift in Sources */,
+				DF0FA7C4244E603C006C9170 /* HomeFactTableViewCell.swift in Sources */,
 				DF0CA8A9244B85190038BFC0 /* ChuckNorrisSearchFactsCoordinator.swift in Sources */,
 				DFE9C12524463C2E00872527 /* ChuckNorrisGenericError.swift in Sources */,
 				DF40FE082444965B00CBD522 /* HomeFactsViewController.swift in Sources */,
@@ -490,6 +521,7 @@
 				DFE9C12324460E8700872527 /* NetworkError.swift in Sources */,
 				DFE9C12124460C1400872527 /* ChuckNorrisError.swift in Sources */,
 				DFCB02722448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift in Sources */,
+				DF0FA7C0244E45E7006C9170 /* ChuckNorrisLinkView.swift in Sources */,
 				DF40FDD7244493AE00CBD522 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
