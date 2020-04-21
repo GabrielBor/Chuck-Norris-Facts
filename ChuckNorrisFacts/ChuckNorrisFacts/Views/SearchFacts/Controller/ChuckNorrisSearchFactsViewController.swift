@@ -29,7 +29,20 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupNavigationBar()
+    }
+    
+    // MARK: Methods
+    
+    func setupNavigationBar() {
+        title = "Pesquisa"
+        navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationItem.setHidesBackButton(false, animated: false)
     }
 
 }

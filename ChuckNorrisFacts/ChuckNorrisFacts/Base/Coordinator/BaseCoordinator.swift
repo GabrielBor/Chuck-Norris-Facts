@@ -35,10 +35,12 @@ extension BaseCoordinator {
     func start(using presentation: TypePresentation, animated: Bool) {
         switch presentation {
         case .present(let navigation):
-            guard let viewController = viewController else { return }
+            self.navigation = navigation
+            guard let viewController = self.viewController else { return }
             navigation.present(viewController, animated: animated, completion: nil)
         case .push(let navigation):
-            guard let viewController = viewController else { return }
+            self.navigation = navigation
+            guard let viewController = self.viewController else { return }
             navigation.pushViewController(viewController, animated: animated)
         }
     }

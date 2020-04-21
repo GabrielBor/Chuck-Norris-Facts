@@ -33,8 +33,12 @@ class HomeFactsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationBar()
         setupChuckNorrisLinkView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupNavigationBar()
     }
     
     // MARK: Methods
@@ -42,6 +46,9 @@ class HomeFactsViewController: UIViewController {
     func setupNavigationBar() {
         title = "Chuck Norris"
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationItem.largeTitleDisplayMode = .never
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchTapped))
+        navigationItem.searchController = createSearchController()
     }
     
     func setupChuckNorrisLinkView() {
@@ -56,7 +63,21 @@ class HomeFactsViewController: UIViewController {
             linkView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         }
     }
+    
+    func createSearchController() -> UISearchController {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        return searchController
+    }
+    
+    // MARK: - Action
+    
+    @objc func searchTapped() {
+        viewModel.goToSearchFacts()
+    }
 }
+
+//MARK: - UITableViewDataSource
 
 extension HomeFactsViewController: UITableViewDataSource {
     
@@ -76,14 +97,24 @@ extension HomeFactsViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - ChuckNorrisLinkViewDelegate
+
 extension HomeFactsViewController: ChuckNorrisLinkViewDelegate {
     func linkView(_ view: ChuckNorrisLinkView, linkAction sender: UIButton) {
-        // TODO: mandar para a tela de pesquisar facts
+        viewModel.goToSearchFacts()
     }
 }
+
+// MARK: - HomeFactTableViewCellDelegate
 
 extension HomeFactsViewController: HomeFactTableViewCellDelegate {
     func homeFactTableViewCell(_ cell: UITableViewCell, shareButtonTapped button: UIButton) {
         // TODO: fazer a parte de compartilhamento
+    }
+}
+
+extension HomeFactsViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
     }
 }

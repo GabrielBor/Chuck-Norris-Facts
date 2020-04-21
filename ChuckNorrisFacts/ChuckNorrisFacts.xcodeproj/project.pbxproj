@@ -13,13 +13,13 @@
 		DF0FA7C0244E45E7006C9170 /* ChuckNorrisLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0FA7BF244E45E7006C9170 /* ChuckNorrisLinkView.swift */; };
 		DF0FA7C4244E603C006C9170 /* HomeFactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0FA7C2244E603C006C9170 /* HomeFactTableViewCell.swift */; };
 		DF0FA7C5244E603C006C9170 /* HomeFactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF0FA7C3244E603C006C9170 /* HomeFactTableViewCell.xib */; };
+		DF0FA7C7244E8760006C9170 /* HomeFactsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0FA7C6244E8760006C9170 /* HomeFactsCoordinator.swift */; };
 		DF35899E2445EB9200A4E36A /* ChuckNorrisParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF35899D2445EB9200A4E36A /* ChuckNorrisParse.swift */; };
 		DF40FDD5244493AE00CBD522 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FDD4244493AE00CBD522 /* AppDelegate.swift */; };
 		DF40FDD7244493AE00CBD522 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FDD6244493AE00CBD522 /* SceneDelegate.swift */; };
 		DF40FDDE244493AF00CBD522 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF40FDDD244493AF00CBD522 /* Assets.xcassets */; };
 		DF40FDE1244493AF00CBD522 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF40FDDF244493AF00CBD522 /* LaunchScreen.storyboard */; };
 		DF40FDEC244493AF00CBD522 /* ChuckNorrisFactsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FDEB244493AF00CBD522 /* ChuckNorrisFactsTests.swift */; };
-		DF40FDF92444955B00CBD522 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FDF82444955B00CBD522 /* AppCoordinator.swift */; };
 		DF40FE072444965B00CBD522 /* HomeFactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FE022444965B00CBD522 /* HomeFactsViewModel.swift */; };
 		DF40FE082444965B00CBD522 /* HomeFactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FE042444965B00CBD522 /* HomeFactsViewController.swift */; };
 		DF40FE092444965B00CBD522 /* HomeFactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF40FE062444965B00CBD522 /* HomeFactsViewController.xib */; };
@@ -55,6 +55,7 @@
 		DF0FA7BF244E45E7006C9170 /* ChuckNorrisLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChuckNorrisLinkView.swift; sourceTree = "<group>"; };
 		DF0FA7C2244E603C006C9170 /* HomeFactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFactTableViewCell.swift; sourceTree = "<group>"; };
 		DF0FA7C3244E603C006C9170 /* HomeFactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFactTableViewCell.xib; sourceTree = "<group>"; };
+		DF0FA7C6244E8760006C9170 /* HomeFactsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFactsCoordinator.swift; sourceTree = "<group>"; };
 		DF35899D2445EB9200A4E36A /* ChuckNorrisParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisParse.swift; sourceTree = "<group>"; };
 		DF40FDD1244493AE00CBD522 /* ChuckNorrisFacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChuckNorrisFacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF40FDD4244493AE00CBD522 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +66,6 @@
 		DF40FDE7244493AF00CBD522 /* ChuckNorrisFactsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChuckNorrisFactsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF40FDEB244493AF00CBD522 /* ChuckNorrisFactsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisFactsTests.swift; sourceTree = "<group>"; };
 		DF40FDED244493AF00CBD522 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DF40FDF82444955B00CBD522 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		DF40FE022444965B00CBD522 /* HomeFactsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeFactsViewModel.swift; sourceTree = "<group>"; };
 		DF40FE042444965B00CBD522 /* HomeFactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeFactsViewController.swift; sourceTree = "<group>"; };
 		DF40FE062444965B00CBD522 /* HomeFactsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeFactsViewController.xib; sourceTree = "<group>"; };
@@ -157,19 +157,10 @@
 		DF40FDF6244494CF00CBD522 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				DF40FDF72444953300CBD522 /* Coordinator */,
 				DF40FDD4244493AE00CBD522 /* AppDelegate.swift */,
 				DF40FDD6244493AE00CBD522 /* SceneDelegate.swift */,
 			);
 			path = Application;
-			sourceTree = "<group>";
-		};
-		DF40FDF72444953300CBD522 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				DF40FDF82444955B00CBD522 /* AppCoordinator.swift */,
-			);
-			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		DF40FDFA244495E100CBD522 /* Network */ = {
@@ -317,6 +308,7 @@
 		DFCB02702448EBFF00B995E0 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				DF0FA7C6244E8760006C9170 /* HomeFactsCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -505,7 +497,6 @@
 				DF0B5FBB244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.swift in Sources */,
 				DF40FE132444A8A600CBD522 /* ChuckNorrisServices.swift in Sources */,
 				DF40FE072444965B00CBD522 /* HomeFactsViewModel.swift in Sources */,
-				DF40FDF92444955B00CBD522 /* AppCoordinator.swift in Sources */,
 				DF593D512447D7820045AEA6 /* ChuckNorrisRandomModel.swift in Sources */,
 				DF40FE1724452DF800CBD522 /* ChuckNorrisRequest.swift in Sources */,
 				DF40FE1124449F8200CBD522 /* ChuckNorrisAPI.swift in Sources */,
@@ -515,6 +506,7 @@
 				DF40FE082444965B00CBD522 /* HomeFactsViewController.swift in Sources */,
 				DF593D532447E5F40045AEA6 /* ChuckNorrisResultModel.swift in Sources */,
 				DF35899E2445EB9200A4E36A /* ChuckNorrisParse.swift in Sources */,
+				DF0FA7C7244E8760006C9170 /* HomeFactsCoordinator.swift in Sources */,
 				DF40FE0E2444967300CBD522 /* BaseCoordinator.swift in Sources */,
 				DF593D4E2447A5FD0045AEA6 /* ChuckNorrisParseError.swift in Sources */,
 				DF40FDD5244493AE00CBD522 /* AppDelegate.swift in Sources */,
