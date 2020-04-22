@@ -14,5 +14,3 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build App
       run: xcodebuild -project 'ChuckNorrisFacts/ChuckNorrisFacts.xcodeproj' -scheme 'ChuckNorrisFacts' -destination 'generic/platform=iOS' -configuration Release build CODE_SIGNING_ALLOWED=NO
-    - name: Run tests
-      run: swift test -v
