@@ -46,9 +46,8 @@ class HomeFactsViewController: UIViewController {
     func setupNavigationBar() {
         title = "Chuck Norris"
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationItem.largeTitleDisplayMode = .never
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchTapped))
-        navigationItem.searchController = createSearchController()
+        navigationItem.searchController = !viewModel.factsList.isEmpty ? createSearchController() : nil
     }
     
     func setupChuckNorrisLinkView() {
@@ -56,11 +55,7 @@ class HomeFactsViewController: UIViewController {
             let linkView = ChuckNorrisLinkView(frame: CGRect.zero)
             linkView.delegate = self
             view.addSubview(linkView)
-            linkView.translatesAutoresizingMaskIntoConstraints = false
-            linkView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-            linkView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-            linkView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-            linkView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+            view.pinnedSubView(linkView)
         }
     }
     

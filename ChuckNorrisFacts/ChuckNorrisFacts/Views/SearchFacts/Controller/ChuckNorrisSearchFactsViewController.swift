@@ -29,11 +29,6 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         setupNavigationBar()
     }
     
@@ -41,8 +36,19 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
     
     func setupNavigationBar() {
         title = "Pesquisa"
-        navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.setHidesBackButton(false, animated: false)
+        navigationItem.searchController = createSearchController()
     }
+    
+    func createSearchController() -> UISearchController {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        return searchController
+    }
+}
 
+extension ChuckNorrisSearchFactsViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
 }
