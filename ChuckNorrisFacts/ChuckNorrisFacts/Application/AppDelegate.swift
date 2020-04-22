@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigation = UINavigationController()
         homeFactsCoordinator = HomeFactsCoordinator([])
         homeFactsCoordinator?.start(using: .push(navigation), animated: true)
-        
+
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigation
         window?.makeKeyAndVisible()

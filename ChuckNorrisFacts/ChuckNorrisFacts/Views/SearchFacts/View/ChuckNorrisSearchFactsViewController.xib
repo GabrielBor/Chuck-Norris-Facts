@@ -18,12 +18,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="8dx-Vo-h2u">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
-                    <textInputTraits key="textInputTraits"/>
-                </searchBar>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sugestões de pesquisa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oW-Cb-h8n">
-                    <rect key="frame" x="16" y="80" width="343" height="22"/>
+                    <rect key="frame" x="16" y="24" width="343" height="22"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -32,11 +28,8 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5oW-Cb-h8n" secondAttribute="trailing" constant="16" id="HWV-pi-bpc"/>
-                <constraint firstItem="8dx-Vo-h2u" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Tz2-HA-9RF"/>
-                <constraint firstItem="8dx-Vo-h2u" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ZE7-N9-vxI"/>
-                <constraint firstItem="8dx-Vo-h2u" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="aUc-yd-z2V"/>
+                <constraint firstItem="5oW-Cb-h8n" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="24" id="KvB-en-9te"/>
                 <constraint firstItem="5oW-Cb-h8n" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="dwa-Cw-Z1i"/>
-                <constraint firstItem="5oW-Cb-h8n" firstAttribute="top" secondItem="8dx-Vo-h2u" secondAttribute="bottom" constant="24" id="ulW-TD-UkV"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="132" y="153.37331334332833"/>

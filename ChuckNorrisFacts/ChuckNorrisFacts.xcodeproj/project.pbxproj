@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF012862244FB5AE00A0508B /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF012861244FB5AE00A0508B /* UIView+Extensions.swift */; };
 		DF0B5FBB244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0B5FB9244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.swift */; };
 		DF0B5FBC244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF0B5FBA244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.xib */; };
 		DF0CA8A9244B85190038BFC0 /* ChuckNorrisSearchFactsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0CA8A8244B85190038BFC0 /* ChuckNorrisSearchFactsCoordinator.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF012861244FB5AE00A0508B /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		DF0B5FB9244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisSearchFactsViewController.swift; sourceTree = "<group>"; };
 		DF0B5FBA244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChuckNorrisSearchFactsViewController.xib; sourceTree = "<group>"; };
 		DF0CA8A8244B85190038BFC0 /* ChuckNorrisSearchFactsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisSearchFactsCoordinator.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				DF40FE0C2444967300CBD522 /* Coordinator */,
+				DF012861244FB5AE00A0508B /* UIView+Extensions.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				DF40FE132444A8A600CBD522 /* ChuckNorrisServices.swift in Sources */,
 				DF40FE072444965B00CBD522 /* HomeFactsViewModel.swift in Sources */,
 				DF593D512447D7820045AEA6 /* ChuckNorrisRandomModel.swift in Sources */,
+				DF012862244FB5AE00A0508B /* UIView+Extensions.swift in Sources */,
 				DF40FE1724452DF800CBD522 /* ChuckNorrisRequest.swift in Sources */,
 				DF40FE1124449F8200CBD522 /* ChuckNorrisAPI.swift in Sources */,
 				DF0FA7C4244E603C006C9170 /* HomeFactTableViewCell.swift in Sources */,
