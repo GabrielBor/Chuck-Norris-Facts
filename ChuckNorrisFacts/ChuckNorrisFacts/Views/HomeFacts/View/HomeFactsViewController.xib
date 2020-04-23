@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeFactsViewController" customModule="ChuckNorrisFacts" customModuleProvider="target">
             <connections>
-                <outlet property="factsTableView" destination="fRX-sQ-fTk" id="OXU-sm-rOx"/>
+                <outlet property="factsTableView" destination="fRX-sQ-fTk" id="VXW-Nf-QEx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,8 +23,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="hgE-OX-k9N"/>
-                        <outlet property="delegate" destination="-1" id="Mii-9V-XIn"/>
+                        <outlet property="delegate" destination="-1" id="DdF-6P-e3S"/>
                     </connections>
                 </tableView>
             </subviews>
