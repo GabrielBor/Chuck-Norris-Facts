@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class HomeFactsViewController: UIViewController {
     
@@ -17,6 +19,7 @@ class HomeFactsViewController: UIViewController {
     // MARK: - Property
     
     var viewModel: HomeFactsViewModel!
+    let disposeBag = DisposeBag()
     
     // MARK: - Initialize
     
@@ -33,7 +36,8 @@ class HomeFactsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupChuckNorrisLinkView()
+        registerCell()
+        setupBind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +45,19 @@ class HomeFactsViewController: UIViewController {
         setupNavigationBar()
     }
     
-    // MARK: Methods
+    // MARK: - Register Cell
+    
+    func registerCell() {
+        factsTableView.register(HomeFactTableViewCell.self, forCellReuseIdentifier: "HomeFactTableViewCell")
+    }
+    
+    // MARK: - TableViewSetDelegate
+    
+    func setDelegate() {
+        factsTableView.rx.setDelegate(self).disposed(by: disposeBag)
+    }
+    
+    // MARK: - Methods
     
     func setupNavigationBar() {
         title = "Chuck Norris"
@@ -50,12 +66,15 @@ class HomeFactsViewController: UIViewController {
         navigationItem.searchController = !viewModel.factsList.isEmpty ? createSearchController() : nil
     }
     
-    func setupChuckNorrisLinkView() {
+    func setupBind() {
         if viewModel.factsList.isEmpty {
             let linkView = ChuckNorrisLinkView(frame: CGRect.zero)
             linkView.delegate = self
             view.addSubview(linkView)
             view.pinnedSubView(linkView)
+        } else {
+            setDelegate()
+            viewModel.setupOnNextFactList()
         }
     }
     
@@ -72,23 +91,25 @@ class HomeFactsViewController: UIViewController {
     }
 }
 
-//MARK: - UITableViewDataSource
+//MARK: - TableViewRxDataSource
 
-extension HomeFactsViewController: UITableViewDataSource {
+extension HomeFactsViewController  {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.factsList.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeFactTableViewCell", for: indexPath) as? HomeFactTableViewCell else {
-            return UITableViewCell()
-        }
+    func factsTableViewDataSource() {
+       viewModel.publishFacts.bind(to: factsTableView.rx.items(cellIdentifier: "HomeFactTableViewCell", cellType: HomeFactTableViewCell.self)) { (row, item, cell) in
         cell.delegate = self
-        cell.fillCell(viewModel.factsList[indexPath.row].description,
-                      category: viewModel.factsList[indexPath.row].categories[indexPath.row])
-        cell.handlerFontDescriptionLabel(viewModel.sizeFont(for: viewModel.factsList[indexPath.row].description))
-        return cell
+        cell.fillCell(item.categories[row].description, category: item.categories[row])
+        cell.handlerFontDescriptionLabel(self.viewModel.sizeFont(for: item.categories[row].description))
+        }.disposed(by: disposeBag)
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension HomeFactsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }
 

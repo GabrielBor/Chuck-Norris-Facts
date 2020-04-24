@@ -15,6 +15,8 @@
 		DF0FA7C4244E603C006C9170 /* HomeFactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0FA7C2244E603C006C9170 /* HomeFactTableViewCell.swift */; };
 		DF0FA7C5244E603C006C9170 /* HomeFactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF0FA7C3244E603C006C9170 /* HomeFactTableViewCell.xib */; };
 		DF0FA7C7244E8760006C9170 /* HomeFactsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0FA7C6244E8760006C9170 /* HomeFactsCoordinator.swift */; };
+		DF30F78B2451D47E00B75C66 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF30F78A2451D47E00B75C66 /* RxRelay.framework */; };
+		DF30F78C2451D47E00B75C66 /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF30F78A2451D47E00B75C66 /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DF35899E2445EB9200A4E36A /* ChuckNorrisParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF35899D2445EB9200A4E36A /* ChuckNorrisParse.swift */; };
 		DF40FDD5244493AE00CBD522 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FDD4244493AE00CBD522 /* AppDelegate.swift */; };
 		DF40FDD7244493AE00CBD522 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FDD6244493AE00CBD522 /* SceneDelegate.swift */; };
@@ -32,6 +34,10 @@
 		DF593D4E2447A5FD0045AEA6 /* ChuckNorrisParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D4D2447A5FD0045AEA6 /* ChuckNorrisParseError.swift */; };
 		DF593D512447D7820045AEA6 /* ChuckNorrisRandomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D502447D7820045AEA6 /* ChuckNorrisRandomModel.swift */; };
 		DF593D532447E5F40045AEA6 /* ChuckNorrisResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D522447E5F40045AEA6 /* ChuckNorrisResultModel.swift */; };
+		DF6244172451C34800FB2BDD /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF6244162451C34800FB2BDD /* RxSwift.framework */; };
+		DF6244182451C34800FB2BDD /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF6244162451C34800FB2BDD /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF62441B2451C5A400FB2BDD /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF62441A2451C5A400FB2BDD /* RxCocoa.framework */; };
+		DF62441C2451C5A400FB2BDD /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF62441A2451C5A400FB2BDD /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DFCB02722448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCB02712448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift */; };
 		DFCC4FC0244DF2BC002E9A2B /* ChuckNorrisLinkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFCC4FBF244DF2BC002E9A2B /* ChuckNorrisLinkView.xib */; };
 		DFE9C12124460C1400872527 /* ChuckNorrisError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12024460C1400872527 /* ChuckNorrisError.swift */; };
@@ -49,6 +55,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		DF6244192451C34800FB2BDD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DF62441C2451C5A400FB2BDD /* RxCocoa.framework in Embed Frameworks */,
+				DF6244182451C34800FB2BDD /* RxSwift.framework in Embed Frameworks */,
+				DF30F78C2451D47E00B75C66 /* RxRelay.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		DF012861244FB5AE00A0508B /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		DF0B5FB9244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisSearchFactsViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +80,7 @@
 		DF0FA7C2244E603C006C9170 /* HomeFactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFactTableViewCell.swift; sourceTree = "<group>"; };
 		DF0FA7C3244E603C006C9170 /* HomeFactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFactTableViewCell.xib; sourceTree = "<group>"; };
 		DF0FA7C6244E8760006C9170 /* HomeFactsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFactsCoordinator.swift; sourceTree = "<group>"; };
+		DF30F78A2451D47E00B75C66 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		DF35899D2445EB9200A4E36A /* ChuckNorrisParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisParse.swift; sourceTree = "<group>"; };
 		DF40FDD1244493AE00CBD522 /* ChuckNorrisFacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChuckNorrisFacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF40FDD4244493AE00CBD522 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +102,8 @@
 		DF593D4D2447A5FD0045AEA6 /* ChuckNorrisParseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisParseError.swift; sourceTree = "<group>"; };
 		DF593D502447D7820045AEA6 /* ChuckNorrisRandomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisRandomModel.swift; sourceTree = "<group>"; };
 		DF593D522447E5F40045AEA6 /* ChuckNorrisResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisResultModel.swift; sourceTree = "<group>"; };
+		DF6244162451C34800FB2BDD /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		DF62441A2451C5A400FB2BDD /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		DFCB02712448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisSearchFactsViewModel.swift; sourceTree = "<group>"; };
 		DFCC4FBF244DF2BC002E9A2B /* ChuckNorrisLinkView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChuckNorrisLinkView.xib; sourceTree = "<group>"; };
 		DFE9C12024460C1400872527 /* ChuckNorrisError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisError.swift; sourceTree = "<group>"; };
@@ -91,6 +116,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF62441B2451C5A400FB2BDD /* RxCocoa.framework in Frameworks */,
+				DF6244172451C34800FB2BDD /* RxSwift.framework in Frameworks */,
+				DF30F78B2451D47E00B75C66 /* RxRelay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +147,7 @@
 				DF40FDD3244493AE00CBD522 /* ChuckNorrisFacts */,
 				DF40FDEA244493AF00CBD522 /* ChuckNorrisFactsTests */,
 				DF40FDD2244493AE00CBD522 /* Products */,
+				DF6244152451C34800FB2BDD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -265,6 +294,16 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		DF6244152451C34800FB2BDD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DF30F78A2451D47E00B75C66 /* RxRelay.framework */,
+				DF62441A2451C5A400FB2BDD /* RxCocoa.framework */,
+				DF6244162451C34800FB2BDD /* RxSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DFCB026B2448EA8A00B995E0 /* SearchFacts */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,6 +441,8 @@
 				DF40FDCD244493AE00CBD522 /* Sources */,
 				DF40FDCE244493AE00CBD522 /* Frameworks */,
 				DF40FDCF244493AE00CBD522 /* Resources */,
+				DF6244142451C23500FB2BDD /* Carthage */,
+				DF6244192451C34800FB2BDD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -490,6 +531,30 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DF6244142451C23500FB2BDD /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
+			);
+			name = Carthage;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DF40FDCD244493AE00CBD522 /* Sources */ = {
@@ -672,6 +737,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2XBR7ZLNHQ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ChuckNorrisFacts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -690,6 +759,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2XBR7ZLNHQ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ChuckNorrisFacts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
