@@ -6,16 +6,8 @@
 //  Copyright © 2020 Gabriel Borges. All rights reserved.
 //
 
-import Foundation
-
-// MARK: ViewDelegate
-
-protocol ChuckNorrisSearchFactsViewDelegate: AnyObject {
-    func chuckNorrisListFacts(_ viewModel: ChuckNorrisSearchFactsViewModel, withSuccess categories: [String])
-    func chuckNorrisListFacts(_ viewModel: ChuckNorrisSearchFactsViewModel, withFailure error: ChuckNorrisError)
-    func chuckNorrisSearchFacts(_ viewModel: ChuckNorrisSearchFactsViewModel, withSuccess result: ChuckNorrisResultModel)
-    func chuckNorrisSearchFacts(_ viewModel: ChuckNorrisSearchFactsViewModel, withFailure error: ChuckNorrisError)
-}
+import RxRelay
+import RxSwift
 
 protocol ChuckNorrisSearchFactsCoordinatorDelgate: AnyObject {
     
@@ -25,42 +17,48 @@ class ChuckNorrisSearchFactsViewModel {
     
     // MARK: - Propeties
     
+    var loading = PublishSubject<Bool>()
+    var error = PublishSubject<ChuckNorrisError>()
+    var listSuggestionPublish = PublishSubject<[String]>()
+    var searchCategoryPublish = PublishSubject<ChuckNorrisResultModel>()
+    
     var service: ChuckNorrisServices!
-    weak var viewDelegate: ChuckNorrisSearchFactsViewDelegate?
     weak var coordinatorDelegate: ChuckNorrisSearchFactsCoordinatorDelgate?
     
     // MARK: - Initialize
     
     init(_ service: ChuckNorrisServices,
-         viewDelegate: ChuckNorrisSearchFactsViewDelegate? = nil,
          coordinatorDelegate: ChuckNorrisSearchFactsCoordinatorDelgate? = nil) {
         self.service = service
-        self.viewDelegate = viewDelegate
         self.coordinatorDelegate = coordinatorDelegate
     }
     
     // MARK: - Services
     
-    func fetchListCategoryFacts() {
+    func fetchListSuggestionFacts() {
+        loading.onNext(true)
         service.fetchListCategoryFacts { [weak self] result in
             guard let self = self else { return }
+            self.loading.onNext(false)
             switch result {
             case .success(let categories):
-                self.viewDelegate?.chuckNorrisListFacts(self, withSuccess: categories)
+                self.listSuggestionPublish.onNext(categories)
             case .failure(let error):
-                self.viewDelegate?.chuckNorrisListFacts(self, withFailure: error)
+                self.error.onNext(error)
             }
         }
     }
     
     func fetchSearchCategoryFacts(from category: String) {
+        loading.onNext(true)
         service.fetchSearchCategoryFact(category) { [weak self] result in
             guard let self = self else { return }
+            self.loading.onNext(false)
             switch result {
             case .success(let result):
-                self.viewDelegate?.chuckNorrisSearchFacts(self, withSuccess: result)
+                self.searchCategoryPublish.onNext(result)
             case .failure(let error):
-                self.viewDelegate?.chuckNorrisSearchFacts(self, withFailure: error)
+                self.error.onNext(error)
             }
         }
     }

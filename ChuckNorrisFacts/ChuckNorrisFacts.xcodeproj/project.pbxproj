@@ -38,6 +38,10 @@
 		DF6244182451C34800FB2BDD /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF6244162451C34800FB2BDD /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DF62441B2451C5A400FB2BDD /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF62441A2451C5A400FB2BDD /* RxCocoa.framework */; };
 		DF62441C2451C5A400FB2BDD /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF62441A2451C5A400FB2BDD /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF8DB61024523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8DB60E24523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.swift */; };
+		DF8DB61124523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF8DB60F24523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.xib */; };
+		DF8DB61424523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8DB61224523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.swift */; };
+		DF8DB61524523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF8DB61324523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.xib */; };
 		DFCB02722448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCB02712448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift */; };
 		DFCC4FC0244DF2BC002E9A2B /* ChuckNorrisLinkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFCC4FBF244DF2BC002E9A2B /* ChuckNorrisLinkView.xib */; };
 		DFE9C12124460C1400872527 /* ChuckNorrisError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12024460C1400872527 /* ChuckNorrisError.swift */; };
@@ -104,6 +108,10 @@
 		DF593D522447E5F40045AEA6 /* ChuckNorrisResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisResultModel.swift; sourceTree = "<group>"; };
 		DF6244162451C34800FB2BDD /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		DF62441A2451C5A400FB2BDD /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		DF8DB60E24523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		DF8DB60F24523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChuckNorrisCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		DF8DB61224523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisPastSearchTableViewCell.swift; sourceTree = "<group>"; };
+		DF8DB61324523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChuckNorrisPastSearchTableViewCell.xib; sourceTree = "<group>"; };
 		DFCB02712448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisSearchFactsViewModel.swift; sourceTree = "<group>"; };
 		DFCC4FBF244DF2BC002E9A2B /* ChuckNorrisLinkView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChuckNorrisLinkView.xib; sourceTree = "<group>"; };
 		DFE9C12024460C1400872527 /* ChuckNorrisError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisError.swift; sourceTree = "<group>"; };
@@ -304,6 +312,33 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DF8DB60B245233C6005A4ECB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DF8DB60D245233DE005A4ECB /* Table */,
+				DF8DB60C245233D7005A4ECB /* Collection */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		DF8DB60C245233D7005A4ECB /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				DF8DB60E24523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.swift */,
+				DF8DB60F24523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.xib */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		DF8DB60D245233DE005A4ECB /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				DF8DB61224523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.swift */,
+				DF8DB61324523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.xib */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
 		DFCB026B2448EA8A00B995E0 /* SearchFacts */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,6 +361,7 @@
 		DFCB026D2448EBD400B995E0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DF8DB60B245233C6005A4ECB /* Cells */,
 				DF0B5FBA244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.xib */,
 			);
 			path = View;
@@ -517,6 +553,8 @@
 				DF40FDE1244493AF00CBD522 /* LaunchScreen.storyboard in Resources */,
 				DF40FE092444965B00CBD522 /* HomeFactsViewController.xib in Resources */,
 				DF0B5FBC244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.xib in Resources */,
+				DF8DB61524523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.xib in Resources */,
+				DF8DB61124523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.xib in Resources */,
 				DF40FDDE244493AF00CBD522 /* Assets.xcassets in Resources */,
 				DF0FA7C5244E603C006C9170 /* HomeFactTableViewCell.xib in Resources */,
 				DFCC4FC0244DF2BC002E9A2B /* ChuckNorrisLinkView.xib in Resources */,
@@ -564,9 +602,11 @@
 				DF40FE1A2445391C00CBD522 /* ChuckNorrisFetch.swift in Sources */,
 				DF0B5FBB244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.swift in Sources */,
 				DF40FE132444A8A600CBD522 /* ChuckNorrisServices.swift in Sources */,
+				DF8DB61424523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.swift in Sources */,
 				DF40FE072444965B00CBD522 /* HomeFactsViewModel.swift in Sources */,
 				DF593D512447D7820045AEA6 /* ChuckNorrisRandomModel.swift in Sources */,
 				DF012862244FB5AE00A0508B /* UIView+Extensions.swift in Sources */,
+				DF8DB61024523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.swift in Sources */,
 				DF40FE1724452DF800CBD522 /* ChuckNorrisRequest.swift in Sources */,
 				DF40FE1124449F8200CBD522 /* ChuckNorrisAPI.swift in Sources */,
 				DF0FA7C4244E603C006C9170 /* HomeFactTableViewCell.swift in Sources */,

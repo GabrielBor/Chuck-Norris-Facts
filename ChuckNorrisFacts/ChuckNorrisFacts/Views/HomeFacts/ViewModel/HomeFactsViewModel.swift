@@ -8,7 +8,6 @@
 
 import UIKit
 import RxSwift
-import RxCocoa
 
 protocol HomeFactsViewModelCoordinatorDelegate: AnyObject {
     func goToSearchFacts(_ viewModel: HomeFactsViewModel)
@@ -19,7 +18,7 @@ class HomeFactsViewModel {
     // MARK: - Properties
     
     var factsList: [ChuckNorrisRandomModel] = []
-    var publishFacts = PublishSubject<[ChuckNorrisRandomModel]>()
+    var factsPublish = PublishSubject<[ChuckNorrisRandomModel]>()
     weak var coordinatorDelegate: HomeFactsViewModelCoordinatorDelegate?
     
     // MARK: - Initialize
@@ -32,8 +31,8 @@ class HomeFactsViewModel {
     // MARK: - OnNext
     
     func setupOnNextFactList() {
-        publishFacts.onNext(factsList)
-        publishFacts.onCompleted()
+        factsPublish.onNext(factsList)
+        factsPublish.onCompleted()
     }
     
     // MARK: - Mehtod

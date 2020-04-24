@@ -19,7 +19,7 @@ class HomeFactsViewController: UIViewController {
     // MARK: - Property
     
     var viewModel: HomeFactsViewModel!
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     
     // MARK: - Initialize
     
@@ -37,7 +37,8 @@ class HomeFactsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
-        setupBind()
+        setTableViewDelegate()
+        bindView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,7 +54,7 @@ class HomeFactsViewController: UIViewController {
     
     // MARK: - TableViewSetDelegate
     
-    func setDelegate() {
+    func setTableViewDelegate() {
         factsTableView.rx.setDelegate(self).disposed(by: disposeBag)
     }
     
@@ -66,14 +67,13 @@ class HomeFactsViewController: UIViewController {
         navigationItem.searchController = !viewModel.factsList.isEmpty ? createSearchController() : nil
     }
     
-    func setupBind() {
+    func bindView() {
         if viewModel.factsList.isEmpty {
             let linkView = ChuckNorrisLinkView(frame: CGRect.zero)
             linkView.delegate = self
             view.addSubview(linkView)
             view.pinnedSubView(linkView)
         } else {
-            setDelegate()
             viewModel.setupOnNextFactList()
         }
     }
@@ -96,7 +96,7 @@ class HomeFactsViewController: UIViewController {
 extension HomeFactsViewController  {
     
     func factsTableViewDataSource() {
-       viewModel.publishFacts.bind(to: factsTableView.rx.items(cellIdentifier: "HomeFactTableViewCell", cellType: HomeFactTableViewCell.self)) { (row, item, cell) in
+       viewModel.factsPublish.bind(to: factsTableView.rx.items(cellIdentifier: "HomeFactTableViewCell", cellType: HomeFactTableViewCell.self)) { (row, item, cell) in
         cell.delegate = self
         cell.fillCell(item.categories[row].description, category: item.categories[row])
         cell.handlerFontDescriptionLabel(self.viewModel.sizeFont(for: item.categories[row].description))
