@@ -13,6 +13,6 @@ class ChuckNorrisCategoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var categoryLabel: UILabel!
     
     func fillCell(_ category: String) {
-        categoryLabel.text = category
+        categoryLabel.text = category.uppercased()
     }
 }

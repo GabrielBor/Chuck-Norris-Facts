@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,8 +15,7 @@
 		DF0FA7C4244E603C006C9170 /* HomeFactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0FA7C2244E603C006C9170 /* HomeFactTableViewCell.swift */; };
 		DF0FA7C5244E603C006C9170 /* HomeFactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF0FA7C3244E603C006C9170 /* HomeFactTableViewCell.xib */; };
 		DF0FA7C7244E8760006C9170 /* HomeFactsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0FA7C6244E8760006C9170 /* HomeFactsCoordinator.swift */; };
-		DF30F78B2451D47E00B75C66 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF30F78A2451D47E00B75C66 /* RxRelay.framework */; };
-		DF30F78C2451D47E00B75C66 /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF30F78A2451D47E00B75C66 /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF171EB624533CA5007B85DC /* SuggestionCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF171EB524533CA5007B85DC /* SuggestionCollectionViewFlowLayout.swift */; };
 		DF35899E2445EB9200A4E36A /* ChuckNorrisParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF35899D2445EB9200A4E36A /* ChuckNorrisParse.swift */; };
 		DF40FDD5244493AE00CBD522 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FDD4244493AE00CBD522 /* AppDelegate.swift */; };
 		DF40FDD7244493AE00CBD522 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FDD6244493AE00CBD522 /* SceneDelegate.swift */; };
@@ -34,14 +33,17 @@
 		DF593D4E2447A5FD0045AEA6 /* ChuckNorrisParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D4D2447A5FD0045AEA6 /* ChuckNorrisParseError.swift */; };
 		DF593D512447D7820045AEA6 /* ChuckNorrisRandomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D502447D7820045AEA6 /* ChuckNorrisRandomModel.swift */; };
 		DF593D532447E5F40045AEA6 /* ChuckNorrisResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D522447E5F40045AEA6 /* ChuckNorrisResultModel.swift */; };
-		DF6244172451C34800FB2BDD /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF6244162451C34800FB2BDD /* RxSwift.framework */; };
-		DF6244182451C34800FB2BDD /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF6244162451C34800FB2BDD /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		DF62441B2451C5A400FB2BDD /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF62441A2451C5A400FB2BDD /* RxCocoa.framework */; };
-		DF62441C2451C5A400FB2BDD /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF62441A2451C5A400FB2BDD /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DF8DB61024523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8DB60E24523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.swift */; };
 		DF8DB61124523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF8DB60F24523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.xib */; };
 		DF8DB61424523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8DB61224523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.swift */; };
 		DF8DB61524523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF8DB61324523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.xib */; };
+		DF90F8AD2453CDD30067512F /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF62441A2451C5A400FB2BDD /* RxCocoa.framework */; };
+		DF90F8AE2453CDD30067512F /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF62441A2451C5A400FB2BDD /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF90F8AF2453CDD30067512F /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF30F78A2451D47E00B75C66 /* RxRelay.framework */; };
+		DF90F8B02453CDD30067512F /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF30F78A2451D47E00B75C66 /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF90F8B12453CDD30067512F /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF6244162451C34800FB2BDD /* RxSwift.framework */; };
+		DF90F8B22453CDD30067512F /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF6244162451C34800FB2BDD /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF90F8B52453E1F20067512F /* UICollectionViewLayoutAttributes+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF90F8B42453E1F20067512F /* UICollectionViewLayoutAttributes+Extension.swift */; };
 		DFCB02722448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCB02712448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift */; };
 		DFCC4FC0244DF2BC002E9A2B /* ChuckNorrisLinkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFCC4FBF244DF2BC002E9A2B /* ChuckNorrisLinkView.xib */; };
 		DFE9C12124460C1400872527 /* ChuckNorrisError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12024460C1400872527 /* ChuckNorrisError.swift */; };
@@ -60,18 +62,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		DF6244192451C34800FB2BDD /* Embed Frameworks */ = {
+		DF90F8B32453CDD40067512F /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				DF62441C2451C5A400FB2BDD /* RxCocoa.framework in Embed Frameworks */,
-				DF6244182451C34800FB2BDD /* RxSwift.framework in Embed Frameworks */,
-				DF30F78C2451D47E00B75C66 /* RxRelay.framework in Embed Frameworks */,
+				DF90F8B02453CDD30067512F /* RxRelay.framework in Embed Frameworks */,
+				DF90F8AE2453CDD30067512F /* RxCocoa.framework in Embed Frameworks */,
+				DF90F8B22453CDD30067512F /* RxSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -84,6 +86,7 @@
 		DF0FA7C2244E603C006C9170 /* HomeFactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFactTableViewCell.swift; sourceTree = "<group>"; };
 		DF0FA7C3244E603C006C9170 /* HomeFactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFactTableViewCell.xib; sourceTree = "<group>"; };
 		DF0FA7C6244E8760006C9170 /* HomeFactsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFactsCoordinator.swift; sourceTree = "<group>"; };
+		DF171EB524533CA5007B85DC /* SuggestionCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		DF30F78A2451D47E00B75C66 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		DF35899D2445EB9200A4E36A /* ChuckNorrisParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisParse.swift; sourceTree = "<group>"; };
 		DF40FDD1244493AE00CBD522 /* ChuckNorrisFacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChuckNorrisFacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +115,7 @@
 		DF8DB60F24523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChuckNorrisCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		DF8DB61224523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisPastSearchTableViewCell.swift; sourceTree = "<group>"; };
 		DF8DB61324523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChuckNorrisPastSearchTableViewCell.xib; sourceTree = "<group>"; };
+		DF90F8B42453E1F20067512F /* UICollectionViewLayoutAttributes+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewLayoutAttributes+Extension.swift"; sourceTree = "<group>"; };
 		DFCB02712448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisSearchFactsViewModel.swift; sourceTree = "<group>"; };
 		DFCC4FBF244DF2BC002E9A2B /* ChuckNorrisLinkView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChuckNorrisLinkView.xib; sourceTree = "<group>"; };
 		DFE9C12024460C1400872527 /* ChuckNorrisError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisError.swift; sourceTree = "<group>"; };
@@ -124,9 +128,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF62441B2451C5A400FB2BDD /* RxCocoa.framework in Frameworks */,
-				DF6244172451C34800FB2BDD /* RxSwift.framework in Frameworks */,
-				DF30F78B2451D47E00B75C66 /* RxRelay.framework in Frameworks */,
+				DF90F8AF2453CDD30067512F /* RxRelay.framework in Frameworks */,
+				DF90F8AD2453CDD30067512F /* RxCocoa.framework in Frameworks */,
+				DF90F8B12453CDD30067512F /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +151,14 @@
 				DF0FA7C3244E603C006C9170 /* HomeFactTableViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		DF171EB424533C7D007B85DC /* SuggestionCollectionViewFlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				DF171EB524533CA5007B85DC /* SuggestionCollectionViewFlowLayout.swift */,
+			);
+			path = SuggestionCollectionViewFlowLayout;
 			sourceTree = "<group>";
 		};
 		DF40FDC8244493AE00CBD522 = {
@@ -271,8 +283,8 @@
 		DF40FE0A2444967300CBD522 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				DF90F8B62453E22C0067512F /* Extensions */,
 				DF40FE0C2444967300CBD522 /* Coordinator */,
-				DF012861244FB5AE00A0508B /* UIView+Extensions.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -339,6 +351,15 @@
 			path = Table;
 			sourceTree = "<group>";
 		};
+		DF90F8B62453E22C0067512F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DF012861244FB5AE00A0508B /* UIView+Extensions.swift */,
+				DF90F8B42453E1F20067512F /* UICollectionViewLayoutAttributes+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		DFCB026B2448EA8A00B995E0 /* SearchFacts */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,6 +415,7 @@
 		DFCC4FBB244DF20F002E9A2B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				DF171EB424533C7D007B85DC /* SuggestionCollectionViewFlowLayout */,
 				DFCC4FBC244DF218002E9A2B /* ChuckNorrisLinkView */,
 			);
 			path = UI;
@@ -478,7 +500,7 @@
 				DF40FDCE244493AE00CBD522 /* Frameworks */,
 				DF40FDCF244493AE00CBD522 /* Resources */,
 				DF6244142451C23500FB2BDD /* Carthage */,
-				DF6244192451C34800FB2BDD /* Embed Frameworks */,
+				DF90F8B32453CDD40067512F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -573,20 +595,20 @@
 /* Begin PBXShellScriptBuildPhase section */
 		DF6244142451C23500FB2BDD /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
+				"",
+				"",
 			);
 			outputPaths = (
+				"",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -622,7 +644,9 @@
 				DFE9C12324460E8700872527 /* NetworkError.swift in Sources */,
 				DFE9C12124460C1400872527 /* ChuckNorrisError.swift in Sources */,
 				DFCB02722448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift in Sources */,
+				DF90F8B52453E1F20067512F /* UICollectionViewLayoutAttributes+Extension.swift in Sources */,
 				DF0FA7C0244E45E7006C9170 /* ChuckNorrisLinkView.swift in Sources */,
+				DF171EB624533CA5007B85DC /* SuggestionCollectionViewFlowLayout.swift in Sources */,
 				DF40FDD7244493AE00CBD522 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

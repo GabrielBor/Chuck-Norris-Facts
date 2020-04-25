@@ -15,12 +15,14 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
     // MARK: - @IBOutlet Properties
     
     @IBOutlet weak var suggestionCollecitonView: UICollectionView!
-    @IBOutlet weak var pastSearchTableView: UITableView!
+//    @IBOutlet weak var pastSearchTableView: UITableView!
     
     // MARK: - Propeties
     
     var viewModel: ChuckNorrisSearchFactsViewModel!
     var disposeBag = DisposeBag()
+    var minimumLineSpacingForSection: CGFloat = 8
+    var minimumInterItemSpacingForSection: CGFloat = 8
     
     // MARK: - Initialize
     
@@ -39,45 +41,23 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
         super.viewDidLoad()
         setupNavigationBar()
         registerCells()
-        setDelegate()
         bindView()
+        setDelegate()
         viewModel.fetchListSuggestionFacts()
     }
     
     // MARK: - TableViewSetDelegate
     
     func setDelegate() {
-        pastSearchTableView.rx.setDelegate(self).disposed(by: disposeBag)
+//        pastSearchTableView.rx.setDelegate(self).disposed(by: disposeBag)
         suggestionCollecitonView.rx.setDelegate(self).disposed(by: disposeBag)
-    }
-    
-    // MARK: - BindView
-    
-    func bindView() {
-        // TODO: fazer o loading
-        
-        // Success
-        viewModel.listSuggestionPublish
-        .asObserver()
-        .observeOn(MainScheduler.instance)
-        .bind(to: suggestionCollecitonView.rx.items(cellIdentifier: "ChuckNorrisCategoryCollectionViewCell", cellType: ChuckNorrisCategoryCollectionViewCell.self)) { (row, item, cell) in
-            cell.fillCell(item)
-        }.disposed(by: disposeBag)
-        
-        // Error
-        viewModel
-        .error
-        .observeOn(MainScheduler.instance)
-        .subscribe { (error) in
-            // TODO: pop de error aqui
-        }.disposed(by: disposeBag)
     }
     
     // MARK: Methods
     
     func registerCells() {
-        suggestionCollecitonView.register(ChuckNorrisCategoryCollectionViewCell.self,
-                                          forCellWithReuseIdentifier: "ChuckNorrisCategoryCollectionViewCell")
+        let nib = UINib(nibName: "ChuckNorrisCategoryCollectionViewCell", bundle: nil)
+        suggestionCollecitonView.register(nib, forCellWithReuseIdentifier: "ChuckNorrisCategoryCollectionViewCell")
     }
     
     func setupNavigationBar() {
@@ -90,6 +70,37 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         return searchController
+    }
+    
+    // MARK: - BindView
+    
+    func bindView() {
+        bindLoading()
+        bindSuggestionColelctionView()
+        bindError()
+    }
+    
+    func bindLoading() {
+        // TODO: fazer o loading
+    }
+    
+    func bindSuggestionColelctionView() {
+        viewModel.listSuggestionPublish
+            .asObserver()
+            .observeOn(MainScheduler.instance)
+            .bind(to: suggestionCollecitonView.rx.items(cellIdentifier: "ChuckNorrisCategoryCollectionViewCell", cellType: ChuckNorrisCategoryCollectionViewCell.self)) { (row, item, cell) in
+                cell.fillCell(item)
+        }.disposed(by: disposeBag)
+    }
+    
+    func bindError() {
+        viewModel
+            .error
+            .asObserver()
+            .observeOn(MainScheduler.instance)
+            .subscribe { (error) in
+                // TODO: pop de error aqui
+        }.disposed(by: disposeBag)
     }
 }
 
@@ -104,9 +115,32 @@ extension ChuckNorrisSearchFactsViewController: UITableViewDelegate {
 extension ChuckNorrisSearchFactsViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        print("tocou")
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension ChuckNorrisSearchFactsViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = CGSize.init(width: 200, height: 25)
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+
+        guard let str = try? viewModel.listSuggestionPublish.value()[indexPath.item] else { return CGSize() }
+
+        let estimatedRect = NSString.init(string: str).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 25)], context: nil)
+
+        return CGSize.init(width: estimatedRect.size.width, height: size.height)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return minimumLineSpacingForSection
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return minimumInterItemSpacingForSection
+    }
 }
 
 // MARK: - UISearchResultsUpdating

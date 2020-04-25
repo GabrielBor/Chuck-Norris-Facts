@@ -6,7 +6,7 @@
 //  Copyright © 2020 Gabriel Borges. All rights reserved.
 //
 
-import RxRelay
+import UIKit
 import RxSwift
 
 protocol ChuckNorrisSearchFactsCoordinatorDelgate: AnyObject {
@@ -17,10 +17,10 @@ class ChuckNorrisSearchFactsViewModel {
     
     // MARK: - Propeties
     
-    var loading = PublishSubject<Bool>()
-    var error = PublishSubject<ChuckNorrisError>()
-    var listSuggestionPublish = PublishSubject<[String]>()
-    var searchCategoryPublish = PublishSubject<ChuckNorrisResultModel>()
+    var loading: PublishSubject<Bool> = PublishSubject()
+    var error: PublishSubject<ChuckNorrisError> = PublishSubject()
+    var listSuggestionPublish: BehaviorSubject<[String]> = BehaviorSubject(value: [])
+    var searchCategoryPublish: PublishSubject<ChuckNorrisResultModel> = PublishSubject()
     
     var service: ChuckNorrisServices!
     weak var coordinatorDelegate: ChuckNorrisSearchFactsCoordinatorDelgate?
@@ -38,13 +38,18 @@ class ChuckNorrisSearchFactsViewModel {
     func fetchListSuggestionFacts() {
         loading.onNext(true)
         service.fetchListCategoryFacts { [weak self] result in
-            guard let self = self else { return }
-            self.loading.onNext(false)
-            switch result {
-            case .success(let categories):
-                self.listSuggestionPublish.onNext(categories)
-            case .failure(let error):
-                self.error.onNext(error)
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.loading.onNext(false)
+                self.loading.onCompleted()
+                switch result {
+                case .success(let categories):
+                    self.listSuggestionPublish.onNext(categories)
+                    self.listSuggestionPublish.onCompleted()
+                case .failure(let error):
+                    self.error.onNext(error)
+                    self.error.onCompleted()
+                }
             }
         }
     }
