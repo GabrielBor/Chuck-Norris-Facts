@@ -15,7 +15,7 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
     // MARK: - @IBOutlet Properties
     
     @IBOutlet weak var suggestionCollecitonView: UICollectionView!
-//    @IBOutlet weak var pastSearchTableView: UITableView!
+    @IBOutlet weak var pastSearchTableView: UITableView!
     
     // MARK: - Propeties
     
@@ -51,7 +51,7 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
     // MARK: - TableViewSetDelegate
     
     func setDelegate() {
-//        pastSearchTableView.rx.setDelegate(self).disposed(by: disposeBag)
+        pastSearchTableView.rx.setDelegate(self).disposed(by: disposeBag)
         suggestionCollecitonView.rx.setDelegate(self).disposed(by: disposeBag)
     }
     
@@ -105,16 +105,6 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
             .subscribe { (error) in
                 // TODO: pop de error aqui
         }.disposed(by: disposeBag)
-    }
-}
-
-// MARK: - Enum
-
-extension ChuckNorrisSearchFactsViewController {
-    
-    enum IdentifierCell: String {
-        case pastSearch = "ChuckNorrisPastSearchTableViewCell"
-        case suggestion = "ChuckNorrisCategoryCollectionViewCell"
     }
 }
 

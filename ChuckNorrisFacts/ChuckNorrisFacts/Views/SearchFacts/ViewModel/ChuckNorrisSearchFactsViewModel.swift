@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import CoreData
 
 protocol ChuckNorrisSearchFactsCoordinatorDelgate: AnyObject {
     
@@ -22,6 +23,7 @@ class ChuckNorrisSearchFactsViewModel {
     var listSuggestionPublish: BehaviorSubject<[String]> = BehaviorSubject(value: [])
     var searchCategoryPublish: PublishSubject<ChuckNorrisResultModel> = PublishSubject()
     
+    let storage = ChuckNorrisStorage()
     var service: ChuckNorrisServices!
     weak var coordinatorDelegate: ChuckNorrisSearchFactsCoordinatorDelgate?
     
@@ -44,12 +46,9 @@ class ChuckNorrisSearchFactsViewModel {
                 self.loading.onCompleted()
                 switch result {
                 case .success(let suggestions):
-                    let randomSuggestions = self.randomSuggestions(suggestions)
-                    self.listSuggestionPublish.onNext(randomSuggestions)
-                    self.listSuggestionPublish.onCompleted()
+                    self.handlerSuccess(with: suggestions)
                 case .failure(let error):
-                    self.error.onNext(error)
-                    self.error.onCompleted()
+                    self.handlerFailure(error)
                 }
             }
         }
@@ -67,11 +66,41 @@ class ChuckNorrisSearchFactsViewModel {
                     self.searchCategoryPublish.onNext(result)
                     self.searchCategoryPublish.onCompleted()
                 case .failure(let error):
-                    self.error.onNext(error)
-                    self.error.onCompleted()
+                    self.handlerFailure(error)
                 }
             }
         }
+    }
+    
+    func handlerSuccess(with result: ChuckNorrisResultModel) {
+        self.searchCategoryPublish.onNext(result)
+        self.searchCategoryPublish.onCompleted()
+    }
+    
+    func handlerSuccess(with suggestions: [String]) {
+        self.saveSuggestionsStorage(suggestions)
+        listSuggestionPublish.onNext(randomSuggestions(loadSuggestionsStorage()))
+        listSuggestionPublish.onCompleted()
+    }
+    
+    func handlerFailure(_ error: ChuckNorrisError) {
+        self.error.onNext(error)
+        self.error.onCompleted()
+    }
+    
+    // MARK: - CoreData Method
+    
+    func saveSuggestionsStorage(_ suggestions: [String]) {
+        storage.save(to: suggestions, identifierEntity: .entitySuggestions, key: .propertySuggestions)
+    }
+    
+    func loadSuggestionsStorage() -> [String] {
+        guard let nsManagedList = storage.access(.entitySuggestions) else {
+            return []
+        }
+        let storage = nsManagedList.first
+        let suggestionsStorage = storage?.value(forKey: IdentifierCoreData.propertySuggestions.rawValue) as! [String]
+        return suggestionsStorage
     }
     
     // MARK: Methods
