@@ -26,20 +26,39 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="zTo-qK-Trd">
-                    <rect key="frame" x="16" y="185" width="288" height="199"/>
+                    <rect key="frame" x="16" y="54" width="288" height="158"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="158" id="T9z-t1-cI9"/>
+                    </constraints>
                     <collectionViewLayout key="collectionViewLayout" id="3Y1-R5-wbP" customClass="SuggestionCollectionViewFlowLayout" customModule="ChuckNorrisFacts" customModuleProvider="target"/>
                 </collectionView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Últimas pesquisas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pC7-ST-apS">
+                    <rect key="frame" x="16" y="228" width="288" height="22"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YJY-AA-c1t">
+                    <rect key="frame" x="16" y="258" width="288" height="286"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="pC7-ST-apS" firstAttribute="top" secondItem="zTo-qK-Trd" secondAttribute="bottom" constant="16" id="KfR-mx-0kX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zTo-qK-Trd" secondAttribute="trailing" constant="16" id="Mds-X6-ofJ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="pC7-ST-apS" secondAttribute="trailing" constant="16" id="P2c-4g-Ykn"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="doS-J1-MEu" secondAttribute="trailing" constant="16" id="PaF-Qm-xzJ"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="zTo-qK-Trd" secondAttribute="bottom" constant="184" id="TxL-7F-uDl"/>
-                <constraint firstItem="zTo-qK-Trd" firstAttribute="top" secondItem="doS-J1-MEu" secondAttribute="bottom" constant="139" id="hmO-tD-1OQ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="YJY-AA-c1t" secondAttribute="bottom" constant="24" id="XXB-DP-ZJ5"/>
+                <constraint firstItem="YJY-AA-c1t" firstAttribute="top" secondItem="pC7-ST-apS" secondAttribute="bottom" constant="8" id="eIO-ZN-bCu"/>
+                <constraint firstItem="pC7-ST-apS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="ghT-Ji-WOQ"/>
+                <constraint firstItem="zTo-qK-Trd" firstAttribute="top" secondItem="doS-J1-MEu" secondAttribute="bottom" constant="8" id="hmO-tD-1OQ"/>
                 <constraint firstItem="doS-J1-MEu" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="24" id="iYG-JC-Yrd"/>
                 <constraint firstItem="zTo-qK-Trd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="o30-ds-Te4"/>
                 <constraint firstItem="doS-J1-MEu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="peH-kY-bJ3"/>
+                <constraint firstItem="YJY-AA-c1t" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="r0F-eu-8Fp"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="YJY-AA-c1t" secondAttribute="trailing" constant="16" id="ulW-wJ-pBY"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="131.25" y="152.11267605633802"/>

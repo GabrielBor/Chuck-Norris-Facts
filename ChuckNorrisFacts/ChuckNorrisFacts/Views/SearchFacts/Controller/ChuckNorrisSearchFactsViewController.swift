@@ -23,6 +23,8 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
     var disposeBag = DisposeBag()
     var minimumLineSpacingForSection: CGFloat = 8
     var minimumInterItemSpacingForSection: CGFloat = 8
+    var suggestionIdentifier = IdentifierCell.suggestion.rawValue
+    var pastSearchIdentifier = IdentifierCell.pastSearch.rawValue
     
     // MARK: - Initialize
     
@@ -56,8 +58,10 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
     // MARK: Methods
     
     func registerCells() {
-        let nib = UINib(nibName: "ChuckNorrisCategoryCollectionViewCell", bundle: nil)
-        suggestionCollecitonView.register(nib, forCellWithReuseIdentifier: "ChuckNorrisCategoryCollectionViewCell")
+        let suggestionNib = UINib(nibName: suggestionIdentifier, bundle: nil)
+//        let pastSearchNib = UINib(nibName: pastSearchIdentifier, bundle: nil)
+        suggestionCollecitonView.register(suggestionNib, forCellWithReuseIdentifier: suggestionIdentifier)
+//        pastSearchTableView.register(pastSearchNib, forCellReuseIdentifier: pastSearchIdentifier)
     }
     
     func setupNavigationBar() {
@@ -88,7 +92,7 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
         viewModel.listSuggestionPublish
             .asObserver()
             .observeOn(MainScheduler.instance)
-            .bind(to: suggestionCollecitonView.rx.items(cellIdentifier: "ChuckNorrisCategoryCollectionViewCell", cellType: ChuckNorrisCategoryCollectionViewCell.self)) { (row, item, cell) in
+            .bind(to: suggestionCollecitonView.rx.items(cellIdentifier: suggestionIdentifier, cellType: ChuckNorrisCategoryCollectionViewCell.self)) { (row, item, cell) in
                 cell.fillCell(item)
         }.disposed(by: disposeBag)
     }
@@ -101,6 +105,16 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
             .subscribe { (error) in
                 // TODO: pop de error aqui
         }.disposed(by: disposeBag)
+    }
+}
+
+// MARK: - Enum
+
+extension ChuckNorrisSearchFactsViewController {
+    
+    enum IdentifierCell: String {
+        case pastSearch = "ChuckNorrisPastSearchTableViewCell"
+        case suggestion = "ChuckNorrisCategoryCollectionViewCell"
     }
 }
 

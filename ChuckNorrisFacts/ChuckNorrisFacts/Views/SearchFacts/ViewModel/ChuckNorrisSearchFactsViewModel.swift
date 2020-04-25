@@ -43,8 +43,9 @@ class ChuckNorrisSearchFactsViewModel {
                 self.loading.onNext(false)
                 self.loading.onCompleted()
                 switch result {
-                case .success(let categories):
-                    self.listSuggestionPublish.onNext(categories)
+                case .success(let suggestions):
+                    let randomSuggestions = self.randomSuggestions(suggestions)
+                    self.listSuggestionPublish.onNext(randomSuggestions)
                     self.listSuggestionPublish.onCompleted()
                 case .failure(let error):
                     self.error.onNext(error)
@@ -57,14 +58,26 @@ class ChuckNorrisSearchFactsViewModel {
     func fetchSearchCategoryFacts(from category: String) {
         loading.onNext(true)
         service.fetchSearchCategoryFact(category) { [weak self] result in
-            guard let self = self else { return }
-            self.loading.onNext(false)
-            switch result {
-            case .success(let result):
-                self.searchCategoryPublish.onNext(result)
-            case .failure(let error):
-                self.error.onNext(error)
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.loading.onNext(false)
+                self.loading.onCompleted()
+                switch result {
+                case .success(let result):
+                    self.searchCategoryPublish.onNext(result)
+                    self.searchCategoryPublish.onCompleted()
+                case .failure(let error):
+                    self.error.onNext(error)
+                    self.error.onCompleted()
+                }
             }
         }
+    }
+    
+    // MARK: Methods
+    
+    func randomSuggestions(_ suggestions: [String]) -> [String] {
+        let random = suggestions
+        return random[randomPick: 8]
     }
 }

@@ -1,5 +1,5 @@
 //
-//  UIView+Extensions.swift
+//  UIView+Extension.swift
 //  ChuckNorrisFacts
 //
 //  Created by Gabriel Borges on 21/04/20.
