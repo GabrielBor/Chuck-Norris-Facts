@@ -6,16 +6,8 @@
 //  Copyright © 2020 Gabriel Borges. All rights reserved.
 //
 
-import Foundation
-
-// MARK: ViewDelegate
-
-protocol ChuckNorrisSearchFactsViewDelegate: AnyObject {
-    func chuckNorrisListFacts(_ viewModel: ChuckNorrisSearchFactsViewModel, withSuccess categories: [String])
-    func chuckNorrisListFacts(_ viewModel: ChuckNorrisSearchFactsViewModel, withFailure error: ChuckNorrisError)
-    func chuckNorrisSearchFacts(_ viewModel: ChuckNorrisSearchFactsViewModel, withSuccess result: ChuckNorrisResultModel)
-    func chuckNorrisSearchFacts(_ viewModel: ChuckNorrisSearchFactsViewModel, withFailure error: ChuckNorrisError)
-}
+import UIKit
+import RxSwift
 
 protocol ChuckNorrisSearchFactsCoordinatorDelgate: AnyObject {
     
@@ -25,43 +17,67 @@ class ChuckNorrisSearchFactsViewModel {
     
     // MARK: - Propeties
     
+    var loading: PublishSubject<Bool> = PublishSubject()
+    var error: PublishSubject<ChuckNorrisError> = PublishSubject()
+    var listSuggestionPublish: BehaviorSubject<[String]> = BehaviorSubject(value: [])
+    var searchCategoryPublish: PublishSubject<ChuckNorrisResultModel> = PublishSubject()
+    
     var service: ChuckNorrisServices!
-    weak var viewDelegate: ChuckNorrisSearchFactsViewDelegate?
     weak var coordinatorDelegate: ChuckNorrisSearchFactsCoordinatorDelgate?
     
     // MARK: - Initialize
     
     init(_ service: ChuckNorrisServices,
-         viewDelegate: ChuckNorrisSearchFactsViewDelegate? = nil,
          coordinatorDelegate: ChuckNorrisSearchFactsCoordinatorDelgate? = nil) {
         self.service = service
-        self.viewDelegate = viewDelegate
         self.coordinatorDelegate = coordinatorDelegate
     }
     
     // MARK: - Services
     
-    func fetchListCategoryFacts() {
+    func fetchListSuggestionFacts() {
+        loading.onNext(true)
         service.fetchListCategoryFacts { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let categories):
-                self.viewDelegate?.chuckNorrisListFacts(self, withSuccess: categories)
-            case .failure(let error):
-                self.viewDelegate?.chuckNorrisListFacts(self, withFailure: error)
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.loading.onNext(false)
+                self.loading.onCompleted()
+                switch result {
+                case .success(let suggestions):
+                    let randomSuggestions = self.randomSuggestions(suggestions)
+                    self.listSuggestionPublish.onNext(randomSuggestions)
+                    self.listSuggestionPublish.onCompleted()
+                case .failure(let error):
+                    self.error.onNext(error)
+                    self.error.onCompleted()
+                }
             }
         }
     }
     
     func fetchSearchCategoryFacts(from category: String) {
+        loading.onNext(true)
         service.fetchSearchCategoryFact(category) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let result):
-                self.viewDelegate?.chuckNorrisSearchFacts(self, withSuccess: result)
-            case .failure(let error):
-                self.viewDelegate?.chuckNorrisSearchFacts(self, withFailure: error)
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.loading.onNext(false)
+                self.loading.onCompleted()
+                switch result {
+                case .success(let result):
+                    self.searchCategoryPublish.onNext(result)
+                    self.searchCategoryPublish.onCompleted()
+                case .failure(let error):
+                    self.error.onNext(error)
+                    self.error.onCompleted()
+                }
             }
         }
+    }
+    
+    // MARK: Methods
+    
+    func randomSuggestions(_ suggestions: [String]) -> [String] {
+        let random = suggestions
+        return random[randomPick: 8]
     }
 }
