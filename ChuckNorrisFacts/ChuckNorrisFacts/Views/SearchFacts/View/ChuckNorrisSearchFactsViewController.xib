@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChuckNorrisSearchFactsViewController" customModule="ChuckNorrisFacts" customModuleProvider="target">
             <connections>
+                <outlet property="heightSuggestionsConstraint" destination="ewg-fl-q0F" id="apG-ro-6jC"/>
                 <outlet property="suggestionCollecitonView" destination="zTo-qK-Trd" id="6CH-7Y-zHY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -29,7 +30,7 @@
                     <rect key="frame" x="16" y="54" width="288" height="158"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="158" id="T9z-t1-cI9"/>
+                        <constraint firstAttribute="height" constant="158" id="ewg-fl-q0F"/>
                     </constraints>
                     <collectionViewLayout key="collectionViewLayout" id="3Y1-R5-wbP" customClass="SuggestionCollectionViewFlowLayout" customModule="ChuckNorrisFacts" customModuleProvider="target"/>
                 </collectionView>

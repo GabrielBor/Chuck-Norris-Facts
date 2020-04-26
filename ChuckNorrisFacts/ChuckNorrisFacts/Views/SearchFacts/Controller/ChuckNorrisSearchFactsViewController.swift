@@ -14,6 +14,7 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
     
     // MARK: - @IBOutlet Properties
     
+    @IBOutlet weak var heightSuggestionsConstraint: NSLayoutConstraint!
     @IBOutlet weak var suggestionCollecitonView: UICollectionView!
     @IBOutlet weak var pastSearchTableView: UITableView!
     
@@ -45,13 +46,13 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
         registerCells()
         bindView()
         setDelegate()
-        viewModel.fetchListSuggestionFacts()
+        viewModel.fetchRuleSuggestions()
     }
     
     // MARK: - TableViewSetDelegate
     
     func setDelegate() {
-        pastSearchTableView.rx.setDelegate(self).disposed(by: disposeBag)
+//        pastSearchTableView.rx.setDelegate(self).disposed(by: disposeBag)
         suggestionCollecitonView.rx.setDelegate(self).disposed(by: disposeBag)
     }
     
@@ -70,6 +71,12 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
         navigationItem.searchController = createSearchController()
     }
     
+    func heightSuggestionsCollectionView() {
+        let height = suggestionCollecitonView.collectionViewLayout.collectionViewContentSize.height
+        heightSuggestionsConstraint.constant = height
+        view.layoutIfNeeded()
+    }
+    
     func createSearchController() -> UISearchController {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
@@ -81,6 +88,7 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
     func bindView() {
         bindLoading()
         bindSuggestionColelctionView()
+        setupAfterBindHeightCollectionView()
         bindError()
     }
     
@@ -95,6 +103,12 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
             .bind(to: suggestionCollecitonView.rx.items(cellIdentifier: suggestionIdentifier, cellType: ChuckNorrisCategoryCollectionViewCell.self)) { (row, item, cell) in
                 cell.fillCell(item)
         }.disposed(by: disposeBag)
+    }
+    
+    func setupAfterBindHeightCollectionView() {
+        _ = viewModel.listSuggestionPublish.subscribe {
+            self.heightSuggestionsCollectionView()
+        }
     }
     
     func bindError() {
@@ -133,7 +147,7 @@ extension ChuckNorrisSearchFactsViewController: UICollectionViewDelegateFlowLayo
 
         guard let str = try? viewModel.listSuggestionPublish.value()[indexPath.item] else { return CGSize() }
 
-        let estimatedRect = NSString.init(string: str).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 25)], context: nil)
+        let estimatedRect = NSString.init(string: str).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 28)], context: nil)
 
         return CGSize.init(width: estimatedRect.size.width, height: size.height)
     }
