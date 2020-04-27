@@ -10,7 +10,9 @@ import Foundation
 
 enum IdentifierCell: String {
     case pastSearch = "ChuckNorrisPastSearchTableViewCell"
-    case suggestion = "ChuckNorrisCategoryCollectionViewCell"
+    case suggestionCollectionCell = "ChuckNorrisCategoryCollectionViewCell"
+    case suggestionTableViewCell = "SugggetionsTableViewCell"
+    case homeFactsTableViewCell = "HomeFactTableViewCell"
 }
 
 enum IdentifierCoreData: String {

@@ -8,18 +8,27 @@
 
 import UIKit
 
+// MARK: - CoordinatorDelegate
+
+protocol ChuckNorrisSearchFactsCoordinatorDelegate: AnyObject {
+    func backToHomeFacts(_ coordinator: ChuckNorrisSearchFactsCoordinator,
+                         viewModel: ChuckNorrisSearchFactsViewModel, result: ChuckNorrisResultModel)
+}
+
 class ChuckNorrisSearchFactsCoordinator: BaseCoordinator {
-    
+   
     // MARK: - Propeties
-    
+
     var childCoordinators: [BaseCoordinator]?
     var navigation: UINavigationController?
     var viewController: UIViewController?
+    weak var delegate: ChuckNorrisSearchFactsCoordinatorDelegate?
     
     // MARK: - Initialize
     
     init() {
-        let viewModel = ChuckNorrisSearchFactsViewModel(ChuckNorrisServices(), coordinatorDelegate: self)
+        let viewModel = ChuckNorrisSearchFactsViewModel(ChuckNorrisServices())
+        viewModel.delegate = self
         let viewController = ChuckNorrisSearchFactsViewController(viewModel)
         self.viewController = viewController
     }
@@ -27,12 +36,22 @@ class ChuckNorrisSearchFactsCoordinator: BaseCoordinator {
     // MARK: - Methods
     
     func stop() {
-        childCoordinators = nil
         navigation = nil
         viewController = nil
+        childCoordinators = nil
+    }
+    
+    func pop() {
+        guard let navigation = self.navigation else { return }
+        navigation.popViewController(animated: true)
+        stop()
     }
 }
 
-extension ChuckNorrisSearchFactsCoordinator: ChuckNorrisSearchFactsCoordinatorDelgate {
+extension ChuckNorrisSearchFactsCoordinator: ChuckNorrisSearchFactsViewModelDelgate {
     
+    func backToHomeFacts(_ viewModel: ChuckNorrisSearchFactsViewModel, result: ChuckNorrisResultModel) {
+        delegate?.backToHomeFacts(self, viewModel: viewModel, result: result)
+        pop()
+    }
 }

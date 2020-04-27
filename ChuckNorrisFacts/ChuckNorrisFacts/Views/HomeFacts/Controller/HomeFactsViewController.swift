@@ -20,6 +20,8 @@ class HomeFactsViewController: UIViewController {
     
     var viewModel: HomeFactsViewModel!
     var disposeBag = DisposeBag()
+    var homeFactsIdentifier = IdentifierCell.homeFactsTableViewCell.rawValue
+    var linkView = ChuckNorrisLinkView(frame: CGRect.zero)
     
     // MARK: - Initialize
     
@@ -37,8 +39,9 @@ class HomeFactsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
+        tableViewDataSource()
         setTableViewDelegate()
-        bindView()
+        verifyLinkViewIfNeeded()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,10 +49,16 @@ class HomeFactsViewController: UIViewController {
         setupNavigationBar()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        viewModel.clearFactsList()
+    }
+    
     // MARK: - Register Cell
     
     func registerCell() {
-        factsTableView.register(HomeFactTableViewCell.self, forCellReuseIdentifier: "HomeFactTableViewCell")
+        let homeFactsCellNib = UINib(nibName: homeFactsIdentifier, bundle: nil)
+        factsTableView.register(homeFactsCellNib, forCellReuseIdentifier: homeFactsIdentifier)
     }
     
     // MARK: - TableViewSetDelegate
@@ -67,14 +76,13 @@ class HomeFactsViewController: UIViewController {
         navigationItem.searchController = !viewModel.factsList.isEmpty ? createSearchController() : nil
     }
     
-    func bindView() {
+    func verifyLinkViewIfNeeded() {
         if viewModel.factsList.isEmpty {
-            let linkView = ChuckNorrisLinkView(frame: CGRect.zero)
             linkView.delegate = self
             view.addSubview(linkView)
             view.pinnedSubView(linkView)
         } else {
-            viewModel.setupOnNextFactList()
+            linkView.removeFromSuperview()
         }
     }
     
@@ -95,11 +103,11 @@ class HomeFactsViewController: UIViewController {
 
 extension HomeFactsViewController  {
     
-    func factsTableViewDataSource() {
-       viewModel.factsPublish.bind(to: factsTableView.rx.items(cellIdentifier: "HomeFactTableViewCell", cellType: HomeFactTableViewCell.self)) { (row, item, cell) in
-        cell.delegate = self
-        cell.fillCell(item.categories[row].description, category: item.categories[row])
-        cell.handlerFontDescriptionLabel(self.viewModel.sizeFont(for: item.categories[row].description))
+    func tableViewDataSource() {
+        viewModel.factsPublish.bind(to: factsTableView.rx.items(cellIdentifier: homeFactsIdentifier, cellType: HomeFactTableViewCell.self)) { (row, item, cell) in
+            cell.delegate = self
+            cell.fillCell(item.description, category: self.viewModel.setUncategorizedIfNeeded(item.categories.first))
+            cell.handlerFontDescriptionLabel(self.viewModel.sizeFont(for: item.description))
         }.disposed(by: disposeBag)
     }
 }

@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         let navigation = UINavigationController()
-        homeFactsCoordinator = HomeFactsCoordinator([])
+        homeFactsCoordinator = HomeFactsCoordinator()
         homeFactsCoordinator?.start(using: .push(navigation), animated: true)
 
         window = UIWindow(frame: UIScreen.main.bounds)

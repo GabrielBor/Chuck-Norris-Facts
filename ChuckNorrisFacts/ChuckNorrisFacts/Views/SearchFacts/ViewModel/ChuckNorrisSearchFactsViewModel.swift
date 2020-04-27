@@ -6,12 +6,12 @@
 //  Copyright © 2020 Gabriel Borges. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import RxSwift
 import CoreData
 
-protocol ChuckNorrisSearchFactsCoordinatorDelgate: AnyObject {
-    
+protocol ChuckNorrisSearchFactsViewModelDelgate: AnyObject {
+    func backToHomeFacts(_ viewModel: ChuckNorrisSearchFactsViewModel, result: ChuckNorrisResultModel)
 }
 
 class ChuckNorrisSearchFactsViewModel {
@@ -25,14 +25,12 @@ class ChuckNorrisSearchFactsViewModel {
     
     let storage = ChuckNorrisStorage()
     var service: ChuckNorrisServices!
-    weak var coordinatorDelegate: ChuckNorrisSearchFactsCoordinatorDelgate?
+    weak var delegate: ChuckNorrisSearchFactsViewModelDelgate?
     
     // MARK: - Initialize
     
-    init(_ service: ChuckNorrisServices,
-         coordinatorDelegate: ChuckNorrisSearchFactsCoordinatorDelgate? = nil) {
+    init(_ service: ChuckNorrisServices) {
         self.service = service
-        self.coordinatorDelegate = coordinatorDelegate
     }
     
     // MARK: - Services
@@ -40,9 +38,9 @@ class ChuckNorrisSearchFactsViewModel {
     func fetchListSuggestionFacts() {
         loading.onNext(true)
         service.fetchListCategoryFacts { [weak self] result in
+            guard let self = self else { return }
+            self.loading.onNext(false)
             DispatchQueue.main.async {
-                guard let self = self else { return }
-                self.loading.onNext(false)
                 self.loading.onCompleted()
                 switch result {
                 case .success(let suggestions):
@@ -57,18 +55,33 @@ class ChuckNorrisSearchFactsViewModel {
     func fetchSearchCategoryFacts(from category: String) {
         loading.onNext(true)
         service.fetchSearchCategoryFact(category) { [weak self] result in
+            guard let self = self else { return }
+            self.loading.onNext(false)
             DispatchQueue.main.async {
-                guard let self = self else { return }
-                self.loading.onNext(false)
                 self.loading.onCompleted()
                 switch result {
                 case .success(let result):
-                    self.searchCategoryPublish.onNext(result)
-                    self.searchCategoryPublish.onCompleted()
+                    self.delegate?.backToHomeFacts(self, result: result)
                 case .failure(let error):
                     self.handlerFailure(error)
                 }
             }
+        }
+    }
+    
+    // MARK: Methods
+    
+    func randomSuggestions(_ suggestions: [String]) -> [String] {
+        let random = suggestions
+        return random[randomPick: 8]
+    }
+    
+    func fetchRuleSuggestions() {
+        if let suggestions = loadSuggestionsStorage() {
+            listSuggestionPublish.onNext(randomSuggestions(suggestions))
+            listSuggestionPublish.onCompleted()
+        } else {
+            fetchListSuggestionFacts()
         }
     }
     
@@ -79,7 +92,8 @@ class ChuckNorrisSearchFactsViewModel {
     
     func handlerSuccess(with suggestions: [String]) {
         self.saveSuggestionsStorage(suggestions)
-        listSuggestionPublish.onNext(randomSuggestions(loadSuggestionsStorage()))
+        guard let suggestions = loadSuggestionsStorage() else { return }
+        listSuggestionPublish.onNext(randomSuggestions(suggestions))
         listSuggestionPublish.onCompleted()
     }
     
@@ -94,19 +108,12 @@ class ChuckNorrisSearchFactsViewModel {
         storage.save(to: suggestions, identifierEntity: .entitySuggestions, key: .propertySuggestions)
     }
     
-    func loadSuggestionsStorage() -> [String] {
+    func loadSuggestionsStorage() -> [String]? {
         guard let nsManagedList = storage.access(.entitySuggestions) else {
             return []
         }
         let storage = nsManagedList.first
-        let suggestionsStorage = storage?.value(forKey: IdentifierCoreData.propertySuggestions.rawValue) as! [String]
+        let suggestionsStorage = storage?.value(forKey: IdentifierCoreData.propertySuggestions.rawValue) as? [String]
         return suggestionsStorage
-    }
-    
-    // MARK: Methods
-    
-    func randomSuggestions(_ suggestions: [String]) -> [String] {
-        let random = suggestions
-        return random[randomPick: 8]
     }
 }

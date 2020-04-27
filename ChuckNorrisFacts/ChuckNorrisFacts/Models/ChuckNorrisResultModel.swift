@@ -10,5 +10,5 @@ import Foundation
 
 struct ChuckNorrisResultModel: Codable {
     let total: Int
-    let result: [ChuckNorrisRandomModel]
+    let result: [ChuckNorrisModel]
 }

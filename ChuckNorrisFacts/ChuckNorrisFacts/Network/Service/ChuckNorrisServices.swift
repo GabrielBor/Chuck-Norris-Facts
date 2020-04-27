@@ -17,8 +17,8 @@ class ChuckNorrisServices {
     
     // MARK: - Services
     
-    func fetchRandomFact(completion: @escaping (Result<ChuckNorrisRandomModel, ChuckNorrisError>) -> Void) {
-        chuckNorrisFetch.fetch(url: chuckNorrisAPI.urlService(.random), httpMethod: .get, dataType: ChuckNorrisRandomModel.self) { (result) in
+    func fetchRandomFact(completion: @escaping (Result<ChuckNorrisModel, ChuckNorrisError>) -> Void) {
+        chuckNorrisFetch.fetch(url: chuckNorrisAPI.urlService(.random), httpMethod: .get, dataType: ChuckNorrisModel.self) { (result) in
             switch result {
             case .success(let model):
                 completion(.success(model))
@@ -28,8 +28,8 @@ class ChuckNorrisServices {
         }
     }
     
-    func fetchCategoryFact(_ value: String, completion: @escaping (Result<ChuckNorrisRandomModel, ChuckNorrisError>) -> Void) {
-        chuckNorrisFetch.fetch(url: chuckNorrisAPI.urlService(.category(value: value)), httpMethod: .get, dataType: ChuckNorrisRandomModel.self) { (result) in
+    func fetchCategoryFact(_ value: String, completion: @escaping (Result<ChuckNorrisModel, ChuckNorrisError>) -> Void) {
+        chuckNorrisFetch.fetch(url: chuckNorrisAPI.urlService(.category(value: value)), httpMethod: .get, dataType: ChuckNorrisModel.self) { (result) in
             switch result {
             case .success(let model):
                 completion(.success(model))
