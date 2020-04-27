@@ -7,12 +7,8 @@
 //
 
 import UIKit
-
-// MARK: - Action Delegate
-
-protocol HomeFactTableViewCellDelegate: AnyObject {
-    func homeFactTableViewCell(_ cell: UITableViewCell,  shareButtonTapped button: UIButton)
-}
+import RxSwift
+import RxCocoa
 
 class HomeFactTableViewCell: UITableViewCell {
     
@@ -23,9 +19,9 @@ class HomeFactTableViewCell: UITableViewCell {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var factView: UIView!
     
-    // MARK: - Delegate
+    // MARK: - Property
     
-    weak var delegate: HomeFactTableViewCellDelegate?
+    var shareButtonPublish: PublishSubject<UIButton> = PublishSubject()
     
     // MARK: - LifeCycle
     
@@ -64,6 +60,6 @@ class HomeFactTableViewCell: UITableViewCell {
     // MARK: - Action
     
     @IBAction func shareButtonTapped(_ sender: UIButton) {
-        delegate?.homeFactTableViewCell(self, shareButtonTapped: sender)
+        shareButtonPublish.onNext(shareButton)
     }
 }

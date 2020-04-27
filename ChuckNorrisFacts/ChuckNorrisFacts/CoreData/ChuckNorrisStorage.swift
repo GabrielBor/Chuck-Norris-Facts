@@ -26,6 +26,23 @@ class ChuckNorrisStorage {
         }
     }
     
+    func contains(with entity: IdentifierCoreData, key: IdentifierCoreData, value: String) -> Bool {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entity.rawValue)
+        request.predicate = NSPredicate(format: "\(key.rawValue) = %@", value)
+        request.returnsObjectsAsFaults = false
+        do {
+            guard let result = try context.fetch(request) as? [NSManagedObject] else { return false }
+            for data in result {
+                if let listStorage = data.value(forKey: key.rawValue) as? [String] {
+                    return listStorage.contains(value)
+                }
+            }
+        } catch let error as NSError  {
+            print("Unresolved error: \(error), \(error.userInfo)")
+        }
+        return false
+    }
+    
     func access(_ identifier: IdentifierCoreData) -> [NSManagedObject]? {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: identifier.rawValue)
         do {

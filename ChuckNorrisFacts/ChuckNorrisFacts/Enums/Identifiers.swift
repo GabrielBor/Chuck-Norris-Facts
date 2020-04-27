@@ -18,4 +18,5 @@ enum IdentifierCell: String {
 enum IdentifierCoreData: String {
     case entitySuggestions = "Suggestions"
     case propertySuggestions = "suggestions"
+    case propertyPastWordSearch = "pastWordSearch"
 }

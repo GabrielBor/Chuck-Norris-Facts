@@ -84,10 +84,26 @@ class HomeFactsViewController: UIViewController {
         }
     }
     
-    // MARK: - Action
+    func share(_ fact: String) {
+        let activityViewController = UIActivityViewController(activityItems: [fact], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = view
+        present(activityViewController, animated: true, completion: nil)
+    }
+    
+    // MARK: - Actions
     
     @objc func searchTapped() {
         viewModel.goToSearchFacts()
+    }
+    
+    func sharedFactTapped(from cell: HomeFactTableViewCell, urlString: String) {
+        cell.shareButtonPublish
+            .asObserver()
+            .observeOn(MainScheduler.instance)
+            .subscribe { [weak self] (_) in
+                guard let self = self else { return }
+                self.share(urlString)
+        }.disposed(by: disposeBag)
     }
 }
 
@@ -97,9 +113,9 @@ extension HomeFactsViewController  {
     
     func tableViewDataSource() {
         viewModel.factsPublish.bind(to: factsTableView.rx.items(cellIdentifier: homeFactsIdentifier, cellType: HomeFactTableViewCell.self)) { (row, item, cell) in
-            cell.delegate = self
             cell.fillCell(item.description, category: self.viewModel.setUncategorizedIfNeeded(item.categories.first))
             cell.handlerFontDescriptionLabel(self.viewModel.sizeFont(for: item.description))
+            self.sharedFactTapped(from: cell, urlString: item.url)
         }.disposed(by: disposeBag)
     }
 }
@@ -118,14 +134,6 @@ extension HomeFactsViewController: UITableViewDelegate {
 extension HomeFactsViewController: ChuckNorrisLinkViewDelegate {
     func linkView(_ view: ChuckNorrisLinkView, linkAction sender: UIButton) {
         viewModel.goToSearchFacts()
-    }
-}
-
-// MARK: - HomeFactTableViewCellDelegate
-
-extension HomeFactsViewController: HomeFactTableViewCellDelegate {
-    func homeFactTableViewCell(_ cell: UITableViewCell, shareButtonTapped button: UIButton) {
-        // TODO: fazer a parte de compartilhamento
     }
 }
 

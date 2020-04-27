@@ -94,7 +94,7 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
 
 extension ChuckNorrisSearchFactsViewController {
     func emptySearchResultPublish() {
-        viewModel.emptySearchResult.asObserver().observeOn(MainScheduler.instance).subscribe { [weak self] (_) in
+        viewModel.emptySearchResultPublish.asObserver().observeOn(MainScheduler.instance).subscribe { [weak self] (_) in
             guard let self = self else { return }
             let alert = UIAlertController.createSimpleAlert(with: "Ops!",
                                                             message: "Parece que não encontramos nada a respeito da sua pesquisa. ;(",
@@ -113,7 +113,7 @@ extension ChuckNorrisSearchFactsViewController {
 extension ChuckNorrisSearchFactsViewController {
     
     func loadingPublish() {
-        viewModel.loading
+        viewModel.loadingBehavior
             .asObserver()
             .observeOn(MainScheduler.instance).subscribe { (event) in
                 let isShow = event.element ?? false
@@ -122,7 +122,7 @@ extension ChuckNorrisSearchFactsViewController {
     }
     
     func errorPublish() {
-        viewModel.error.asObserver().observeOn(MainScheduler.instance).subscribe { [weak self] (error) in
+        viewModel.errorPublish.asObserver().observeOn(MainScheduler.instance).subscribe { [weak self] (error) in
             guard let self = self else { return }
             let code = error.event.element?.code ?? 0
             let message = error.event.element?.message ?? ""

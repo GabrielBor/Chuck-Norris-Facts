@@ -18,9 +18,9 @@ class ChuckNorrisSearchFactsViewModel {
     
     // MARK: - Propeties
     
-    var loading: BehaviorSubject<Bool> = BehaviorSubject(value: false)
-    var error: PublishSubject<ChuckNorrisError> = PublishSubject()
-    var emptySearchResult: PublishSubject<[String]?> = PublishSubject()
+    var loadingBehavior: BehaviorSubject<Bool> = BehaviorSubject(value: false)
+    var errorPublish: PublishSubject<ChuckNorrisError> = PublishSubject()
+    var emptySearchResultPublish: PublishSubject<[String]?> = PublishSubject()
     var listSuggestionPublish: BehaviorSubject<[String]> = BehaviorSubject(value: [])
     var searchCategoryPublish: PublishSubject<ChuckNorrisResultModel> = PublishSubject()
     
@@ -37,10 +37,10 @@ class ChuckNorrisSearchFactsViewModel {
     // MARK: - Services
     
     func fetchListSuggestionFacts() {
-        loading.onNext(true)
+        loadingBehavior.onNext(true)
         service.fetchListCategoryFacts { [weak self] result in
             guard let self = self else { return }
-            self.loading.onNext(false)
+            self.loadingBehavior.onNext(false)
             DispatchQueue.main.async {
                 switch result {
                 case .success(let suggestions):
@@ -53,10 +53,10 @@ class ChuckNorrisSearchFactsViewModel {
     }
     
     func fetchSearchCategoryFacts(from category: String) {
-        loading.onNext(true)
+        loadingBehavior.onNext(true)
         service.fetchSearchCategoryFact(category) { [weak self] result in
             guard let self = self else { return }
-            self.loading.onNext(false)
+            self.loadingBehavior.onNext(false)
             DispatchQueue.main.async {
                 switch result {
                 case .success(let result):
@@ -68,15 +68,8 @@ class ChuckNorrisSearchFactsViewModel {
         }
     }
     
-    // MARK: Methods
-    
-    func randomSuggestions(_ suggestions: [String]) -> [String] {
-        let random = suggestions
-        return random[randomPick: 8]
-    }
-    
     func fetchRuleSuggestions() {
-        if let suggestions = loadSuggestionsStorage() {
+        if let suggestions = loadFromStorage(.propertySuggestions) {
             listSuggestionPublish.onNext(randomSuggestions(suggestions))
             listSuggestionPublish.onCompleted()
         } else {
@@ -84,39 +77,48 @@ class ChuckNorrisSearchFactsViewModel {
         }
     }
     
+    // MARK: Methods
+    
+    func randomSuggestions(_ suggestions: [String]) -> [String] {
+        let random = suggestions
+        return random[randomPick: 8]
+    }
+    
     func handlerSuccess(with result: ChuckNorrisResultModel) {
         if result.result.isEmpty {
-            emptySearchResult.onNext([])
-            emptySearchResult.onCompleted()
+            emptySearchResultPublish.onNext([])
         } else {
             delegate?.backToHomeFacts(self, result: result)
         }
     }
     
     func handlerSuccess(with suggestions: [String]) {
-        self.saveSuggestionsStorage(suggestions)
-        guard let suggestions = loadSuggestionsStorage() else { return }
+        self.saveInStorage(suggestions, key: .propertySuggestions)
+        guard let suggestions = loadFromStorage(.propertySuggestions) else { return }
         listSuggestionPublish.onNext(randomSuggestions(suggestions))
         listSuggestionPublish.onCompleted()
     }
     
     func handlerFailure(_ error: ChuckNorrisError) {
-        self.error.onNext(error)
-        self.error.onCompleted()
+        errorPublish.onNext(error)
+    }
+    
+    func savePastSearch(_ search: String) {
+        
     }
     
     // MARK: - CoreData Method
     
-    func saveSuggestionsStorage(_ suggestions: [String]) {
-        storage.save(to: suggestions, identifierEntity: .entitySuggestions, key: .propertySuggestions)
+    func saveInStorage(_ suggestions: [String], key: IdentifierCoreData) {
+        storage.save(to: suggestions, identifierEntity: .entitySuggestions, key: key)
     }
     
-    func loadSuggestionsStorage() -> [String]? {
+    func loadFromStorage(_ key: IdentifierCoreData) -> [String]? {
         guard let nsManagedList = storage.access(.entitySuggestions) else {
             return []
         }
         let storage = nsManagedList.first
-        let suggestionsStorage = storage?.value(forKey: IdentifierCoreData.propertySuggestions.rawValue) as? [String]
+        let suggestionsStorage = storage?.value(forKey: key.rawValue) as? [String]
         return suggestionsStorage
     }
 }
