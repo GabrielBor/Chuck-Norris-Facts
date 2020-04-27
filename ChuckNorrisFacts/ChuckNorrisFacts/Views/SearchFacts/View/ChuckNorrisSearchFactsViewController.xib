@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChuckNorrisSearchFactsViewController" customModule="ChuckNorrisFacts" customModuleProvider="target">
             <connections>
+                <outlet property="factsSearchBar" destination="W3Y-4G-WfZ" id="Yrm-3K-4Xp"/>
                 <outlet property="heightSuggestionsConstraint" destination="ewg-fl-q0F" id="apG-ro-6jC"/>
                 <outlet property="suggestionCollecitonView" destination="zTo-qK-Trd" id="6CH-7Y-zHY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -21,13 +22,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sugestões de busca" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doS-J1-MEu">
-                    <rect key="frame" x="16" y="24" width="288" height="22"/>
+                    <rect key="frame" x="16" y="72" width="288" height="22"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="zTo-qK-Trd">
-                    <rect key="frame" x="16" y="54" width="288" height="158"/>
+                    <rect key="frame" x="16" y="102" width="288" height="158"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="158" id="ewg-fl-q0F"/>
@@ -35,31 +36,41 @@
                     <collectionViewLayout key="collectionViewLayout" id="3Y1-R5-wbP" customClass="SuggestionCollectionViewFlowLayout" customModule="ChuckNorrisFacts" customModuleProvider="target"/>
                 </collectionView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Últimas pesquisas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pC7-ST-apS">
-                    <rect key="frame" x="16" y="228" width="288" height="22"/>
+                    <rect key="frame" x="16" y="273" width="288" height="22"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="W3Y-4G-WfZ">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="prc-DY-bml"/>
+                    </connections>
+                </searchBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YJY-AA-c1t">
-                    <rect key="frame" x="16" y="258" width="288" height="286"/>
+                    <rect key="frame" x="16" y="307" width="288" height="237"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="pC7-ST-apS" firstAttribute="top" secondItem="zTo-qK-Trd" secondAttribute="bottom" constant="16" id="KfR-mx-0kX"/>
+                <constraint firstItem="YJY-AA-c1t" firstAttribute="top" secondItem="pC7-ST-apS" secondAttribute="bottom" constant="12" id="1CH-WF-nM5"/>
+                <constraint firstItem="W3Y-4G-WfZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="3I5-5g-92H"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="YJY-AA-c1t" secondAttribute="trailing" constant="16" id="3p2-hO-Xez"/>
+                <constraint firstItem="W3Y-4G-WfZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="4rt-PE-KdB"/>
+                <constraint firstItem="doS-J1-MEu" firstAttribute="top" secondItem="W3Y-4G-WfZ" secondAttribute="bottom" constant="16" id="DNz-je-T4Z"/>
+                <constraint firstItem="pC7-ST-apS" firstAttribute="top" secondItem="zTo-qK-Trd" secondAttribute="bottom" constant="13" id="KfR-mx-0kX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zTo-qK-Trd" secondAttribute="trailing" constant="16" id="Mds-X6-ofJ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="pC7-ST-apS" secondAttribute="trailing" constant="16" id="P2c-4g-Ykn"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="doS-J1-MEu" secondAttribute="trailing" constant="16" id="PaF-Qm-xzJ"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="YJY-AA-c1t" secondAttribute="bottom" constant="24" id="XXB-DP-ZJ5"/>
-                <constraint firstItem="YJY-AA-c1t" firstAttribute="top" secondItem="pC7-ST-apS" secondAttribute="bottom" constant="8" id="eIO-ZN-bCu"/>
                 <constraint firstItem="pC7-ST-apS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="ghT-Ji-WOQ"/>
                 <constraint firstItem="zTo-qK-Trd" firstAttribute="top" secondItem="doS-J1-MEu" secondAttribute="bottom" constant="8" id="hmO-tD-1OQ"/>
-                <constraint firstItem="doS-J1-MEu" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="24" id="iYG-JC-Yrd"/>
+                <constraint firstItem="W3Y-4G-WfZ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="iwa-5H-RgC"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="YJY-AA-c1t" secondAttribute="bottom" constant="24" id="jfP-KZ-Tpt"/>
                 <constraint firstItem="zTo-qK-Trd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="o30-ds-Te4"/>
                 <constraint firstItem="doS-J1-MEu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="peH-kY-bJ3"/>
-                <constraint firstItem="YJY-AA-c1t" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="r0F-eu-8Fp"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="YJY-AA-c1t" secondAttribute="trailing" constant="16" id="ulW-wJ-pBY"/>
+                <constraint firstItem="YJY-AA-c1t" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="tHs-VX-7vU"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="131.25" y="152.11267605633802"/>

@@ -17,9 +17,11 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
     @IBOutlet weak var heightSuggestionsConstraint: NSLayoutConstraint!
     @IBOutlet weak var suggestionCollecitonView: UICollectionView!
     @IBOutlet weak var pastSearchTableView: UITableView!
+    @IBOutlet weak var factsSearchBar: UISearchBar!
     
     // MARK: - Propeties
     
+    var loadView = LoadView()
     var viewModel: ChuckNorrisSearchFactsViewModel!
     var disposeBag = DisposeBag()
     var minimumLineSpacingForSection: CGFloat = 8
@@ -44,7 +46,9 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
         super.viewDidLoad()
         setupNavigationBar()
         registerCells()
+        loadingPublish()
         bindCollectionSuggestions()
+        emptySearchResultPublish()
         setDelegate()
         viewModel.fetchRuleSuggestions()
     }
@@ -67,8 +71,7 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
     
     func setupNavigationBar() {
         title = "Pesquisa"
-        self.navigationItem.setHidesBackButton(false, animated: false)
-        navigationItem.searchController = createSearchController()
+        self.navigationItem.setHidesBackButton(true, animated: false)
     }
     
     func heightSuggestionsCollectionView() {
@@ -77,20 +80,31 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
         view.layoutIfNeeded()
     }
     
-    func createSearchController() -> UISearchController {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        return searchController
-    }
-    
     // MARK: - BindCollectionSuggestions
     
     func bindCollectionSuggestions() {
-        loadingPublish()
         collectionViewDataSource()
         didSelectItem()
         setupAfterBindHeightCollectionView()
         errorPublish()
+    }
+}
+
+// MARK: - EmptySearchResult Alert
+
+extension ChuckNorrisSearchFactsViewController {
+    func emptySearchResultPublish() {
+        viewModel.emptySearchResult.asObserver().observeOn(MainScheduler.instance).subscribe { [weak self] (_) in
+            guard let self = self else { return }
+            let alert = UIAlertController.createSimpleAlert(with: "Ops!",
+                                                            message: "Parece que não encontramos nada a respeito da sua pesquisa. ;(",
+                                                            style: .alert,
+                                                            titleAction: "Ok",
+                                                            actionAlert: {
+                                                                self.factsSearchBar.text = ""
+            })
+            self.present(alert, animated: true, completion: nil)
+        }.disposed(by: disposeBag)
     }
 }
 
@@ -99,16 +113,27 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
 extension ChuckNorrisSearchFactsViewController {
     
     func loadingPublish() {
-        // TODO: fazer o loading
+        viewModel.loading
+            .asObserver()
+            .observeOn(MainScheduler.instance).subscribe { (event) in
+                let isShow = event.element ?? false
+                self.loadView.showLoading(isShow, atView: self.navigationController?.view)
+        }.disposed(by: disposeBag)
     }
     
     func errorPublish() {
-        viewModel
-            .error
-            .asObserver()
-            .observeOn(MainScheduler.instance)
-            .subscribe { (error) in
-                // TODO: pop de error aqui
+        viewModel.error.asObserver().observeOn(MainScheduler.instance).subscribe { [weak self] (error) in
+            guard let self = self else { return }
+            let code = error.event.element?.code ?? 0
+            let message = error.event.element?.message ?? ""
+            let alert = UIAlertController.createSimpleAlert(with: "Ops!",
+                                                            message: "\(code) - \(message)",
+                                                            style: .alert,
+                                                            titleAction: "Ok",
+                                                            actionAlert: {
+                                                                self.factsSearchBar.text = ""
+            })
+            self.present(alert, animated: true, completion: nil)
         }.disposed(by: disposeBag)
     }
 }
@@ -155,6 +180,7 @@ extension ChuckNorrisSearchFactsViewController {
         suggestionCollecitonView.rx.itemSelected.subscribe(onNext: { [weak self] (indexPath) in
             guard let self = self,
                 let cell = self.suggestionCollecitonView.cellForItem(at: indexPath) as? ChuckNorrisCategoryCollectionViewCell else { return }
+            self.view.endEditing(true)
             let suggestion = cell.categoryLabel.text?.lowercased() ?? ""
             self.viewModel.fetchSearchCategoryFacts(from: suggestion)
         }).disposed(by: disposeBag)
@@ -185,11 +211,12 @@ extension ChuckNorrisSearchFactsViewController: UICollectionViewDelegateFlowLayo
     }
 }
 
-// MARK: - UISearchResultsUpdating
+// MARK: - UISearchBarDelegate
 
-extension ChuckNorrisSearchFactsViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-//        guard let search = searchController.searchBar.text else { return }
-//        viewModel.fetchSearchCategoryFacts(from: search)
+extension ChuckNorrisSearchFactsViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+        guard let text = searchBar.text else { return }
+        viewModel.fetchSearchCategoryFacts(from: text)
     }
 }

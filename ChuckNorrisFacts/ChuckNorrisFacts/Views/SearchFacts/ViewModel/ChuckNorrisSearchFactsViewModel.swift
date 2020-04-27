@@ -18,8 +18,9 @@ class ChuckNorrisSearchFactsViewModel {
     
     // MARK: - Propeties
     
-    var loading: PublishSubject<Bool> = PublishSubject()
+    var loading: BehaviorSubject<Bool> = BehaviorSubject(value: false)
     var error: PublishSubject<ChuckNorrisError> = PublishSubject()
+    var emptySearchResult: PublishSubject<[String]?> = PublishSubject()
     var listSuggestionPublish: BehaviorSubject<[String]> = BehaviorSubject(value: [])
     var searchCategoryPublish: PublishSubject<ChuckNorrisResultModel> = PublishSubject()
     
@@ -41,7 +42,6 @@ class ChuckNorrisSearchFactsViewModel {
             guard let self = self else { return }
             self.loading.onNext(false)
             DispatchQueue.main.async {
-                self.loading.onCompleted()
                 switch result {
                 case .success(let suggestions):
                     self.handlerSuccess(with: suggestions)
@@ -58,10 +58,9 @@ class ChuckNorrisSearchFactsViewModel {
             guard let self = self else { return }
             self.loading.onNext(false)
             DispatchQueue.main.async {
-                self.loading.onCompleted()
                 switch result {
                 case .success(let result):
-                    self.delegate?.backToHomeFacts(self, result: result)
+                    self.handlerSuccess(with: result)
                 case .failure(let error):
                     self.handlerFailure(error)
                 }
@@ -86,8 +85,12 @@ class ChuckNorrisSearchFactsViewModel {
     }
     
     func handlerSuccess(with result: ChuckNorrisResultModel) {
-        self.searchCategoryPublish.onNext(result)
-        self.searchCategoryPublish.onCompleted()
+        if result.result.isEmpty {
+            emptySearchResult.onNext([])
+            emptySearchResult.onCompleted()
+        } else {
+            delegate?.backToHomeFacts(self, result: result)
+        }
     }
     
     func handlerSuccess(with suggestions: [String]) {

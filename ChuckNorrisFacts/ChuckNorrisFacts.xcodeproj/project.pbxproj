@@ -30,6 +30,7 @@
 		DF40FE132444A8A600CBD522 /* ChuckNorrisServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FE122444A8A600CBD522 /* ChuckNorrisServices.swift */; };
 		DF40FE1724452DF800CBD522 /* ChuckNorrisRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FE1624452DF800CBD522 /* ChuckNorrisRequest.swift */; };
 		DF40FE1A2445391C00CBD522 /* ChuckNorrisFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FE192445391C00CBD522 /* ChuckNorrisFetch.swift */; };
+		DF55F96E245724F80083BF78 /* LoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF55F96D245724F80083BF78 /* LoadView.swift */; };
 		DF593D4E2447A5FD0045AEA6 /* ChuckNorrisParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D4D2447A5FD0045AEA6 /* ChuckNorrisParseError.swift */; };
 		DF593D512447D7820045AEA6 /* ChuckNorrisModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D502447D7820045AEA6 /* ChuckNorrisModel.swift */; };
 		DF593D532447E5F40045AEA6 /* ChuckNorrisResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D522447E5F40045AEA6 /* ChuckNorrisResultModel.swift */; };
@@ -48,6 +49,7 @@
 		DF98DB692453FB9800D2E47B /* Array+Exntesion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF98DB682453FB9800D2E47B /* Array+Exntesion.swift */; };
 		DFCB02722448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCB02712448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift */; };
 		DFCC4FC0244DF2BC002E9A2B /* ChuckNorrisLinkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFCC4FBF244DF2BC002E9A2B /* ChuckNorrisLinkView.xib */; };
+		DFDD823624568209009A3623 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDD823524568209009A3623 /* UIAlertController+Extension.swift */; };
 		DFE9C12124460C1400872527 /* ChuckNorrisError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12024460C1400872527 /* ChuckNorrisError.swift */; };
 		DFE9C12324460E8700872527 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12224460E8700872527 /* NetworkError.swift */; };
 		DFE9C12524463C2E00872527 /* ChuckNorrisGenericError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12424463C2E00872527 /* ChuckNorrisGenericError.swift */; };
@@ -111,6 +113,7 @@
 		DF40FE122444A8A600CBD522 /* ChuckNorrisServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisServices.swift; sourceTree = "<group>"; };
 		DF40FE1624452DF800CBD522 /* ChuckNorrisRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisRequest.swift; sourceTree = "<group>"; };
 		DF40FE192445391C00CBD522 /* ChuckNorrisFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisFetch.swift; sourceTree = "<group>"; };
+		DF55F96D245724F80083BF78 /* LoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadView.swift; sourceTree = "<group>"; };
 		DF593D4D2447A5FD0045AEA6 /* ChuckNorrisParseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisParseError.swift; sourceTree = "<group>"; };
 		DF593D502447D7820045AEA6 /* ChuckNorrisModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisModel.swift; sourceTree = "<group>"; };
 		DF593D522447E5F40045AEA6 /* ChuckNorrisResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisResultModel.swift; sourceTree = "<group>"; };
@@ -125,6 +128,7 @@
 		DF98DB682453FB9800D2E47B /* Array+Exntesion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Exntesion.swift"; sourceTree = "<group>"; };
 		DFCB02712448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisSearchFactsViewModel.swift; sourceTree = "<group>"; };
 		DFCC4FBF244DF2BC002E9A2B /* ChuckNorrisLinkView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChuckNorrisLinkView.xib; sourceTree = "<group>"; };
+		DFDD823524568209009A3623 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		DFE9C12024460C1400872527 /* ChuckNorrisError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisError.swift; sourceTree = "<group>"; };
 		DFE9C12224460E8700872527 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		DFE9C12424463C2E00872527 /* ChuckNorrisGenericError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisGenericError.swift; sourceTree = "<group>"; };
@@ -317,6 +321,14 @@
 			path = Launch;
 			sourceTree = "<group>";
 		};
+		DF55F96C245724E10083BF78 /* LoadView */ = {
+			isa = PBXGroup;
+			children = (
+				DF55F96D245724F80083BF78 /* LoadView.swift */,
+			);
+			path = LoadView;
+			sourceTree = "<group>";
+		};
 		DF593D4F2447D4450045AEA6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -369,6 +381,7 @@
 				DF012861244FB5AE00A0508B /* UIView+Extension.swift */,
 				DF90F8B42453E1F20067512F /* UICollectionViewLayoutAttributes+Extension.swift */,
 				DF98DB682453FB9800D2E47B /* Array+Exntesion.swift */,
+				DFDD823524568209009A3623 /* UIAlertController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -428,6 +441,7 @@
 		DFCC4FBB244DF20F002E9A2B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				DF55F96C245724E10083BF78 /* LoadView */,
 				DF171EB424533C7D007B85DC /* SuggestionCollectionViewFlowLayout */,
 				DFCC4FBC244DF218002E9A2B /* ChuckNorrisLinkView */,
 			);
@@ -656,6 +670,7 @@
 				DF0B5FBB244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.swift in Sources */,
 				DF40FE132444A8A600CBD522 /* ChuckNorrisServices.swift in Sources */,
 				DF8DB61424523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.swift in Sources */,
+				DF55F96E245724F80083BF78 /* LoadView.swift in Sources */,
 				DF40FE072444965B00CBD522 /* HomeFactsViewModel.swift in Sources */,
 				DF593D512447D7820045AEA6 /* ChuckNorrisModel.swift in Sources */,
 				DFF72928245477F200383701 /* Identifiers.swift in Sources */,
@@ -676,6 +691,7 @@
 				DF98DB692453FB9800D2E47B /* Array+Exntesion.swift in Sources */,
 				DFF7292F2454BAB200383701 /* Suggestions+CoreDataClass.swift in Sources */,
 				DF40FDD5244493AE00CBD522 /* AppDelegate.swift in Sources */,
+				DFDD823624568209009A3623 /* UIAlertController+Extension.swift in Sources */,
 				DFE9C12324460E8700872527 /* NetworkError.swift in Sources */,
 				DFE9C12124460C1400872527 /* ChuckNorrisError.swift in Sources */,
 				DF7D85F62454C1E900B3679D /* ChuckNorrisStorage.swift in Sources */,

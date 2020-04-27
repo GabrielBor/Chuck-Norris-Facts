@@ -71,9 +71,7 @@ class HomeFactsViewController: UIViewController {
     
     func setupNavigationBar() {
         title = "Chuck Norris"
-        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchTapped))
-        navigationItem.searchController = !viewModel.factsList.isEmpty ? createSearchController() : nil
     }
     
     func verifyLinkViewIfNeeded() {
@@ -84,12 +82,6 @@ class HomeFactsViewController: UIViewController {
         } else {
             linkView.removeFromSuperview()
         }
-    }
-    
-    func createSearchController() -> UISearchController {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        return searchController
     }
     
     // MARK: - Action
