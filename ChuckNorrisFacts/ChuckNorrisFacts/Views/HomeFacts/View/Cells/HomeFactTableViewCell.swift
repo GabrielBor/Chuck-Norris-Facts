@@ -21,20 +21,44 @@ class HomeFactTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var factView: UIView!
     
     // MARK: - Delegate
     
     weak var delegate: HomeFactTableViewCellDelegate?
     
+    // MARK: - LifeCycle
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setupFactViewShadow()
+        setupCategoryLabelCornerRadius()
+    }
+    
     // MARK: - Methods
     
     func fillCell(_ description: String, category: String) {
-        descriptionLabel.text = description.uppercased()
-        categoryLabel.text = category
+        descriptionLabel.text = description
+        categoryLabel.text = " \(category.uppercased())  "
+        categoryLabel.textAlignment = .center
     }
     
     func handlerFontDescriptionLabel(_ sizeFont: CGFloat) {
         descriptionLabel.font = UIFont.systemFont(ofSize: sizeFont)
+    }
+    
+    func setupCategoryLabelCornerRadius() {
+        categoryLabel.layer.cornerRadius = 10
+        categoryLabel.layer.masksToBounds = true
+    }
+    
+    func setupFactViewShadow() {
+        factView.layer.cornerRadius = 10
+        factView.layer.masksToBounds = false
+        factView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        factView.layer.shadowColor = UIColor.black.cgColor
+        factView.layer.shadowOpacity = 0.23
+        factView.layer.shadowRadius = 4
     }
     
     // MARK: - Action

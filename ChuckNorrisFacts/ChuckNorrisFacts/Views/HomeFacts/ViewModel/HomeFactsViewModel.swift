@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-protocol HomeFactsViewModelCoordinatorDelegate: AnyObject {
+protocol HomeFactsViewModelDelegate: AnyObject {
     func goToSearchFacts(_ viewModel: HomeFactsViewModel)
 }
 
@@ -17,33 +17,36 @@ class HomeFactsViewModel {
     
     // MARK: - Properties
     
-    var factsList: [ChuckNorrisRandomModel] = []
-    var factsPublish = PublishSubject<[ChuckNorrisRandomModel]>()
-    weak var coordinatorDelegate: HomeFactsViewModelCoordinatorDelegate?
+    var factsList: [ChuckNorrisModel] = []
+    var factsPublish: PublishSubject<[ChuckNorrisModel]> = PublishSubject()
+    weak var delegate: HomeFactsViewModelDelegate?
     
-    // MARK: - Initialize
+    // MARK: - Mehtod
     
-    init(_ factsList: [ChuckNorrisRandomModel], coordinatorDelegate: HomeFactsViewModelCoordinatorDelegate? = nil) {
-        self.factsList = factsList
-        self.coordinatorDelegate = coordinatorDelegate
-    }
-    
-    // MARK: - OnNext
-    
-    func setupOnNextFactList() {
+    func updateFactsList(with newFactsList: [ChuckNorrisModel]) {
+        factsList = newFactsList
         factsPublish.onNext(factsList)
         factsPublish.onCompleted()
     }
-    
-    // MARK: - Mehtod
 
     func sizeFont(for fact: String) -> CGFloat {
         return fact.count > 80 ? 24.0 : 16.0
     }
     
+    func setUncategorizedIfNeeded(_ category: String?) -> String {
+        guard let categoryValue = category else {
+            return "UNCATEGORIZED"
+        }
+        return categoryValue
+    }
+    
+    func clearFactsList() {
+        factsList = []
+    }
+    
     // MARK: - Coordinator method
     
     func goToSearchFacts() {
-        coordinatorDelegate?.goToSearchFacts(self)
+        delegate?.goToSearchFacts(self)
     }
 }

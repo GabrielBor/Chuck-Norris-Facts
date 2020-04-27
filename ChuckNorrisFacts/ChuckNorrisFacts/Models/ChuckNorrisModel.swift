@@ -1,5 +1,5 @@
 //
-//  ChuckNorrisRandomModel.swift
+//  ChuckNorrisModel.swift
 //  ChuckNorrisFacts
 //
 //  Created by Gabriel Borges on 15/04/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ChuckNorrisRandomModel: Codable {
+struct ChuckNorrisModel: Codable {
     let categories: [String]
     let createdAt: String
     let iconURL: String

@@ -24,7 +24,7 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
     var disposeBag = DisposeBag()
     var minimumLineSpacingForSection: CGFloat = 8
     var minimumInterItemSpacingForSection: CGFloat = 8
-    var suggestionIdentifier = IdentifierCell.suggestion.rawValue
+    var suggestionIdentifier = IdentifierCell.suggestionCollectionCell.rawValue
     var pastSearchIdentifier = IdentifierCell.pastSearch.rawValue
     
     // MARK: - Initialize
@@ -44,7 +44,7 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
         super.viewDidLoad()
         setupNavigationBar()
         registerCells()
-        bindView()
+        bindCollectionSuggestions()
         setDelegate()
         viewModel.fetchRuleSuggestions()
     }
@@ -83,20 +83,41 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
         return searchController
     }
     
-    // MARK: - BindView
+    // MARK: - BindCollectionSuggestions
     
-    func bindView() {
-        bindLoading()
-        bindSuggestionColelctionView()
+    func bindCollectionSuggestions() {
+        loadingPublish()
+        collectionViewDataSource()
+        didSelectItem()
         setupAfterBindHeightCollectionView()
-        bindError()
+        errorPublish()
     }
+}
+
+// MARK: - Comon
+
+extension ChuckNorrisSearchFactsViewController {
     
-    func bindLoading() {
+    func loadingPublish() {
         // TODO: fazer o loading
     }
     
-    func bindSuggestionColelctionView() {
+    func errorPublish() {
+        viewModel
+            .error
+            .asObserver()
+            .observeOn(MainScheduler.instance)
+            .subscribe { (error) in
+                // TODO: pop de error aqui
+        }.disposed(by: disposeBag)
+    }
+}
+
+// MARK: - ColectionViewRxDataSource
+
+extension ChuckNorrisSearchFactsViewController {
+    
+    func collectionViewDataSource() {
         viewModel.listSuggestionPublish
             .asObserver()
             .observeOn(MainScheduler.instance)
@@ -110,30 +131,33 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
             self.heightSuggestionsCollectionView()
         }
     }
+}
+
+// MARK: - UITableViewRxDelegate
+
+extension ChuckNorrisSearchFactsViewController {
     
-    func bindError() {
-        viewModel
-            .error
-            .asObserver()
-            .observeOn(MainScheduler.instance)
-            .subscribe { (error) in
-                // TODO: pop de error aqui
-        }.disposed(by: disposeBag)
+    func didSelectRow() {
+        pastSearchTableView.rx.itemSelected.subscribe(onNext: { [weak self] (indexPath) in
+            guard let self = self,
+                let cell = self.pastSearchTableView.dequeueReusableCell(withIdentifier: self.pastSearchIdentifier, for: indexPath) as? ChuckNorrisPastSearchTableViewCell else { return }
+            let suggestion = cell.pastWordLabel.text?.lowercased() ?? ""
+            self.viewModel.fetchSearchCategoryFacts(from: suggestion)
+        }).disposed(by: disposeBag)
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - UICollectionRxDelegate
 
-extension ChuckNorrisSearchFactsViewController: UITableViewDelegate {
+extension ChuckNorrisSearchFactsViewController {
     
-}
-
-// MARK: - UICollectionViewDelegate
-
-extension ChuckNorrisSearchFactsViewController: UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("tocou")
+    func didSelectItem() {
+        suggestionCollecitonView.rx.itemSelected.subscribe(onNext: { [weak self] (indexPath) in
+            guard let self = self,
+                let cell = self.suggestionCollecitonView.cellForItem(at: indexPath) as? ChuckNorrisCategoryCollectionViewCell else { return }
+            let suggestion = cell.categoryLabel.text?.lowercased() ?? ""
+            self.viewModel.fetchSearchCategoryFacts(from: suggestion)
+        }).disposed(by: disposeBag)
     }
 }
 
@@ -165,6 +189,7 @@ extension ChuckNorrisSearchFactsViewController: UICollectionViewDelegateFlowLayo
 
 extension ChuckNorrisSearchFactsViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        
+//        guard let search = searchController.searchBar.text else { return }
+//        viewModel.fetchSearchCategoryFacts(from: search)
     }
 }

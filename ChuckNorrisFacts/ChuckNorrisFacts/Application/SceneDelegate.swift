@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let navigation = UINavigationController()
-        homeFactsCoordinator = HomeFactsCoordinator([])
+        homeFactsCoordinator = HomeFactsCoordinator()
         homeFactsCoordinator?.start(using: .push(navigation), animated: true)
         
         window = UIWindow(frame: UIScreen.main.bounds)
