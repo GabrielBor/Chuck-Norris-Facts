@@ -28,7 +28,7 @@ class ChuckNorrisSearchFactsCoordinator: BaseCoordinator {
     
     init() {
         let viewModel = ChuckNorrisSearchFactsViewModel(ChuckNorrisServices())
-        viewModel.delegate = self
+        viewModel.coordinatorDelegate = self
         let viewController = ChuckNorrisSearchFactsViewController(viewModel)
         self.viewController = viewController
     }
@@ -48,7 +48,7 @@ class ChuckNorrisSearchFactsCoordinator: BaseCoordinator {
     }
 }
 
-extension ChuckNorrisSearchFactsCoordinator: ChuckNorrisSearchFactsViewModelDelgate {
+extension ChuckNorrisSearchFactsCoordinator: ChuckNorrisSearchFactsCoordinatorDelgate {
     
     func backToHomeFacts(_ viewModel: ChuckNorrisSearchFactsViewModel, result: ChuckNorrisResultModel) {
         delegate?.backToHomeFacts(self, viewModel: viewModel, result: result)

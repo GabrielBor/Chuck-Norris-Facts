@@ -19,10 +19,6 @@ class HomeFactTableViewCell: UITableViewCell {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var factView: UIView!
     
-    // MARK: - Property
-    
-    var shareButtonPublish: PublishSubject<UIButton> = PublishSubject()
-    
     // MARK: - LifeCycle
     
     override func awakeFromNib() {
@@ -55,11 +51,5 @@ class HomeFactTableViewCell: UITableViewCell {
         factView.layer.shadowColor = UIColor.black.cgColor
         factView.layer.shadowOpacity = 0.23
         factView.layer.shadowRadius = 4
-    }
-    
-    // MARK: - Action
-    
-    @IBAction func shareButtonTapped(_ sender: UIButton) {
-        shareButtonPublish.onNext(shareButton)
     }
 }

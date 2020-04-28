@@ -71,7 +71,8 @@ class HomeFactsViewController: UIViewController {
     
     func setupNavigationBar() {
         title = "Chuck Norris"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
+        searchTapped()
     }
     
     func verifyLinkViewIfNeeded() {
@@ -92,18 +93,21 @@ class HomeFactsViewController: UIViewController {
     
     // MARK: - Actions
     
-    @objc func searchTapped() {
-        viewModel.goToSearchFacts()
+    func searchTapped() {
+        navigationItem.rightBarButtonItem?.rx.tap
+            .bind { [weak self] in
+                guard let self = self else { return }
+                self.viewModel.goToSearchFacts()
+        }.disposed(by: disposeBag)
     }
     
     func sharedFactTapped(from cell: HomeFactTableViewCell, urlString: String) {
-        cell.shareButtonPublish
-            .asObserver()
-            .observeOn(MainScheduler.instance)
-            .subscribe { [weak self] (_) in
-                guard let self = self else { return }
-                self.share(urlString)
-        }.disposed(by: disposeBag)
+        cell.shareButton.rx.tap
+        .bind { [weak self] in
+            guard let self = self else { return }
+            self.share(urlString)
+        }
+        .disposed(by: disposeBag)
     }
 }
 
@@ -134,11 +138,5 @@ extension HomeFactsViewController: UITableViewDelegate {
 extension HomeFactsViewController: ChuckNorrisLinkViewDelegate {
     func linkView(_ view: ChuckNorrisLinkView, linkAction sender: UIButton) {
         viewModel.goToSearchFacts()
-    }
-}
-
-extension HomeFactsViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        
     }
 }

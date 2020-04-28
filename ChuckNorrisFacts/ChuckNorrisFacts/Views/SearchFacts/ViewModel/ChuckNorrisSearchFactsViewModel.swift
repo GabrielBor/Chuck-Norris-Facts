@@ -10,7 +10,9 @@ import Foundation
 import RxSwift
 import CoreData
 
-protocol ChuckNorrisSearchFactsViewModelDelgate: AnyObject {
+// MARK: - CoordinatorDelegate
+
+protocol ChuckNorrisSearchFactsCoordinatorDelgate: AnyObject {
     func backToHomeFacts(_ viewModel: ChuckNorrisSearchFactsViewModel, result: ChuckNorrisResultModel)
 }
 
@@ -23,18 +25,22 @@ class ChuckNorrisSearchFactsViewModel {
     var emptySearchResultPublish: PublishSubject<[String]?> = PublishSubject()
     var listSuggestionPublish: BehaviorSubject<[String]> = BehaviorSubject(value: [])
     var searchCategoryPublish: PublishSubject<ChuckNorrisResultModel> = PublishSubject()
+    var listLastSearhcesBehavior: BehaviorSubject<[String]> = BehaviorSubject(value: [])
     
     let storage = ChuckNorrisStorage()
     var service: ChuckNorrisServices!
-    weak var delegate: ChuckNorrisSearchFactsViewModelDelgate?
+    weak var coordinatorDelegate: ChuckNorrisSearchFactsCoordinatorDelgate?
     
     // MARK: - Initialize
     
     init(_ service: ChuckNorrisServices) {
         self.service = service
     }
-    
-    // MARK: - Services
+}
+
+// MARK: - Services
+
+extension ChuckNorrisSearchFactsViewModel {
     
     func fetchListSuggestionFacts() {
         loadingBehavior.onNext(true)
@@ -67,17 +73,20 @@ class ChuckNorrisSearchFactsViewModel {
             }
         }
     }
+}
+
+// MARK: - Rule methods
+
+extension ChuckNorrisSearchFactsViewModel {
     
     func fetchRuleSuggestions() {
-        if let suggestions = loadFromStorage(.propertySuggestions) {
+        if let suggestions = loadFromStorage(.entitySuggestions, key: .propertySuggestions) {
             listSuggestionPublish.onNext(randomSuggestions(suggestions))
             listSuggestionPublish.onCompleted()
         } else {
             fetchListSuggestionFacts()
         }
     }
-    
-    // MARK: Methods
     
     func randomSuggestions(_ suggestions: [String]) -> [String] {
         let random = suggestions
@@ -88,13 +97,13 @@ class ChuckNorrisSearchFactsViewModel {
         if result.result.isEmpty {
             emptySearchResultPublish.onNext([])
         } else {
-            delegate?.backToHomeFacts(self, result: result)
+            coordinatorDelegate?.backToHomeFacts(self, result: result)
         }
     }
     
     func handlerSuccess(with suggestions: [String]) {
-        self.saveInStorage(suggestions, key: .propertySuggestions)
-        guard let suggestions = loadFromStorage(.propertySuggestions) else { return }
+        saveInStorage(at: .entitySuggestions, key: .propertySuggestions, value: suggestions)
+        guard let suggestions = loadFromStorage(.entitySuggestions, key: .propertySuggestions) else { return }
         listSuggestionPublish.onNext(randomSuggestions(suggestions))
         listSuggestionPublish.onCompleted()
     }
@@ -104,17 +113,34 @@ class ChuckNorrisSearchFactsViewModel {
     }
     
     func savePastSearch(_ search: String) {
-        
+        if !containsInStorage(with: .entityLastSearch, key: .propertyLastSearches, value: search) {
+//            pastSearchList.append(search)
+//            saveInStorage(at: .entityLastSearch, key: .propertyLastSearches, value: pastSearchList)
+            loadListPastSearch()
+        }
     }
     
-    // MARK: - CoreData Method
+    func loadListPastSearch() {
+        if let listPastSearch = loadFromStorage(.entityLastSearch, key: .propertyLastSearches) {
+            listLastSearhcesBehavior.onNext(listPastSearch)
+        }
+    }
+}
+
+// MARK: - CoreData mehtods
+
+extension ChuckNorrisSearchFactsViewModel {
     
-    func saveInStorage(_ suggestions: [String], key: IdentifierCoreData) {
-        storage.save(to: suggestions, identifierEntity: .entitySuggestions, key: key)
+    func saveInStorage(at entityName: IdentifierEntity, key: IdentifierProperty, value: [String]) {
+        storage.save(at: entityName, withThe: key, withValue: value)
     }
     
-    func loadFromStorage(_ key: IdentifierCoreData) -> [String]? {
-        guard let nsManagedList = storage.access(.entitySuggestions) else {
+    func containsInStorage(with entity: IdentifierEntity, key: IdentifierProperty, value: String) -> Bool {
+        return storage.contains(at: entity, withThe: key, withValue: value)
+    }
+    
+    func loadFromStorage(_ entityName: IdentifierEntity, key: IdentifierProperty) -> [String]? {
+        guard let nsManagedList = storage.access(entityName) else {
             return []
         }
         let storage = nsManagedList.first
@@ -122,3 +148,4 @@ class ChuckNorrisSearchFactsViewModel {
         return suggestionsStorage
     }
 }
+

@@ -40,9 +40,6 @@
                                     <constraint firstAttribute="height" constant="32" id="FNZ-UL-iti"/>
                                 </constraints>
                                 <state key="normal" image="ICON-SHARE"/>
-                                <connections>
-                                    <action selector="shareButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pSV-gf-TKT"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

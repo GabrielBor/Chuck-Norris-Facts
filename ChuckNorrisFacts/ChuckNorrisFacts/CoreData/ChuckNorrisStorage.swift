@@ -11,14 +11,18 @@ import CoreData
 
 class ChuckNorrisStorage {
     
+    // MARK: Property
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    func save(to list: [String], identifierEntity: IdentifierCoreData, key: IdentifierCoreData) {
+    func save(at identifierEntity: IdentifierEntity,
+              withThe key: IdentifierProperty,
+              withValue value: [String]) {
         let entity = NSEntityDescription.entity(forEntityName: identifierEntity.rawValue, in: context)
         guard let entitySuggestion = entity else { return }
         
         let contextValue = NSManagedObject(entity: entitySuggestion, insertInto: context)
-        contextValue.setValue(list, forKey: key.rawValue)
+        contextValue.setValue(value, forKey: key.rawValue)
         do {
             try context.save()
         } catch let error as NSError  {
@@ -26,7 +30,9 @@ class ChuckNorrisStorage {
         }
     }
     
-    func contains(with entity: IdentifierCoreData, key: IdentifierCoreData, value: String) -> Bool {
+    func contains(at entity: IdentifierEntity,
+                  withThe key: IdentifierProperty,
+                  withValue value: String) -> Bool {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entity.rawValue)
         request.predicate = NSPredicate(format: "\(key.rawValue) = %@", value)
         request.returnsObjectsAsFaults = false
@@ -43,7 +49,7 @@ class ChuckNorrisStorage {
         return false
     }
     
-    func access(_ identifier: IdentifierCoreData) -> [NSManagedObject]? {
+    func access(_ identifier: IdentifierEntity) -> [NSManagedObject]? {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: identifier.rawValue)
         do {
             let results = try context.fetch(request) as? [NSManagedObject]

@@ -9,14 +9,18 @@
 import Foundation
 
 enum IdentifierCell: String {
-    case pastSearch = "ChuckNorrisPastSearchTableViewCell"
+    case pastSearchTableViewCell = "ChuckNorrisPastSearchTableViewCell"
     case suggestionCollectionCell = "ChuckNorrisCategoryCollectionViewCell"
     case suggestionTableViewCell = "SugggetionsTableViewCell"
     case homeFactsTableViewCell = "HomeFactTableViewCell"
 }
 
-enum IdentifierCoreData: String {
+enum IdentifierEntity: String {
     case entitySuggestions = "Suggestions"
+    case entityLastSearch = "LastSearch"
+}
+
+enum IdentifierProperty: String {
     case propertySuggestions = "suggestions"
-    case propertyPastWordSearch = "pastWordSearch"
+    case propertyLastSearches = "lastSearches"
 }

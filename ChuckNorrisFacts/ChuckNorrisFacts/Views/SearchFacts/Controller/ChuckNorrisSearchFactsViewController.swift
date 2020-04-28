@@ -27,7 +27,7 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
     var minimumLineSpacingForSection: CGFloat = 8
     var minimumInterItemSpacingForSection: CGFloat = 8
     var suggestionIdentifier = IdentifierCell.suggestionCollectionCell.rawValue
-    var pastSearchIdentifier = IdentifierCell.pastSearch.rawValue
+    var pastSearchIdentifier = IdentifierCell.pastSearchTableViewCell.rawValue
     
     // MARK: - Initialize
     
@@ -47,7 +47,8 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
         setupNavigationBar()
         registerCells()
         loadingPublish()
-        bindCollectionSuggestions()
+        bindCollectionViewSuggestions()
+        bindTableViewPastSearch()
         emptySearchResultPublish()
         setDelegate()
         viewModel.fetchRuleSuggestions()
@@ -56,7 +57,7 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
     // MARK: - TableViewSetDelegate
     
     func setDelegate() {
-//        pastSearchTableView.rx.setDelegate(self).disposed(by: disposeBag)
+        pastSearchTableView.rx.setDelegate(self).disposed(by: disposeBag)
         suggestionCollecitonView.rx.setDelegate(self).disposed(by: disposeBag)
     }
     
@@ -64,9 +65,9 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
     
     func registerCells() {
         let suggestionNib = UINib(nibName: suggestionIdentifier, bundle: nil)
-//        let pastSearchNib = UINib(nibName: pastSearchIdentifier, bundle: nil)
+        let pastSearchNib = UINib(nibName: pastSearchIdentifier, bundle: nil)
         suggestionCollecitonView.register(suggestionNib, forCellWithReuseIdentifier: suggestionIdentifier)
-//        pastSearchTableView.register(pastSearchNib, forCellReuseIdentifier: pastSearchIdentifier)
+        pastSearchTableView.register(pastSearchNib, forCellReuseIdentifier: pastSearchIdentifier)
     }
     
     func setupNavigationBar() {
@@ -82,11 +83,19 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
     
     // MARK: - BindCollectionSuggestions
     
-    func bindCollectionSuggestions() {
+    func bindCollectionViewSuggestions() {
         collectionViewDataSource()
         didSelectItem()
         setupAfterBindHeightCollectionView()
         errorPublish()
+    }
+    
+    // MARK: - BindTableViewPastSearch
+    
+    func bindTableViewPastSearch() {
+        viewModel.loadListPastSearch()
+        tableViewDataSource()
+        didSelectRow()
     }
 }
 
@@ -138,7 +147,7 @@ extension ChuckNorrisSearchFactsViewController {
     }
 }
 
-// MARK: - ColectionViewRxDataSource
+// MARK: - ColectionViewDataSource
 
 extension ChuckNorrisSearchFactsViewController {
     
@@ -158,21 +167,7 @@ extension ChuckNorrisSearchFactsViewController {
     }
 }
 
-// MARK: - UITableViewRxDelegate
-
-extension ChuckNorrisSearchFactsViewController {
-    
-    func didSelectRow() {
-        pastSearchTableView.rx.itemSelected.subscribe(onNext: { [weak self] (indexPath) in
-            guard let self = self,
-                let cell = self.pastSearchTableView.dequeueReusableCell(withIdentifier: self.pastSearchIdentifier, for: indexPath) as? ChuckNorrisPastSearchTableViewCell else { return }
-            let suggestion = cell.pastWordLabel.text?.lowercased() ?? ""
-            self.viewModel.fetchSearchCategoryFacts(from: suggestion)
-        }).disposed(by: disposeBag)
-    }
-}
-
-// MARK: - UICollectionRxDelegate
+// MARK: - UICollectionDelegate
 
 extension ChuckNorrisSearchFactsViewController {
     
@@ -211,12 +206,45 @@ extension ChuckNorrisSearchFactsViewController: UICollectionViewDelegateFlowLayo
     }
 }
 
+// MARK: - UITableViewDataSource
+
+extension ChuckNorrisSearchFactsViewController {
+    
+    func tableViewDataSource() {
+        viewModel.listLastSearhcesBehavior
+            .asObserver()
+            .observeOn(MainScheduler.instance)
+            .bind(to: pastSearchTableView.rx.items(cellIdentifier: pastSearchIdentifier, cellType: ChuckNorrisPastSearchTableViewCell.self)) { (row, item, cell) in
+                cell.fillCell(item)
+        }.disposed(by: disposeBag)
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension ChuckNorrisSearchFactsViewController: UITableViewDelegate {
+    
+    func didSelectRow() {
+        pastSearchTableView.rx.itemSelected.subscribe(onNext: { [weak self] (indexPath) in
+            guard let self = self,
+                let cell = self.pastSearchTableView.dequeueReusableCell(withIdentifier: self.pastSearchIdentifier, for: indexPath) as? ChuckNorrisPastSearchTableViewCell else { return }
+            let suggestion = cell.pastWordLabel.text?.lowercased() ?? ""
+            self.viewModel.fetchSearchCategoryFacts(from: suggestion)
+        }).disposed(by: disposeBag)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+}
+
 // MARK: - UISearchBarDelegate
 
 extension ChuckNorrisSearchFactsViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
         guard let text = searchBar.text else { return }
+        viewModel.savePastSearch(text)
         viewModel.fetchSearchCategoryFacts(from: text)
     }
 }
