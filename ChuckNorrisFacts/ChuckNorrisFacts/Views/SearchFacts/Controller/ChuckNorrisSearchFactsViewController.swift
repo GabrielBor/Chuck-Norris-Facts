@@ -52,6 +52,7 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
         emptySearchResultPublish()
         setDelegate()
         viewModel.fetchRuleSuggestions()
+        viewModel.loadLastSearches()
     }
     
     // MARK: - TableViewSetDelegate
@@ -93,7 +94,6 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
     // MARK: - BindTableViewPastSearch
     
     func bindTableViewPastSearch() {
-        viewModel.loadListPastSearch()
         tableViewDataSource()
         didSelectRow()
     }
@@ -122,11 +122,9 @@ extension ChuckNorrisSearchFactsViewController {
 extension ChuckNorrisSearchFactsViewController {
     
     func loadingPublish() {
-        viewModel.loadingBehavior
-            .asObserver()
-            .observeOn(MainScheduler.instance).subscribe { (event) in
-                let isShow = event.element ?? false
-                self.loadView.showLoading(isShow, atView: self.navigationController?.view)
+        viewModel.loadingRelay.asObservable().observeOn(MainScheduler.instance).subscribe { (event) in
+            let isShow = event.element ?? false
+            self.loadView.showLoading(isShow, atView: self.navigationController?.view)
         }.disposed(by: disposeBag)
     }
     
@@ -211,10 +209,7 @@ extension ChuckNorrisSearchFactsViewController: UICollectionViewDelegateFlowLayo
 extension ChuckNorrisSearchFactsViewController {
     
     func tableViewDataSource() {
-        viewModel.listLastSearhcesBehavior
-            .asObserver()
-            .observeOn(MainScheduler.instance)
-            .bind(to: pastSearchTableView.rx.items(cellIdentifier: pastSearchIdentifier, cellType: ChuckNorrisPastSearchTableViewCell.self)) { (row, item, cell) in
+        viewModel.listLastSearhcesRelay.bind(to: pastSearchTableView.rx.items(cellIdentifier: pastSearchIdentifier, cellType: ChuckNorrisPastSearchTableViewCell.self)) { (row, item, cell) in
                 cell.fillCell(item)
         }.disposed(by: disposeBag)
     }
@@ -244,7 +239,7 @@ extension ChuckNorrisSearchFactsViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
         guard let text = searchBar.text else { return }
-        viewModel.savePastSearch(text)
-        viewModel.fetchSearchCategoryFacts(from: text)
+        viewModel.saveLastSearch(text)
+        viewModel.fetchSearchCategoryFacts(from: text.lowercased())
     }
 }

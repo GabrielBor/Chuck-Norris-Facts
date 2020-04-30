@@ -8,7 +8,7 @@
 
 import Foundation
 import RxSwift
-import CoreData
+import RxRelay
 
 // MARK: - CoordinatorDelegate
 
@@ -20,14 +20,14 @@ class ChuckNorrisSearchFactsViewModel {
     
     // MARK: - Propeties
     
-    var loadingBehavior: BehaviorSubject<Bool> = BehaviorSubject(value: false)
+    var loadingRelay: BehaviorRelay<Bool> = BehaviorRelay(value: false)
     var errorPublish: PublishSubject<ChuckNorrisError> = PublishSubject()
     var emptySearchResultPublish: PublishSubject<[String]?> = PublishSubject()
     var listSuggestionPublish: BehaviorSubject<[String]> = BehaviorSubject(value: [])
     var searchCategoryPublish: PublishSubject<ChuckNorrisResultModel> = PublishSubject()
-    var listLastSearhcesBehavior: BehaviorSubject<[String]> = BehaviorSubject(value: [])
+    var listLastSearhcesRelay: BehaviorRelay<[String]> = BehaviorRelay(value: [])
     
-    let storage = ChuckNorrisStorage()
+    var listSearcheds = [String]()
     var service: ChuckNorrisServices!
     weak var coordinatorDelegate: ChuckNorrisSearchFactsCoordinatorDelgate?
     
@@ -43,10 +43,10 @@ class ChuckNorrisSearchFactsViewModel {
 extension ChuckNorrisSearchFactsViewModel {
     
     func fetchListSuggestionFacts() {
-        loadingBehavior.onNext(true)
+        loadingRelay.accept(true)
         service.fetchListCategoryFacts { [weak self] result in
             guard let self = self else { return }
-            self.loadingBehavior.onNext(false)
+            self.loadingRelay.accept(false)
             DispatchQueue.main.async {
                 switch result {
                 case .success(let suggestions):
@@ -59,10 +59,10 @@ extension ChuckNorrisSearchFactsViewModel {
     }
     
     func fetchSearchCategoryFacts(from category: String) {
-        loadingBehavior.onNext(true)
+        loadingRelay.accept(true)
         service.fetchSearchCategoryFact(category) { [weak self] result in
             guard let self = self else { return }
-            self.loadingBehavior.onNext(false)
+            self.loadingRelay.accept(false)
             DispatchQueue.main.async {
                 switch result {
                 case .success(let result):
@@ -80,11 +80,12 @@ extension ChuckNorrisSearchFactsViewModel {
 extension ChuckNorrisSearchFactsViewModel {
     
     func fetchRuleSuggestions() {
-        if let suggestions = loadFromStorage(.entitySuggestions, key: .propertySuggestions) {
+        let suggestions = getValue(withThe: .suggetionsKey)
+        if suggestions.isEmpty {
+            fetchListSuggestionFacts()
+        } else {
             listSuggestionPublish.onNext(randomSuggestions(suggestions))
             listSuggestionPublish.onCompleted()
-        } else {
-            fetchListSuggestionFacts()
         }
     }
     
@@ -102,8 +103,8 @@ extension ChuckNorrisSearchFactsViewModel {
     }
     
     func handlerSuccess(with suggestions: [String]) {
-        saveInStorage(at: .entitySuggestions, key: .propertySuggestions, value: suggestions)
-        guard let suggestions = loadFromStorage(.entitySuggestions, key: .propertySuggestions) else { return }
+        saveValue(withThe: .suggetionsKey, withValue: suggestions)
+        let suggestions = getValue(withThe: .suggetionsKey)
         listSuggestionPublish.onNext(randomSuggestions(suggestions))
         listSuggestionPublish.onCompleted()
     }
@@ -112,40 +113,42 @@ extension ChuckNorrisSearchFactsViewModel {
         errorPublish.onNext(error)
     }
     
-    func savePastSearch(_ search: String) {
-        if !containsInStorage(with: .entityLastSearch, key: .propertyLastSearches, value: search) {
-//            pastSearchList.append(search)
-//            saveInStorage(at: .entityLastSearch, key: .propertyLastSearches, value: pastSearchList)
-            loadListPastSearch()
+    func saveLastSearch(_ search: String) {
+        if contains(key: .lastSearchesKey, search: search) {
+            loadLastSearches()
+        } else {
+            insertValue(with: search)
+            loadLastSearches()
         }
     }
-    
-    func loadListPastSearch() {
-        if let listPastSearch = loadFromStorage(.entityLastSearch, key: .propertyLastSearches) {
-            listLastSearhcesBehavior.onNext(listPastSearch)
-        }
+
+    func loadLastSearches() {
+        let lastSearches = getValue(withThe: .lastSearchesKey)
+        listLastSearhcesRelay.accept(lastSearches)
     }
 }
 
-// MARK: - CoreData mehtods
+// MARK: - UserDefaults methods
 
 extension ChuckNorrisSearchFactsViewModel {
     
-    func saveInStorage(at entityName: IdentifierEntity, key: IdentifierProperty, value: [String]) {
-        storage.save(at: entityName, withThe: key, withValue: value)
+    func contains(key: IdentifierKey, search: String) -> Bool {
+        guard let list = UserDefaults.standard.object(forKey: key.rawValue) as? [String] else { return false }
+        return list.contains(search)
     }
     
-    func containsInStorage(with entity: IdentifierEntity, key: IdentifierProperty, value: String) -> Bool {
-        return storage.contains(at: entity, withThe: key, withValue: value)
+    func getValue(withThe key: IdentifierKey) -> [String] {
+        guard let value = UserDefaults.standard.array(forKey: key.rawValue) as? [String] else { return [] }
+        return value
     }
     
-    func loadFromStorage(_ entityName: IdentifierEntity, key: IdentifierProperty) -> [String]? {
-        guard let nsManagedList = storage.access(entityName) else {
-            return []
-        }
-        let storage = nsManagedList.first
-        let suggestionsStorage = storage?.value(forKey: key.rawValue) as? [String]
-        return suggestionsStorage
+    func insertValue(with value: String) {
+        listSearcheds.append(value)
+        saveValue(withThe: .lastSearchesKey, withValue: listSearcheds)
+    }
+    
+    func saveValue(withThe key: IdentifierKey, withValue value: [String]?) {
+        UserDefaults.standard.set(value, forKey: key.rawValue)
     }
 }
 

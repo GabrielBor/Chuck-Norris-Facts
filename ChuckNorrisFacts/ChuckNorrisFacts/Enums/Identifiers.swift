@@ -15,12 +15,7 @@ enum IdentifierCell: String {
     case homeFactsTableViewCell = "HomeFactTableViewCell"
 }
 
-enum IdentifierEntity: String {
-    case entitySuggestions = "Suggestions"
-    case entityLastSearch = "LastSearch"
-}
-
-enum IdentifierProperty: String {
-    case propertySuggestions = "suggestions"
-    case propertyLastSearches = "lastSearches"
+enum IdentifierKey: String {
+    case suggetionsKey = "suggestions"
+    case lastSearchesKey = "lastSearches"
 }
