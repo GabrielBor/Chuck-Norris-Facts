@@ -10,9 +10,13 @@ import UIKit
 
 class ChuckNorrisPastSearchTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var pastWordLabel: UILabel!
+    @IBOutlet weak var lastSearchLabel: UILabel!
     
     func fillCell(_ pastWord: String) {
-        pastWordLabel.text = pastWord
+        lastSearchLabel.text = pastWord
+    }
+    
+    func textCell() -> String {
+        return lastSearchLabel.text ?? ""
     }
 }

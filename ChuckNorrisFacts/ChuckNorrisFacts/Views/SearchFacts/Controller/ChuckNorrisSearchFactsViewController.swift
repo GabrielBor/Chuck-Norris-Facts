@@ -15,7 +15,7 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
     // MARK: - @IBOutlet Properties
     
     @IBOutlet weak var heightSuggestionsConstraint: NSLayoutConstraint!
-    @IBOutlet weak var suggestionCollecitonView: UICollectionView!
+    @IBOutlet weak var suggestionCollectionView: UICollectionView!
     @IBOutlet weak var pastSearchTableView: UITableView!
     @IBOutlet weak var factsSearchBar: UISearchBar!
     
@@ -59,7 +59,7 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
     
     func setDelegate() {
         pastSearchTableView.rx.setDelegate(self).disposed(by: disposeBag)
-        suggestionCollecitonView.rx.setDelegate(self).disposed(by: disposeBag)
+        suggestionCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
     }
     
     // MARK: Methods
@@ -67,7 +67,7 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
     func registerCells() {
         let suggestionNib = UINib(nibName: suggestionIdentifier, bundle: nil)
         let pastSearchNib = UINib(nibName: pastSearchIdentifier, bundle: nil)
-        suggestionCollecitonView.register(suggestionNib, forCellWithReuseIdentifier: suggestionIdentifier)
+        suggestionCollectionView.register(suggestionNib, forCellWithReuseIdentifier: suggestionIdentifier)
         pastSearchTableView.register(pastSearchNib, forCellReuseIdentifier: pastSearchIdentifier)
     }
     
@@ -77,7 +77,7 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
     }
     
     func heightSuggestionsCollectionView() {
-        let height = suggestionCollecitonView.collectionViewLayout.collectionViewContentSize.height
+        let height = suggestionCollectionView.collectionViewLayout.collectionViewContentSize.height
         heightSuggestionsConstraint.constant = height
         view.layoutIfNeeded()
     }
@@ -135,10 +135,10 @@ extension ChuckNorrisSearchFactsViewController {
             let message = error.event.element?.message ?? ""
             let alert = UIAlertController.createSimpleAlert(with: "Ops!",
                                                             message: "\(code) - \(message)",
-                                                            style: .alert,
-                                                            titleAction: "Ok",
-                                                            actionAlert: {
-                                                                self.factsSearchBar.text = ""
+                style: .alert,
+                titleAction: "Ok",
+                actionAlert: {
+                    self.factsSearchBar.text = ""
             })
             self.present(alert, animated: true, completion: nil)
         }.disposed(by: disposeBag)
@@ -153,7 +153,7 @@ extension ChuckNorrisSearchFactsViewController {
         viewModel.listSuggestionPublish
             .asObserver()
             .observeOn(MainScheduler.instance)
-            .bind(to: suggestionCollecitonView.rx.items(cellIdentifier: suggestionIdentifier, cellType: ChuckNorrisCategoryCollectionViewCell.self)) { (row, item, cell) in
+            .bind(to: suggestionCollectionView.rx.items(cellIdentifier: suggestionIdentifier, cellType: ChuckNorrisCategoryCollectionViewCell.self)) { (row, item, cell) in
                 cell.fillCell(item)
         }.disposed(by: disposeBag)
     }
@@ -170,13 +170,11 @@ extension ChuckNorrisSearchFactsViewController {
 extension ChuckNorrisSearchFactsViewController {
     
     func didSelectItem() {
-        suggestionCollecitonView.rx.itemSelected.subscribe(onNext: { [weak self] (indexPath) in
-            guard let self = self,
-                let cell = self.suggestionCollecitonView.cellForItem(at: indexPath) as? ChuckNorrisCategoryCollectionViewCell else { return }
-            self.view.endEditing(true)
-            let suggestion = cell.categoryLabel.text?.lowercased() ?? ""
-            self.viewModel.fetchSearchCategoryFacts(from: suggestion)
-        }).disposed(by: disposeBag)
+        suggestionCollectionView.rx.modelSelected(String.self)
+            .subscribe(onNext: { [weak self] text in
+                guard let self = self else { return }
+                self.viewModel.fetchSearchCategoryFacts(from: text.lowercased())
+            }).disposed(by: disposeBag)
     }
 }
 
@@ -187,11 +185,11 @@ extension ChuckNorrisSearchFactsViewController: UICollectionViewDelegateFlowLayo
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = CGSize.init(width: 200, height: 25)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-
+        
         guard let str = try? viewModel.listSuggestionPublish.value()[indexPath.item] else { return CGSize() }
-
+        
         let estimatedRect = NSString.init(string: str).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 28)], context: nil)
-
+        
         return CGSize.init(width: estimatedRect.size.width, height: size.height)
     }
     
@@ -210,7 +208,7 @@ extension ChuckNorrisSearchFactsViewController {
     
     func tableViewDataSource() {
         viewModel.listLastSearhcesRelay.bind(to: pastSearchTableView.rx.items(cellIdentifier: pastSearchIdentifier, cellType: ChuckNorrisPastSearchTableViewCell.self)) { (row, item, cell) in
-                cell.fillCell(item)
+            cell.fillCell(item)
         }.disposed(by: disposeBag)
     }
 }
@@ -220,12 +218,11 @@ extension ChuckNorrisSearchFactsViewController {
 extension ChuckNorrisSearchFactsViewController: UITableViewDelegate {
     
     func didSelectRow() {
-        pastSearchTableView.rx.itemSelected.subscribe(onNext: { [weak self] (indexPath) in
-            guard let self = self,
-                let cell = self.pastSearchTableView.dequeueReusableCell(withIdentifier: self.pastSearchIdentifier, for: indexPath) as? ChuckNorrisPastSearchTableViewCell else { return }
-            let suggestion = cell.pastWordLabel.text?.lowercased() ?? ""
-            self.viewModel.fetchSearchCategoryFacts(from: suggestion)
-        }).disposed(by: disposeBag)
+        pastSearchTableView.rx.modelSelected(String.self)
+            .subscribe(onNext: { [weak self] text in
+                guard let self = self else { return }
+                self.viewModel.fetchSearchCategoryFacts(from: text.lowercased())
+            }).disposed(by: disposeBag)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

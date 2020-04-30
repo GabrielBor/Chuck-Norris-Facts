@@ -13,7 +13,7 @@
                 <outlet property="factsSearchBar" destination="W3Y-4G-WfZ" id="Yrm-3K-4Xp"/>
                 <outlet property="heightSuggestionsConstraint" destination="ewg-fl-q0F" id="apG-ro-6jC"/>
                 <outlet property="pastSearchTableView" destination="YJY-AA-c1t" id="cem-5Q-gaL"/>
-                <outlet property="suggestionCollecitonView" destination="zTo-qK-Trd" id="6CH-7Y-zHY"/>
+                <outlet property="suggestionCollectionView" destination="zTo-qK-Trd" id="oGe-Mk-8yG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

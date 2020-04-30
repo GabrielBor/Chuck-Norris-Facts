@@ -75,9 +75,14 @@ extension ChuckNorrisSearchFactsViewModel {
     }
 }
 
-// MARK: - Rule methods
+// MARK: - Methods
 
 extension ChuckNorrisSearchFactsViewModel {
+    
+    func randomSuggestions(_ suggestions: [String]) -> [String] {
+        let random = suggestions
+        return random[randomPick: 8]
+    }
     
     func fetchRuleSuggestions() {
         let suggestions = getValue(withThe: .suggetionsKey)
@@ -87,11 +92,6 @@ extension ChuckNorrisSearchFactsViewModel {
             listSuggestionPublish.onNext(randomSuggestions(suggestions))
             listSuggestionPublish.onCompleted()
         }
-    }
-    
-    func randomSuggestions(_ suggestions: [String]) -> [String] {
-        let random = suggestions
-        return random[randomPick: 8]
     }
     
     func handlerSuccess(with result: ChuckNorrisResultModel) {
