@@ -9,10 +9,14 @@
 import UIKit
 
 class HomeFactsCoordinator: BaseCoordinator {
+    
+    // MARK: - Properties required
   
     var navigation: UINavigationController?
     var viewController: UIViewController?
     var childCoordinators: [BaseCoordinator]?
+    
+    // MARK: - Initialize
 
     init() {
         childCoordinators = []
@@ -22,12 +26,16 @@ class HomeFactsCoordinator: BaseCoordinator {
         self.viewController = viewController
     }
     
+    // MARK: - Mehtod required
+    
     func stop() {
         navigation = nil
         viewController = nil
         childCoordinators = nil
     }
 }
+
+// MARK: - HomeFactsViewModelDelegate
 
 extension HomeFactsCoordinator: HomeFactsViewModelDelegate {
     func goToSearchFacts(_ viewModel: HomeFactsViewModel) {
@@ -38,6 +46,8 @@ extension HomeFactsCoordinator: HomeFactsViewModelDelegate {
         coordinator.start(using: .push(navigation), animated: true)
     }
 }
+
+// MARK: - ChuckNorrisSearchFactsCoordinatorDelegate
 
 extension HomeFactsCoordinator: ChuckNorrisSearchFactsCoordinatorDelegate {
     func backToHomeFacts(_ coordinator: ChuckNorrisSearchFactsCoordinator,

@@ -10,7 +10,11 @@ import UIKit
 
 class ChuckNorrisCategoryCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - IBOutlet property
+    
     @IBOutlet weak var categoryLabel: UILabel!
+    
+    // MARK: - Method
     
     func fillCell(_ category: String) {
         categoryLabel.text = category.uppercased()

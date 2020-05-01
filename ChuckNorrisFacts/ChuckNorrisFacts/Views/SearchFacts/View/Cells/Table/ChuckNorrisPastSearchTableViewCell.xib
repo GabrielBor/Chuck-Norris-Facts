@@ -10,32 +10,46 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChuckNorrisPastSearchTableViewCell" id="KGk-i7-Jjw" customClass="ChuckNorrisPastSearchTableViewCell" customModule="ChuckNorrisFacts" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChuckNorrisPastSearchTableViewCell" rowHeight="46" id="KGk-i7-Jjw" customClass="ChuckNorrisPastSearchTableViewCell" customModule="ChuckNorrisFacts" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLe-8V-oZh">
-                        <rect key="frame" x="16" y="8" width="288" height="28"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFt-Ag-TCg">
+                        <rect key="frame" x="0.0" y="8" width="304" height="30"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kZ-pu-Ygq">
+                                <rect key="frame" x="8" y="0.0" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4kZ-pu-Ygq" secondAttribute="trailing" constant="8" id="CEN-bS-449"/>
+                            <constraint firstAttribute="bottom" secondItem="4kZ-pu-Ygq" secondAttribute="bottom" id="Wwd-su-sDB"/>
+                            <constraint firstAttribute="height" constant="30" id="Xao-06-Tke"/>
+                            <constraint firstItem="4kZ-pu-Ygq" firstAttribute="leading" secondItem="GFt-Ag-TCg" secondAttribute="leading" constant="8" id="mca-OO-fRk"/>
+                            <constraint firstItem="4kZ-pu-Ygq" firstAttribute="top" secondItem="GFt-Ag-TCg" secondAttribute="top" id="nKl-1V-54g"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="kLe-8V-oZh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="GgA-k3-nRb"/>
-                    <constraint firstItem="kLe-8V-oZh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="LDV-nM-FQs"/>
-                    <constraint firstAttribute="trailing" secondItem="kLe-8V-oZh" secondAttribute="trailing" constant="16" id="grn-mX-Zt4"/>
-                    <constraint firstAttribute="bottom" secondItem="kLe-8V-oZh" secondAttribute="bottom" constant="8" id="tQt-tu-M1G"/>
+                    <constraint firstItem="GFt-Ag-TCg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Nc8-1I-pe1"/>
+                    <constraint firstItem="GFt-Ag-TCg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="e55-N7-gCO"/>
+                    <constraint firstAttribute="trailing" secondItem="GFt-Ag-TCg" secondAttribute="trailing" constant="16" id="jg0-M2-hmW"/>
+                    <constraint firstAttribute="bottom" secondItem="GFt-Ag-TCg" secondAttribute="bottom" constant="8" id="z2q-16-mOd"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="lastSearchLabel" destination="kLe-8V-oZh" id="tp8-Dj-Ic5"/>
+                <outlet property="containerView" destination="GFt-Ag-TCg" id="29h-bz-76n"/>
+                <outlet property="lastSearchLabel" destination="4kZ-pu-Ygq" id="b3p-dD-SdN"/>
             </connections>
-            <point key="canvasLocation" x="131.8840579710145" y="153.34821428571428"/>
+            <point key="canvasLocation" x="131.8840579710145" y="154.01785714285714"/>
         </tableViewCell>
     </objects>
 </document>

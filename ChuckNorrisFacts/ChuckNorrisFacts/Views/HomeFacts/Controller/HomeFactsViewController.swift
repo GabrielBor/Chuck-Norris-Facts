@@ -12,11 +12,11 @@ import RxCocoa
 
 class HomeFactsViewController: UIViewController {
     
-    // MARK: - IBOutlet Property
+    // MARK: - IBOutlet property
     
     @IBOutlet weak var factsTableView: UITableView!
     
-    // MARK: - Property
+    // MARK: - Properties
     
     var viewModel: HomeFactsViewModel!
     var disposeBag = DisposeBag()
@@ -54,14 +54,14 @@ class HomeFactsViewController: UIViewController {
         viewModel.clearFactsList()
     }
     
-    // MARK: - Register Cell
+    // MARK: - RegisterCell
     
     func registerCell() {
         let homeFactsCellNib = UINib(nibName: homeFactsIdentifier, bundle: nil)
         factsTableView.register(homeFactsCellNib, forCellReuseIdentifier: homeFactsIdentifier)
     }
     
-    // MARK: - TableViewSetDelegate
+    // MARK: - SetDelegate
     
     func setTableViewDelegate() {
         factsTableView.rx.setDelegate(self).disposed(by: disposeBag)
@@ -77,7 +77,7 @@ class HomeFactsViewController: UIViewController {
     
     func verifyLinkViewIfNeeded() {
         if viewModel.factsList.isEmpty {
-            linkView.delegate = self
+            linkButtonTapped()
             view.addSubview(linkView)
             view.pinnedSubView(linkView)
         } else {
@@ -109,9 +109,17 @@ class HomeFactsViewController: UIViewController {
         }
         .disposed(by: disposeBag)
     }
+    
+    func linkButtonTapped() {
+        linkView.linkButton.rx.tap
+            .bind { [weak self] in
+                guard let self = self else { return }
+                self.viewModel.goToSearchFacts()
+        }.disposed(by: disposeBag)
+    }
 }
 
-//MARK: - TableViewRxDataSource
+//MARK: - TableViewRxBindDataSource
 
 extension HomeFactsViewController  {
     
@@ -130,13 +138,5 @@ extension HomeFactsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-    }
-}
-
-// MARK: - ChuckNorrisLinkViewDelegate
-
-extension HomeFactsViewController: ChuckNorrisLinkViewDelegate {
-    func linkView(_ view: ChuckNorrisLinkView, linkAction sender: UIButton) {
-        viewModel.goToSearchFacts()
     }
 }
