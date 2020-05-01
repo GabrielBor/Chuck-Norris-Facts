@@ -55,7 +55,7 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
         viewModel.loadLastSearches()
     }
     
-    // MARK: - TableViewSetDelegate
+    // MARK: - SetDelegate
     
     func setDelegate() {
         pastSearchTableView.rx.setDelegate(self).disposed(by: disposeBag)
@@ -105,8 +105,8 @@ extension ChuckNorrisSearchFactsViewController {
     func emptySearchResultPublish() {
         viewModel.emptySearchResultPublish.asObserver().observeOn(MainScheduler.instance).subscribe { [weak self] (_) in
             guard let self = self else { return }
-            let alert = UIAlertController.createSimpleAlert(with: "Ops!",
-                                                            message: "Parece que não encontramos nada a respeito da sua pesquisa. ;(",
+            let alert = UIAlertController.createSimpleAlert(with: AlertTexts.emptyTitle.rawValue,
+                                                            message: AlertTexts.emptyMessage.rawValue,
                                                             style: .alert,
                                                             titleAction: "Ok",
                                                             actionAlert: {
@@ -132,9 +132,10 @@ extension ChuckNorrisSearchFactsViewController {
         viewModel.errorPublish.asObserver().observeOn(MainScheduler.instance).subscribe { [weak self] (error) in
             guard let self = self else { return }
             let code = error.event.element?.code ?? 0
-            let message = error.event.element?.message ?? ""
-            let alert = UIAlertController.createSimpleAlert(with: "Ops!",
-                                                            message: "\(code) - \(message)",
+            let errorMessage = error.event.element?.message ?? ""
+            let message = "\(AlertTexts.errorMessage)\(code) \(errorMessage)"
+            let alert = UIAlertController.createSimpleAlert(with: AlertTexts.errorTitle.rawValue,
+                                                            message: message,
                 style: .alert,
                 titleAction: "Ok",
                 actionAlert: {
@@ -159,9 +160,9 @@ extension ChuckNorrisSearchFactsViewController {
     }
     
     func setupAfterBindHeightCollectionView() {
-        _ = viewModel.listSuggestionPublish.subscribe {
+        viewModel.listSuggestionPublish.subscribe {
             self.heightSuggestionsCollectionView()
-        }
+        }.disposed(by: disposeBag)
     }
 }
 

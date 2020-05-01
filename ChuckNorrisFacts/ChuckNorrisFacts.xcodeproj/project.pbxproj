@@ -34,6 +34,10 @@
 		DF593D4E2447A5FD0045AEA6 /* ChuckNorrisParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D4D2447A5FD0045AEA6 /* ChuckNorrisParseError.swift */; };
 		DF593D512447D7820045AEA6 /* ChuckNorrisModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D502447D7820045AEA6 /* ChuckNorrisModel.swift */; };
 		DF593D532447E5F40045AEA6 /* ChuckNorrisResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D522447E5F40045AEA6 /* ChuckNorrisResultModel.swift */; };
+		DF896F1D245C5FDA00438010 /* ChuckNorrisRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF896F1C245C5FDA00438010 /* ChuckNorrisRepository.swift */; };
+		DF896F1F245C65F300438010 /* IdentifierRepositoryKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF896F1E245C65F300438010 /* IdentifierRepositoryKey.swift */; };
+		DF896F21245C661C00438010 /* AlertTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF896F20245C661C00438010 /* AlertTexts.swift */; };
+		DF896F27245C9D7B00438010 /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF896F26245C9D7B00438010 /* BaseRepository.swift */; };
 		DF8DB61024523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8DB60E24523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.swift */; };
 		DF8DB61124523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF8DB60F24523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.xib */; };
 		DF8DB61424523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8DB61224523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.swift */; };
@@ -52,7 +56,7 @@
 		DFE9C12124460C1400872527 /* ChuckNorrisError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12024460C1400872527 /* ChuckNorrisError.swift */; };
 		DFE9C12324460E8700872527 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12224460E8700872527 /* NetworkError.swift */; };
 		DFE9C12524463C2E00872527 /* ChuckNorrisGenericError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12424463C2E00872527 /* ChuckNorrisGenericError.swift */; };
-		DFF72928245477F200383701 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF72927245477F200383701 /* Identifiers.swift */; };
+		DFF72928245477F200383701 /* IdentifierCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF72927245477F200383701 /* IdentifierCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +120,10 @@
 		DF593D522447E5F40045AEA6 /* ChuckNorrisResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisResultModel.swift; sourceTree = "<group>"; };
 		DF6244162451C34800FB2BDD /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		DF62441A2451C5A400FB2BDD /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		DF896F1C245C5FDA00438010 /* ChuckNorrisRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisRepository.swift; sourceTree = "<group>"; };
+		DF896F1E245C65F300438010 /* IdentifierRepositoryKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierRepositoryKey.swift; sourceTree = "<group>"; };
+		DF896F20245C661C00438010 /* AlertTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTexts.swift; sourceTree = "<group>"; };
+		DF896F26245C9D7B00438010 /* BaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepository.swift; sourceTree = "<group>"; };
 		DF8DB60E24523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		DF8DB60F24523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChuckNorrisCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		DF8DB61224523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisPastSearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -128,7 +136,7 @@
 		DFE9C12024460C1400872527 /* ChuckNorrisError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisError.swift; sourceTree = "<group>"; };
 		DFE9C12224460E8700872527 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		DFE9C12424463C2E00872527 /* ChuckNorrisGenericError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisGenericError.swift; sourceTree = "<group>"; };
-		DFF72927245477F200383701 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
+		DFF72927245477F200383701 /* IdentifierCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,7 +203,8 @@
 				DF40FDF6244494CF00CBD522 /* Application */,
 				DF40FE0A2444967300CBD522 /* Base+Extensions */,
 				DF40FDFB244495F100CBD522 /* Images */,
-				DFF729262454778400383701 /* Enums */,
+				DFF729262454778400383701 /* Comon Enums */,
+				DF896F1B245C5FB500438010 /* Respository */,
 				DF40FE0F244498E900CBD522 /* Launch */,
 				DF593D4F2447D4450045AEA6 /* Models */,
 				DF40FDFA244495E100CBD522 /* Network */,
@@ -256,10 +265,10 @@
 		DF40FE002444965B00CBD522 /* HomeFacts */ = {
 			isa = PBXGroup;
 			children = (
-				DFCB02702448EBFF00B995E0 /* Coordinator */,
-				DF40FE012444965B00CBD522 /* ViewModel */,
 				DF40FE032444965B00CBD522 /* Controller */,
+				DFCB02702448EBFF00B995E0 /* Coordinator */,
 				DF40FE052444965B00CBD522 /* View */,
+				DF40FE012444965B00CBD522 /* ViewModel */,
 			);
 			path = HomeFacts;
 			sourceTree = "<group>";
@@ -293,17 +302,18 @@
 			isa = PBXGroup;
 			children = (
 				DF90F8B62453E22C0067512F /* Extensions */,
-				DF40FE0C2444967300CBD522 /* Coordinator */,
+				DF40FE0C2444967300CBD522 /* Base */,
 			);
 			path = "Base+Extensions";
 			sourceTree = "<group>";
 		};
-		DF40FE0C2444967300CBD522 /* Coordinator */ = {
+		DF40FE0C2444967300CBD522 /* Base */ = {
 			isa = PBXGroup;
 			children = (
 				DF40FE0D2444967300CBD522 /* BaseCoordinator.swift */,
+				DF896F26245C9D7B00438010 /* BaseRepository.swift */,
 			);
-			path = Coordinator;
+			path = Base;
 			sourceTree = "<group>";
 		};
 		DF40FE0F244498E900CBD522 /* Launch */ = {
@@ -339,6 +349,14 @@
 				DF6244162451C34800FB2BDD /* RxSwift.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DF896F1B245C5FB500438010 /* Respository */ = {
+			isa = PBXGroup;
+			children = (
+				DF896F1C245C5FDA00438010 /* ChuckNorrisRepository.swift */,
+			);
+			path = Respository;
 			sourceTree = "<group>";
 		};
 		DF8DB60B245233C6005A4ECB /* Cells */ = {
@@ -382,8 +400,8 @@
 		DFCB026B2448EA8A00B995E0 /* SearchFacts */ = {
 			isa = PBXGroup;
 			children = (
-				DFCB026F2448EBF700B995E0 /* Coordinator */,
 				DFCB026E2448EBEC00B995E0 /* Controller */,
+				DFCB026F2448EBF700B995E0 /* Coordinator */,
 				DFCB026D2448EBD400B995E0 /* View */,
 				DFCB026C2448EBC400B995E0 /* ViewModel */,
 			);
@@ -509,12 +527,14 @@
 			path = Generic;
 			sourceTree = "<group>";
 		};
-		DFF729262454778400383701 /* Enums */ = {
+		DFF729262454778400383701 /* Comon Enums */ = {
 			isa = PBXGroup;
 			children = (
-				DFF72927245477F200383701 /* Identifiers.swift */,
+				DFF72927245477F200383701 /* IdentifierCell.swift */,
+				DF896F1E245C65F300438010 /* IdentifierRepositoryKey.swift */,
+				DF896F20245C661C00438010 /* AlertTexts.swift */,
 			);
-			path = Enums;
+			path = "Comon Enums";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -650,13 +670,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF40FE1A2445391C00CBD522 /* ChuckNorrisFetch.swift in Sources */,
+				DF896F1D245C5FDA00438010 /* ChuckNorrisRepository.swift in Sources */,
 				DF0B5FBB244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.swift in Sources */,
 				DF40FE132444A8A600CBD522 /* ChuckNorrisServices.swift in Sources */,
 				DF8DB61424523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.swift in Sources */,
 				DF55F96E245724F80083BF78 /* LoadView.swift in Sources */,
 				DF40FE072444965B00CBD522 /* HomeFactsViewModel.swift in Sources */,
 				DF593D512447D7820045AEA6 /* ChuckNorrisModel.swift in Sources */,
-				DFF72928245477F200383701 /* Identifiers.swift in Sources */,
+				DF896F27245C9D7B00438010 /* BaseRepository.swift in Sources */,
+				DFF72928245477F200383701 /* IdentifierCell.swift in Sources */,
 				DF012862244FB5AE00A0508B /* UIView+Extension.swift in Sources */,
 				DF8DB61024523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.swift in Sources */,
 				DF40FE1724452DF800CBD522 /* ChuckNorrisRequest.swift in Sources */,
@@ -665,10 +687,12 @@
 				DF0CA8A9244B85190038BFC0 /* ChuckNorrisSearchFactsCoordinator.swift in Sources */,
 				DFE9C12524463C2E00872527 /* ChuckNorrisGenericError.swift in Sources */,
 				DF40FE082444965B00CBD522 /* HomeFactsViewController.swift in Sources */,
+				DF896F21245C661C00438010 /* AlertTexts.swift in Sources */,
 				DF593D532447E5F40045AEA6 /* ChuckNorrisResultModel.swift in Sources */,
 				DF35899E2445EB9200A4E36A /* ChuckNorrisParse.swift in Sources */,
 				DF0FA7C7244E8760006C9170 /* HomeFactsCoordinator.swift in Sources */,
 				DF40FE0E2444967300CBD522 /* BaseCoordinator.swift in Sources */,
+				DF896F1F245C65F300438010 /* IdentifierRepositoryKey.swift in Sources */,
 				DF593D4E2447A5FD0045AEA6 /* ChuckNorrisParseError.swift in Sources */,
 				DF98DB692453FB9800D2E47B /* Array+Exntesion.swift in Sources */,
 				DF40FDD5244493AE00CBD522 /* AppDelegate.swift in Sources */,

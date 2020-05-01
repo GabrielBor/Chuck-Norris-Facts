@@ -27,7 +27,9 @@ class ChuckNorrisSearchFactsViewModel {
     var searchCategoryPublish: PublishSubject<ChuckNorrisResultModel> = PublishSubject()
     var listLastSearhcesRelay: BehaviorRelay<[String]> = BehaviorRelay(value: [])
     
-    var listSearcheds = [String]()
+    var repository = ChuckNorrisRespository()
+    var lastSearches = [String]()
+    let randomNumber = 8
     var service: ChuckNorrisServices!
     weak var coordinatorDelegate: ChuckNorrisSearchFactsCoordinatorDelgate?
     
@@ -79,13 +81,15 @@ extension ChuckNorrisSearchFactsViewModel {
 
 extension ChuckNorrisSearchFactsViewModel {
     
+    // MARK: - Suggestions methods
+    
     func randomSuggestions(_ suggestions: [String]) -> [String] {
         let random = suggestions
-        return random[randomPick: 8]
+        return random[randomPick: randomNumber]
     }
     
     func fetchRuleSuggestions() {
-        let suggestions = getValue(withThe: .suggetionsKey)
+        let suggestions = repository.getAll(.suggetionsKey)
         if suggestions.isEmpty {
             fetchListSuggestionFacts()
         } else {
@@ -103,8 +107,8 @@ extension ChuckNorrisSearchFactsViewModel {
     }
     
     func handlerSuccess(with suggestions: [String]) {
-        saveValue(withThe: .suggetionsKey, withValue: suggestions)
-        let suggestions = getValue(withThe: .suggetionsKey)
+        repository.insert(.suggetionsKey, list: suggestions)
+        let suggestions = repository.getAll(.suggetionsKey)
         listSuggestionPublish.onNext(randomSuggestions(suggestions))
         listSuggestionPublish.onCompleted()
     }
@@ -113,42 +117,19 @@ extension ChuckNorrisSearchFactsViewModel {
         errorPublish.onNext(error)
     }
     
+    // MARK: - SaveLastSearch methods
+    
     func saveLastSearch(_ search: String) {
-        if contains(key: .lastSearchesKey, search: search) {
+        if repository.contains(.lastSearchesKey, value: search) {
             loadLastSearches()
         } else {
-            insertValue(with: search)
+            repository.insert(.lastSearchesKey, value: search)
             loadLastSearches()
         }
     }
 
     func loadLastSearches() {
-        let lastSearches = getValue(withThe: .lastSearchesKey)
+        let lastSearches = repository.getAll(.lastSearchesKey)
         listLastSearhcesRelay.accept(lastSearches)
     }
 }
-
-// MARK: - UserDefaults methods
-
-extension ChuckNorrisSearchFactsViewModel {
-    
-    func contains(key: IdentifierKey, search: String) -> Bool {
-        guard let list = UserDefaults.standard.object(forKey: key.rawValue) as? [String] else { return false }
-        return list.contains(search)
-    }
-    
-    func getValue(withThe key: IdentifierKey) -> [String] {
-        guard let value = UserDefaults.standard.array(forKey: key.rawValue) as? [String] else { return [] }
-        return value
-    }
-    
-    func insertValue(with value: String) {
-        listSearcheds.append(value)
-        saveValue(withThe: .lastSearchesKey, withValue: listSearcheds)
-    }
-    
-    func saveValue(withThe key: IdentifierKey, withValue value: [String]?) {
-        UserDefaults.standard.set(value, forKey: key.rawValue)
-    }
-}
-

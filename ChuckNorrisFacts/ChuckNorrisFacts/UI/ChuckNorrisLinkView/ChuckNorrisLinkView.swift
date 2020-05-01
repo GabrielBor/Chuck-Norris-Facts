@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol ChuckNorrisLinkViewDelegate: AnyObject {
-    func linkView(_ view: ChuckNorrisLinkView, linkAction sender: UIButton)
-}
-
 class ChuckNorrisLinkView: UIView {
     
     // MARK: - Properties IBOutlet
@@ -21,11 +17,7 @@ class ChuckNorrisLinkView: UIView {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var linkButton: UIButton!
     
-    //MARK: - Delegate
-    
-    weak var delegate: ChuckNorrisLinkViewDelegate?
-    
-    // MARK: Initialized
+    // MARK: Initialize
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,11 +34,5 @@ class ChuckNorrisLinkView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-    }
-    
-    // MARK: Action
-    
-    @IBAction func linkButtonTapped(_ sender: UIButton) {
-        delegate?.linkView(self, linkAction: sender)
     }
 }

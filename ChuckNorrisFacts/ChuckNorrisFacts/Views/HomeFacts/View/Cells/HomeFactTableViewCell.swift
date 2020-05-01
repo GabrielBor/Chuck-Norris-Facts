@@ -12,7 +12,7 @@ import RxCocoa
 
 class HomeFactTableViewCell: UITableViewCell {
     
-    // MARK: - IBOutlet Properties
+    // MARK: - IBOutlet properties
     
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
@@ -40,16 +40,11 @@ class HomeFactTableViewCell: UITableViewCell {
     }
     
     func setupCategoryLabelCornerRadius() {
-        categoryLabel.layer.cornerRadius = 10
-        categoryLabel.layer.masksToBounds = true
+        categoryLabel.cornerRadius(10, maskToBounds: true)
     }
     
     func setupFactViewShadow() {
-        factView.layer.cornerRadius = 10
-        factView.layer.masksToBounds = false
-        factView.layer.shadowOffset = CGSize(width: 0, height: 0)
-        factView.layer.shadowColor = UIColor.black.cgColor
-        factView.layer.shadowOpacity = 0.23
-        factView.layer.shadowRadius = 4
+        factView.cornerRadius(10, maskToBounds: false)
+        factView.shadowAroundView(CGSize(width: 0, height: 0), color: .black, opacity: 0.23, shadowRadius: 4)
     }
 }

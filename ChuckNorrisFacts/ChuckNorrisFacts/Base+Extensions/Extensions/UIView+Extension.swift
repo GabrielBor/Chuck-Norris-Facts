@@ -17,4 +17,16 @@ extension UIView {
         view.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         view.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
+    
+    func cornerRadius(_ cornerRadius: CGFloat, maskToBounds: Bool) {
+        self.layer.cornerRadius = cornerRadius
+        self.layer.masksToBounds = maskToBounds
+    }
+    
+    func shadowAroundView(_ size: CGSize, color: UIColor, opacity: Float, shadowRadius: CGFloat) {
+        self.layer.shadowOffset = size
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowOpacity = opacity
+        self.layer.shadowRadius = shadowRadius
+    }
 }

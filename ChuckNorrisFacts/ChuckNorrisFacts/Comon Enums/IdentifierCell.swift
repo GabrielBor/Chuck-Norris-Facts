@@ -1,5 +1,5 @@
 //
-//  Identifiers.swift
+//  IdentifierCell.swift
 //  ChuckNorrisFacts
 //
 //  Created by Gabriel Borges on 25/04/20.
@@ -13,9 +13,4 @@ enum IdentifierCell: String {
     case suggestionCollectionCell = "ChuckNorrisCategoryCollectionViewCell"
     case suggestionTableViewCell = "SugggetionsTableViewCell"
     case homeFactsTableViewCell = "HomeFactTableViewCell"
-}
-
-enum IdentifierKey: String {
-    case suggetionsKey = "suggestions"
-    case lastSearchesKey = "lastSearches"
 }
