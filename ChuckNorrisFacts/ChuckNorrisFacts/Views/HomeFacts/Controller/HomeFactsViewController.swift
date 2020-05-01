@@ -71,9 +71,8 @@ class HomeFactsViewController: UIViewController {
     
     func setupNavigationBar() {
         title = "Chuck Norris"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchTapped))
-        navigationItem.searchController = !viewModel.factsList.isEmpty ? createSearchController() : nil
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
+        searchTapped()
     }
     
     func verifyLinkViewIfNeeded() {
@@ -86,16 +85,29 @@ class HomeFactsViewController: UIViewController {
         }
     }
     
-    func createSearchController() -> UISearchController {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        return searchController
+    func share(_ fact: String) {
+        let activityViewController = UIActivityViewController(activityItems: [fact], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = view
+        present(activityViewController, animated: true, completion: nil)
     }
     
-    // MARK: - Action
+    // MARK: - Actions
     
-    @objc func searchTapped() {
-        viewModel.goToSearchFacts()
+    func searchTapped() {
+        navigationItem.rightBarButtonItem?.rx.tap
+            .bind { [weak self] in
+                guard let self = self else { return }
+                self.viewModel.goToSearchFacts()
+        }.disposed(by: disposeBag)
+    }
+    
+    func sharedFactTapped(from cell: HomeFactTableViewCell, urlString: String) {
+        cell.shareButton.rx.tap
+        .bind { [weak self] in
+            guard let self = self else { return }
+            self.share(urlString)
+        }
+        .disposed(by: disposeBag)
     }
 }
 
@@ -105,9 +117,9 @@ extension HomeFactsViewController  {
     
     func tableViewDataSource() {
         viewModel.factsPublish.bind(to: factsTableView.rx.items(cellIdentifier: homeFactsIdentifier, cellType: HomeFactTableViewCell.self)) { (row, item, cell) in
-            cell.delegate = self
             cell.fillCell(item.description, category: self.viewModel.setUncategorizedIfNeeded(item.categories.first))
             cell.handlerFontDescriptionLabel(self.viewModel.sizeFont(for: item.description))
+            self.sharedFactTapped(from: cell, urlString: item.url)
         }.disposed(by: disposeBag)
     }
 }
@@ -126,19 +138,5 @@ extension HomeFactsViewController: UITableViewDelegate {
 extension HomeFactsViewController: ChuckNorrisLinkViewDelegate {
     func linkView(_ view: ChuckNorrisLinkView, linkAction sender: UIButton) {
         viewModel.goToSearchFacts()
-    }
-}
-
-// MARK: - HomeFactTableViewCellDelegate
-
-extension HomeFactsViewController: HomeFactTableViewCellDelegate {
-    func homeFactTableViewCell(_ cell: UITableViewCell, shareButtonTapped button: UIButton) {
-        // TODO: fazer a parte de compartilhamento
-    }
-}
-
-extension HomeFactsViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        
     }
 }

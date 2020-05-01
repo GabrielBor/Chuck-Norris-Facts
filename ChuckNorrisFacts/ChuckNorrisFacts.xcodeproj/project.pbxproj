@@ -30,10 +30,10 @@
 		DF40FE132444A8A600CBD522 /* ChuckNorrisServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FE122444A8A600CBD522 /* ChuckNorrisServices.swift */; };
 		DF40FE1724452DF800CBD522 /* ChuckNorrisRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FE1624452DF800CBD522 /* ChuckNorrisRequest.swift */; };
 		DF40FE1A2445391C00CBD522 /* ChuckNorrisFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FE192445391C00CBD522 /* ChuckNorrisFetch.swift */; };
+		DF55F96E245724F80083BF78 /* LoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF55F96D245724F80083BF78 /* LoadView.swift */; };
 		DF593D4E2447A5FD0045AEA6 /* ChuckNorrisParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D4D2447A5FD0045AEA6 /* ChuckNorrisParseError.swift */; };
 		DF593D512447D7820045AEA6 /* ChuckNorrisModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D502447D7820045AEA6 /* ChuckNorrisModel.swift */; };
 		DF593D532447E5F40045AEA6 /* ChuckNorrisResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D522447E5F40045AEA6 /* ChuckNorrisResultModel.swift */; };
-		DF7D85F62454C1E900B3679D /* ChuckNorrisStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7D85F52454C1E900B3679D /* ChuckNorrisStorage.swift */; };
 		DF8DB61024523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8DB60E24523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.swift */; };
 		DF8DB61124523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF8DB60F24523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.xib */; };
 		DF8DB61424523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8DB61224523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.swift */; };
@@ -48,12 +48,11 @@
 		DF98DB692453FB9800D2E47B /* Array+Exntesion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF98DB682453FB9800D2E47B /* Array+Exntesion.swift */; };
 		DFCB02722448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCB02712448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift */; };
 		DFCC4FC0244DF2BC002E9A2B /* ChuckNorrisLinkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFCC4FBF244DF2BC002E9A2B /* ChuckNorrisLinkView.xib */; };
+		DFDD823624568209009A3623 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDD823524568209009A3623 /* UIAlertController+Extension.swift */; };
 		DFE9C12124460C1400872527 /* ChuckNorrisError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12024460C1400872527 /* ChuckNorrisError.swift */; };
 		DFE9C12324460E8700872527 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12224460E8700872527 /* NetworkError.swift */; };
 		DFE9C12524463C2E00872527 /* ChuckNorrisGenericError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12424463C2E00872527 /* ChuckNorrisGenericError.swift */; };
 		DFF72928245477F200383701 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF72927245477F200383701 /* Identifiers.swift */; };
-		DFF7292C2454B65700383701 /* ChuckNorrisCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DFF7292A2454B65700383701 /* ChuckNorrisCoreData.xcdatamodeld */; };
-		DFF7292F2454BAB200383701 /* Suggestions+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF7292D2454BAB200383701 /* Suggestions+CoreDataClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,12 +110,12 @@
 		DF40FE122444A8A600CBD522 /* ChuckNorrisServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisServices.swift; sourceTree = "<group>"; };
 		DF40FE1624452DF800CBD522 /* ChuckNorrisRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisRequest.swift; sourceTree = "<group>"; };
 		DF40FE192445391C00CBD522 /* ChuckNorrisFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisFetch.swift; sourceTree = "<group>"; };
+		DF55F96D245724F80083BF78 /* LoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadView.swift; sourceTree = "<group>"; };
 		DF593D4D2447A5FD0045AEA6 /* ChuckNorrisParseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisParseError.swift; sourceTree = "<group>"; };
 		DF593D502447D7820045AEA6 /* ChuckNorrisModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisModel.swift; sourceTree = "<group>"; };
 		DF593D522447E5F40045AEA6 /* ChuckNorrisResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisResultModel.swift; sourceTree = "<group>"; };
 		DF6244162451C34800FB2BDD /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		DF62441A2451C5A400FB2BDD /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
-		DF7D85F52454C1E900B3679D /* ChuckNorrisStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisStorage.swift; sourceTree = "<group>"; };
 		DF8DB60E24523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		DF8DB60F24523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChuckNorrisCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		DF8DB61224523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisPastSearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -125,12 +124,11 @@
 		DF98DB682453FB9800D2E47B /* Array+Exntesion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Exntesion.swift"; sourceTree = "<group>"; };
 		DFCB02712448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisSearchFactsViewModel.swift; sourceTree = "<group>"; };
 		DFCC4FBF244DF2BC002E9A2B /* ChuckNorrisLinkView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChuckNorrisLinkView.xib; sourceTree = "<group>"; };
+		DFDD823524568209009A3623 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		DFE9C12024460C1400872527 /* ChuckNorrisError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisError.swift; sourceTree = "<group>"; };
 		DFE9C12224460E8700872527 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		DFE9C12424463C2E00872527 /* ChuckNorrisGenericError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisGenericError.swift; sourceTree = "<group>"; };
 		DFF72927245477F200383701 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
-		DFF7292B2454B65700383701 /* ChuckNorrisCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ChuckNorrisCoreData.xcdatamodel; sourceTree = "<group>"; };
-		DFF7292D2454BAB200383701 /* Suggestions+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Suggestions+CoreDataClass.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,7 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				DF40FDE2244493AF00CBD522 /* Info.plist */,
-				DFF729292454B52E00383701 /* CoreData */,
 				DF40FDF6244494CF00CBD522 /* Application */,
 				DF40FE0A2444967300CBD522 /* Base+Extensions */,
 				DF40FDFB244495F100CBD522 /* Images */,
@@ -317,6 +314,14 @@
 			path = Launch;
 			sourceTree = "<group>";
 		};
+		DF55F96C245724E10083BF78 /* LoadView */ = {
+			isa = PBXGroup;
+			children = (
+				DF55F96D245724F80083BF78 /* LoadView.swift */,
+			);
+			path = LoadView;
+			sourceTree = "<group>";
+		};
 		DF593D4F2447D4450045AEA6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -369,6 +374,7 @@
 				DF012861244FB5AE00A0508B /* UIView+Extension.swift */,
 				DF90F8B42453E1F20067512F /* UICollectionViewLayoutAttributes+Extension.swift */,
 				DF98DB682453FB9800D2E47B /* Array+Exntesion.swift */,
+				DFDD823524568209009A3623 /* UIAlertController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -428,6 +434,7 @@
 		DFCC4FBB244DF20F002E9A2B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				DF55F96C245724E10083BF78 /* LoadView */,
 				DF171EB424533C7D007B85DC /* SuggestionCollectionViewFlowLayout */,
 				DFCC4FBC244DF218002E9A2B /* ChuckNorrisLinkView */,
 			);
@@ -508,16 +515,6 @@
 				DFF72927245477F200383701 /* Identifiers.swift */,
 			);
 			path = Enums;
-			sourceTree = "<group>";
-		};
-		DFF729292454B52E00383701 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				DFF7292D2454BAB200383701 /* Suggestions+CoreDataClass.swift */,
-				DFF7292A2454B65700383701 /* ChuckNorrisCoreData.xcdatamodeld */,
-				DF7D85F52454C1E900B3679D /* ChuckNorrisStorage.swift */,
-			);
-			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -656,6 +653,7 @@
 				DF0B5FBB244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.swift in Sources */,
 				DF40FE132444A8A600CBD522 /* ChuckNorrisServices.swift in Sources */,
 				DF8DB61424523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.swift in Sources */,
+				DF55F96E245724F80083BF78 /* LoadView.swift in Sources */,
 				DF40FE072444965B00CBD522 /* HomeFactsViewModel.swift in Sources */,
 				DF593D512447D7820045AEA6 /* ChuckNorrisModel.swift in Sources */,
 				DFF72928245477F200383701 /* Identifiers.swift in Sources */,
@@ -666,7 +664,6 @@
 				DF0FA7C4244E603C006C9170 /* HomeFactTableViewCell.swift in Sources */,
 				DF0CA8A9244B85190038BFC0 /* ChuckNorrisSearchFactsCoordinator.swift in Sources */,
 				DFE9C12524463C2E00872527 /* ChuckNorrisGenericError.swift in Sources */,
-				DFF7292C2454B65700383701 /* ChuckNorrisCoreData.xcdatamodeld in Sources */,
 				DF40FE082444965B00CBD522 /* HomeFactsViewController.swift in Sources */,
 				DF593D532447E5F40045AEA6 /* ChuckNorrisResultModel.swift in Sources */,
 				DF35899E2445EB9200A4E36A /* ChuckNorrisParse.swift in Sources */,
@@ -674,11 +671,10 @@
 				DF40FE0E2444967300CBD522 /* BaseCoordinator.swift in Sources */,
 				DF593D4E2447A5FD0045AEA6 /* ChuckNorrisParseError.swift in Sources */,
 				DF98DB692453FB9800D2E47B /* Array+Exntesion.swift in Sources */,
-				DFF7292F2454BAB200383701 /* Suggestions+CoreDataClass.swift in Sources */,
 				DF40FDD5244493AE00CBD522 /* AppDelegate.swift in Sources */,
+				DFDD823624568209009A3623 /* UIAlertController+Extension.swift in Sources */,
 				DFE9C12324460E8700872527 /* NetworkError.swift in Sources */,
 				DFE9C12124460C1400872527 /* ChuckNorrisError.swift in Sources */,
-				DF7D85F62454C1E900B3679D /* ChuckNorrisStorage.swift in Sources */,
 				DFCB02722448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift in Sources */,
 				DF90F8B52453E1F20067512F /* UICollectionViewLayoutAttributes+Extension.swift in Sources */,
 				DF0FA7C0244E45E7006C9170 /* ChuckNorrisLinkView.swift in Sources */,
@@ -950,19 +946,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		DFF7292A2454B65700383701 /* ChuckNorrisCoreData.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				DFF7292B2454B65700383701 /* ChuckNorrisCoreData.xcdatamodel */,
-			);
-			currentVersion = DFF7292B2454B65700383701 /* ChuckNorrisCoreData.xcdatamodel */;
-			path = ChuckNorrisCoreData.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = DF40FDC9244493AE00CBD522 /* Project object */;
 }

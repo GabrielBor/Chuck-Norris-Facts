@@ -7,12 +7,8 @@
 //
 
 import UIKit
-
-// MARK: - Action Delegate
-
-protocol HomeFactTableViewCellDelegate: AnyObject {
-    func homeFactTableViewCell(_ cell: UITableViewCell,  shareButtonTapped button: UIButton)
-}
+import RxSwift
+import RxCocoa
 
 class HomeFactTableViewCell: UITableViewCell {
     
@@ -22,10 +18,6 @@ class HomeFactTableViewCell: UITableViewCell {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var factView: UIView!
-    
-    // MARK: - Delegate
-    
-    weak var delegate: HomeFactTableViewCellDelegate?
     
     // MARK: - LifeCycle
     
@@ -59,11 +51,5 @@ class HomeFactTableViewCell: UITableViewCell {
         factView.layer.shadowColor = UIColor.black.cgColor
         factView.layer.shadowOpacity = 0.23
         factView.layer.shadowRadius = 4
-    }
-    
-    // MARK: - Action
-    
-    @IBAction func shareButtonTapped(_ sender: UIButton) {
-        delegate?.homeFactTableViewCell(self, shareButtonTapped: sender)
     }
 }

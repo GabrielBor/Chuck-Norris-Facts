@@ -26,7 +26,6 @@ class HomeFactsViewModel {
     func updateFactsList(with newFactsList: [ChuckNorrisModel]) {
         factsList = newFactsList
         factsPublish.onNext(factsList)
-        factsPublish.onCompleted()
     }
 
     func sizeFont(for fact: String) -> CGFloat {
