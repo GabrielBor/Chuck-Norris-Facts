@@ -16,7 +16,8 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
     
     @IBOutlet weak var heightSuggestionsConstraint: NSLayoutConstraint!
     @IBOutlet weak var suggestionCollectionView: UICollectionView!
-    @IBOutlet weak var pastSearchTableView: UITableView!
+    @IBOutlet weak var lastSearchesLabel: UILabel!
+    @IBOutlet weak var lastSearchTableView: UITableView!
     @IBOutlet weak var factsSearchBar: UISearchBar!
     
     // MARK: - Propeties
@@ -46,6 +47,7 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
         super.viewDidLoad()
         setupNavigationBar()
         registerCells()
+        searchBarSearchButtonClicked()
         loadingPublish()
         bindCollectionViewSuggestions()
         bindTableViewPastSearch()
@@ -53,12 +55,13 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
         setDelegate()
         viewModel.fetchRuleSuggestions()
         viewModel.loadLastSearches()
+        showLastSearchesList()
     }
     
     // MARK: - SetDelegate
     
     func setDelegate() {
-        pastSearchTableView.rx.setDelegate(self).disposed(by: disposeBag)
+        lastSearchTableView.rx.setDelegate(self).disposed(by: disposeBag)
         suggestionCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
     }
     
@@ -68,12 +71,12 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
         let suggestionNib = UINib(nibName: suggestionIdentifier, bundle: nil)
         let pastSearchNib = UINib(nibName: pastSearchIdentifier, bundle: nil)
         suggestionCollectionView.register(suggestionNib, forCellWithReuseIdentifier: suggestionIdentifier)
-        pastSearchTableView.register(pastSearchNib, forCellReuseIdentifier: pastSearchIdentifier)
+        lastSearchTableView.register(pastSearchNib, forCellReuseIdentifier: pastSearchIdentifier)
     }
     
     func setupNavigationBar() {
-        title = "Pesquisa"
-        self.navigationItem.setHidesBackButton(true, animated: false)
+        title = "Search"
+        navigationItem.setHidesBackButton(true, animated: false)
     }
     
     func heightSuggestionsCollectionView() {
@@ -82,7 +85,15 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
         view.layoutIfNeeded()
     }
     
-    // MARK: - BindCollectionSuggestions
+    func showLastSearchesList() {
+        viewModel.listLastSearhcesRelay.asObservable().observeOn(MainScheduler.instance).subscribe { (event) in
+            let isHidden = event.element?.isEmpty ?? true
+            self.lastSearchesLabel.isHidden = isHidden
+            self.lastSearchTableView.isHidden = isHidden
+        }.disposed(by: disposeBag)
+    }
+    
+    // MARK: - BindCollectionViewSuggestions
     
     func bindCollectionViewSuggestions() {
         collectionViewDataSource()
@@ -133,7 +144,7 @@ extension ChuckNorrisSearchFactsViewController {
             guard let self = self else { return }
             let code = error.event.element?.code ?? 0
             let errorMessage = error.event.element?.message ?? ""
-            let message = "\(AlertTexts.errorMessage)\(code) \(errorMessage)"
+            let message = "\(AlertTexts.errorMessage.rawValue)\(code) \(errorMessage)"
             let alert = UIAlertController.createSimpleAlert(with: AlertTexts.errorTitle.rawValue,
                                                             message: message,
                 style: .alert,
@@ -166,7 +177,7 @@ extension ChuckNorrisSearchFactsViewController {
     }
 }
 
-// MARK: - UICollectionDelegate
+// MARK: - UICollectionViewDelegate
 
 extension ChuckNorrisSearchFactsViewController {
     
@@ -208,7 +219,7 @@ extension ChuckNorrisSearchFactsViewController: UICollectionViewDelegateFlowLayo
 extension ChuckNorrisSearchFactsViewController {
     
     func tableViewDataSource() {
-        viewModel.listLastSearhcesRelay.bind(to: pastSearchTableView.rx.items(cellIdentifier: pastSearchIdentifier, cellType: ChuckNorrisPastSearchTableViewCell.self)) { (row, item, cell) in
+        viewModel.listLastSearhcesRelay.bind(to: lastSearchTableView.rx.items(cellIdentifier: pastSearchIdentifier, cellType: ChuckNorrisPastSearchTableViewCell.self)) { (row, item, cell) in
             cell.fillCell(item)
         }.disposed(by: disposeBag)
     }
@@ -219,7 +230,7 @@ extension ChuckNorrisSearchFactsViewController {
 extension ChuckNorrisSearchFactsViewController: UITableViewDelegate {
     
     func didSelectRow() {
-        pastSearchTableView.rx.modelSelected(String.self)
+        lastSearchTableView.rx.modelSelected(String.self)
             .subscribe(onNext: { [weak self] text in
                 guard let self = self else { return }
                 self.viewModel.fetchSearchCategoryFacts(from: text.lowercased())
@@ -233,11 +244,27 @@ extension ChuckNorrisSearchFactsViewController: UITableViewDelegate {
 
 // MARK: - UISearchBarDelegate
 
-extension ChuckNorrisSearchFactsViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        view.endEditing(true)
-        guard let text = searchBar.text else { return }
-        viewModel.saveLastSearch(text)
-        viewModel.fetchSearchCategoryFacts(from: text.lowercased())
+extension ChuckNorrisSearchFactsViewController {
+    
+    func searchBarSearchButtonClicked() {
+        factsSearchBar.rx
+            .searchButtonClicked
+            .asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribe { [weak self] (event) in
+                guard let self = self else { return }
+                self.view.endEditing(true)
+                guard let text = self.factsSearchBar.text, !text.isEmpty else {
+                    let alert = UIAlertController.createSimpleAlert(with: AlertTexts.emptyTitle.rawValue,
+                                                                    message: AlertTexts.notEmptyMessage.rawValue,
+                                                                    style: .alert,
+                                                                    titleAction: "Ok",
+                                                                    actionAlert: nil)
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }
+                self.viewModel.saveLastSearch(text)
+                self.viewModel.fetchSearchCategoryFacts(from: text.lowercased())
+        }.disposed(by: disposeBag)
     }
 }

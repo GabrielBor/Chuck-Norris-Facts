@@ -13,7 +13,7 @@ class ChuckNorrisRespository: BaseRepository {
     // MARK: Priperties
    
     private var userDefaults = UserDefaults.standard
-    private var listSearches = [String]()
+    private var activeLastSearches = [String]()
     
     // MARK: - Methods
     
@@ -23,8 +23,13 @@ class ChuckNorrisRespository: BaseRepository {
     }
     
     func insert(_ key: IdentifierRepositoryKey, value: String) {
-        listSearches.append(value)
-        userDefaults.set(listSearches, forKey: key.rawValue)
+        guard var list = userDefaults.array(forKey: key.rawValue) as? [String] else {
+            activeLastSearches.append(value)
+            userDefaults.set(activeLastSearches, forKey: key.rawValue)
+            return
+        }
+        list.append(value)
+        userDefaults.set(list, forKey: key.rawValue)
     }
     
     func insert(_ key: IdentifierRepositoryKey, list: [String]?) {

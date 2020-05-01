@@ -12,7 +12,8 @@
             <connections>
                 <outlet property="factsSearchBar" destination="W3Y-4G-WfZ" id="Yrm-3K-4Xp"/>
                 <outlet property="heightSuggestionsConstraint" destination="ewg-fl-q0F" id="apG-ro-6jC"/>
-                <outlet property="pastSearchTableView" destination="YJY-AA-c1t" id="cem-5Q-gaL"/>
+                <outlet property="lastSearchTableView" destination="YJY-AA-c1t" id="m7Z-4R-M48"/>
+                <outlet property="lastSearchesLabel" destination="pC7-ST-apS" id="VDf-7F-XUQ"/>
                 <outlet property="suggestionCollectionView" destination="zTo-qK-Trd" id="oGe-Mk-8yG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,7 +23,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sugestões de busca" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doS-J1-MEu">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggestions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doS-J1-MEu">
                     <rect key="frame" x="16" y="72" width="288" height="22"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                     <nil key="textColor"/>
@@ -36,7 +37,7 @@
                     </constraints>
                     <collectionViewLayout key="collectionViewLayout" id="3Y1-R5-wbP" customClass="SuggestionCollectionViewFlowLayout" customModule="ChuckNorrisFacts" customModuleProvider="target"/>
                 </collectionView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Últimas pesquisas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pC7-ST-apS">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Past searches" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pC7-ST-apS">
                     <rect key="frame" x="16" y="273" width="288" height="22"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                     <nil key="textColor"/>
@@ -45,9 +46,6 @@
                 <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="W3Y-4G-WfZ">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                     <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="prc-DY-bml"/>
-                    </connections>
                 </searchBar>
                 <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YJY-AA-c1t">
                     <rect key="frame" x="16" y="307" width="288" height="237"/>

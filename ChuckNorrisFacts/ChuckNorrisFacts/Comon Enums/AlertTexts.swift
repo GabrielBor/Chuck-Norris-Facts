@@ -12,5 +12,6 @@ enum AlertTexts: String {
     case errorTitle = "Sorry"
     case errorMessage = "An error has occurred, please try again. Mistake: "
     case emptyTitle = "Ops!"
-    case emptyMessage = "We couldn't find any results for your search :("
+    case emptyMessage = "We couldn't find any results for your search :(."
+    case notEmptyMessage = "Searching without text is not allowed, please type what you want to search."
 }

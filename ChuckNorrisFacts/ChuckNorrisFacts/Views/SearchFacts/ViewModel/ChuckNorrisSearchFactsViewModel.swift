@@ -28,7 +28,6 @@ class ChuckNorrisSearchFactsViewModel {
     var listLastSearhcesRelay: BehaviorRelay<[String]> = BehaviorRelay(value: [])
     
     var repository = ChuckNorrisRespository()
-    var lastSearches = [String]()
     let randomNumber = 8
     var service: ChuckNorrisServices!
     weak var coordinatorDelegate: ChuckNorrisSearchFactsCoordinatorDelgate?
@@ -129,7 +128,6 @@ extension ChuckNorrisSearchFactsViewModel {
     }
 
     func loadLastSearches() {
-        let lastSearches = repository.getAll(.lastSearchesKey)
-        listLastSearhcesRelay.accept(lastSearches)
+        listLastSearhcesRelay.accept(repository.getAll(.lastSearchesKey).reversed())
     }
 }
