@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: macos-latest
+    
     strategy:
       matrix:
         destination: ['generic/platform=iOS']
@@ -16,7 +17,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build App
-      run: xcodebuild -project 'ChuckNorrisFacts/ChuckNorrisFacts.xcodeproj' -scheme 'ChuckNorrisFacts' -destination "${destination}" -configuration Release build CODE_SIGNING_ALLOWED=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
       env:
-        destination: $
-        DEVELOPER_DIR: ${{ matrix.xcode }}
+          DEVELOPER_DIR: ${{ matrix.xcode }}
+      run: xcodebuild -project 'ChuckNorrisFacts/ChuckNorrisFacts.xcodeproj' -scheme 'ChuckNorrisFacts' -destination "${{ matrix.destination }}" -configuration Release build CODE_SIGNING_ALLOWED=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
