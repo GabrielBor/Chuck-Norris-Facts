@@ -21,7 +21,6 @@
 		DF40FDD7244493AE00CBD522 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FDD6244493AE00CBD522 /* SceneDelegate.swift */; };
 		DF40FDDE244493AF00CBD522 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF40FDDD244493AF00CBD522 /* Assets.xcassets */; };
 		DF40FDE1244493AF00CBD522 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF40FDDF244493AF00CBD522 /* LaunchScreen.storyboard */; };
-		DF40FDEC244493AF00CBD522 /* ChuckNorrisFactsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FDEB244493AF00CBD522 /* ChuckNorrisFactsTests.swift */; };
 		DF40FE072444965B00CBD522 /* HomeFactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FE022444965B00CBD522 /* HomeFactsViewModel.swift */; };
 		DF40FE082444965B00CBD522 /* HomeFactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FE042444965B00CBD522 /* HomeFactsViewController.swift */; };
 		DF40FE092444965B00CBD522 /* HomeFactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF40FE062444965B00CBD522 /* HomeFactsViewController.xib */; };
@@ -30,10 +29,18 @@
 		DF40FE132444A8A600CBD522 /* ChuckNorrisServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FE122444A8A600CBD522 /* ChuckNorrisServices.swift */; };
 		DF40FE1724452DF800CBD522 /* ChuckNorrisRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FE1624452DF800CBD522 /* ChuckNorrisRequest.swift */; };
 		DF40FE1A2445391C00CBD522 /* ChuckNorrisFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FE192445391C00CBD522 /* ChuckNorrisFetch.swift */; };
+		DF469092245DD8B2000C5482 /* SearchFactsViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF469091245DD8B2000C5482 /* SearchFactsViewModelTest.swift */; };
+		DF469094245DD94B000C5482 /* SearchFactsViewModelSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF469093245DD94B000C5482 /* SearchFactsViewModelSpy.swift */; };
+		DF469097245DDE14000C5482 /* JSONModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF469096245DDE14000C5482 /* JSONModelFactory.swift */; };
+		DF46909A245DFB39000C5482 /* suggetions_facts_success.json in Resources */ = {isa = PBXBuildFile; fileRef = DF469099245DFB39000C5482 /* suggetions_facts_success.json */; };
 		DF55F96E245724F80083BF78 /* LoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF55F96D245724F80083BF78 /* LoadView.swift */; };
 		DF593D4E2447A5FD0045AEA6 /* ChuckNorrisParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D4D2447A5FD0045AEA6 /* ChuckNorrisParseError.swift */; };
 		DF593D512447D7820045AEA6 /* ChuckNorrisModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D502447D7820045AEA6 /* ChuckNorrisModel.swift */; };
 		DF593D532447E5F40045AEA6 /* ChuckNorrisResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D522447E5F40045AEA6 /* ChuckNorrisResultModel.swift */; };
+		DF684B5B245E25FD00F11C7E /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF684B5A245E25FD00F11C7E /* URLSessionProtocol.swift */; };
+		DF684B5D245E267B00F11C7E /* URLSessionDataTaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF684B5C245E267B00F11C7E /* URLSessionDataTaskProtocol.swift */; };
+		DF684B5F245E273C00F11C7E /* URLSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF684B5E245E273C00F11C7E /* URLSession+Extension.swift */; };
+		DF684B61245E298200F11C7E /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF684B60245E298200F11C7E /* MockURLSessionDataTask.swift */; };
 		DF896F1D245C5FDA00438010 /* ChuckNorrisRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF896F1C245C5FDA00438010 /* ChuckNorrisRepository.swift */; };
 		DF896F1F245C65F300438010 /* IdentifierRepositoryKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF896F1E245C65F300438010 /* IdentifierRepositoryKey.swift */; };
 		DF896F21245C661C00438010 /* AlertTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF896F20245C661C00438010 /* AlertTexts.swift */; };
@@ -50,6 +57,7 @@
 		DF90F8B22453CDD30067512F /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF6244162451C34800FB2BDD /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DF90F8B52453E1F20067512F /* UICollectionViewLayoutAttributes+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF90F8B42453E1F20067512F /* UICollectionViewLayoutAttributes+Extension.swift */; };
 		DF98DB692453FB9800D2E47B /* Array+Exntesion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF98DB682453FB9800D2E47B /* Array+Exntesion.swift */; };
+		DFA489F2245E1EE300BD5AE7 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA489F1245E1EE300BD5AE7 /* MockURLSession.swift */; };
 		DFCB02722448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCB02712448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift */; };
 		DFCC4FC0244DF2BC002E9A2B /* ChuckNorrisLinkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFCC4FBF244DF2BC002E9A2B /* ChuckNorrisLinkView.xib */; };
 		DFDD823624568209009A3623 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDD823524568209009A3623 /* UIAlertController+Extension.swift */; };
@@ -104,7 +112,6 @@
 		DF40FDE0244493AF00CBD522 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF40FDE2244493AF00CBD522 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF40FDE7244493AF00CBD522 /* ChuckNorrisFactsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChuckNorrisFactsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF40FDEB244493AF00CBD522 /* ChuckNorrisFactsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisFactsTests.swift; sourceTree = "<group>"; };
 		DF40FDED244493AF00CBD522 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF40FE022444965B00CBD522 /* HomeFactsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeFactsViewModel.swift; sourceTree = "<group>"; };
 		DF40FE042444965B00CBD522 /* HomeFactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeFactsViewController.swift; sourceTree = "<group>"; };
@@ -114,12 +121,20 @@
 		DF40FE122444A8A600CBD522 /* ChuckNorrisServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisServices.swift; sourceTree = "<group>"; };
 		DF40FE1624452DF800CBD522 /* ChuckNorrisRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisRequest.swift; sourceTree = "<group>"; };
 		DF40FE192445391C00CBD522 /* ChuckNorrisFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisFetch.swift; sourceTree = "<group>"; };
+		DF469091245DD8B2000C5482 /* SearchFactsViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFactsViewModelTest.swift; sourceTree = "<group>"; };
+		DF469093245DD94B000C5482 /* SearchFactsViewModelSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFactsViewModelSpy.swift; sourceTree = "<group>"; };
+		DF469096245DDE14000C5482 /* JSONModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONModelFactory.swift; sourceTree = "<group>"; };
+		DF469099245DFB39000C5482 /* suggetions_facts_success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = suggetions_facts_success.json; sourceTree = "<group>"; };
 		DF55F96D245724F80083BF78 /* LoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadView.swift; sourceTree = "<group>"; };
 		DF593D4D2447A5FD0045AEA6 /* ChuckNorrisParseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisParseError.swift; sourceTree = "<group>"; };
 		DF593D502447D7820045AEA6 /* ChuckNorrisModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisModel.swift; sourceTree = "<group>"; };
 		DF593D522447E5F40045AEA6 /* ChuckNorrisResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisResultModel.swift; sourceTree = "<group>"; };
 		DF6244162451C34800FB2BDD /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		DF62441A2451C5A400FB2BDD /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		DF684B5A245E25FD00F11C7E /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
+		DF684B5C245E267B00F11C7E /* URLSessionDataTaskProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskProtocol.swift; sourceTree = "<group>"; };
+		DF684B5E245E273C00F11C7E /* URLSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
+		DF684B60245E298200F11C7E /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
 		DF896F1C245C5FDA00438010 /* ChuckNorrisRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisRepository.swift; sourceTree = "<group>"; };
 		DF896F1E245C65F300438010 /* IdentifierRepositoryKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierRepositoryKey.swift; sourceTree = "<group>"; };
 		DF896F20245C661C00438010 /* AlertTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTexts.swift; sourceTree = "<group>"; };
@@ -130,6 +145,7 @@
 		DF8DB61324523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChuckNorrisPastSearchTableViewCell.xib; sourceTree = "<group>"; };
 		DF90F8B42453E1F20067512F /* UICollectionViewLayoutAttributes+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewLayoutAttributes+Extension.swift"; sourceTree = "<group>"; };
 		DF98DB682453FB9800D2E47B /* Array+Exntesion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Exntesion.swift"; sourceTree = "<group>"; };
+		DFA489F1245E1EE300BD5AE7 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		DFCB02712448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisSearchFactsViewModel.swift; sourceTree = "<group>"; };
 		DFCC4FBF244DF2BC002E9A2B /* ChuckNorrisLinkView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChuckNorrisLinkView.xib; sourceTree = "<group>"; };
 		DFDD823524568209009A3623 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
@@ -217,7 +233,8 @@
 		DF40FDEA244493AF00CBD522 /* ChuckNorrisFactsTests */ = {
 			isa = PBXGroup;
 			children = (
-				DF40FDEB244493AF00CBD522 /* ChuckNorrisFactsTests.swift */,
+				DFA489F0245E1EAB00BD5AE7 /* App Sections */,
+				DF469095245DDDFC000C5482 /* Helpers */,
 				DF40FDED244493AF00CBD522 /* Info.plist */,
 			);
 			path = ChuckNorrisFactsTests;
@@ -235,6 +252,7 @@
 		DF40FDFA244495E100CBD522 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				DF684B59245E25E800F11C7E /* Protocol */,
 				DFE9C11A24460BA700872527 /* API */,
 				DFE9C11C24460BC800872527 /* Error */,
 				DFE9C11D24460BD300872527 /* Fetch */,
@@ -324,6 +342,40 @@
 			path = Launch;
 			sourceTree = "<group>";
 		};
+		DF46908F245DD578000C5482 /* SearchFacts */ = {
+			isa = PBXGroup;
+			children = (
+				DF469091245DD8B2000C5482 /* SearchFactsViewModelTest.swift */,
+				DF469093245DD94B000C5482 /* SearchFactsViewModelSpy.swift */,
+			);
+			path = SearchFacts;
+			sourceTree = "<group>";
+		};
+		DF469090245DD68B000C5482 /* HomeFacts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HomeFacts;
+			sourceTree = "<group>";
+		};
+		DF469095245DDDFC000C5482 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DF469096245DDE14000C5482 /* JSONModelFactory.swift */,
+				DFA489F1245E1EE300BD5AE7 /* MockURLSession.swift */,
+				DF684B60245E298200F11C7E /* MockURLSessionDataTask.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		DF469098245DF808000C5482 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				DF469099245DFB39000C5482 /* suggetions_facts_success.json */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
 		DF55F96C245724E10083BF78 /* LoadView */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,6 +401,15 @@
 				DF6244162451C34800FB2BDD /* RxSwift.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DF684B59245E25E800F11C7E /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				DF684B5A245E25FD00F11C7E /* URLSessionProtocol.swift */,
+				DF684B5C245E267B00F11C7E /* URLSessionDataTaskProtocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		DF896F1B245C5FB500438010 /* Respository */ = {
@@ -393,8 +454,19 @@
 				DF90F8B42453E1F20067512F /* UICollectionViewLayoutAttributes+Extension.swift */,
 				DF98DB682453FB9800D2E47B /* Array+Exntesion.swift */,
 				DFDD823524568209009A3623 /* UIAlertController+Extension.swift */,
+				DF684B5E245E273C00F11C7E /* URLSession+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DFA489F0245E1EAB00BD5AE7 /* App Sections */ = {
+			isa = PBXGroup;
+			children = (
+				DF469098245DF808000C5482 /* Responses */,
+				DF469090245DD68B000C5482 /* HomeFacts */,
+				DF46908F245DD578000C5482 /* SearchFacts */,
+			);
+			path = "App Sections";
 			sourceTree = "<group>";
 		};
 		DFCB026B2448EA8A00B995E0 /* SearchFacts */ = {
@@ -635,6 +707,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF46909A245DFB39000C5482 /* suggetions_facts_success.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,6 +742,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF684B5B245E25FD00F11C7E /* URLSessionProtocol.swift in Sources */,
 				DF40FE1A2445391C00CBD522 /* ChuckNorrisFetch.swift in Sources */,
 				DF896F1D245C5FDA00438010 /* ChuckNorrisRepository.swift in Sources */,
 				DF0B5FBB244A3B9100851D8D /* ChuckNorrisSearchFactsViewController.swift in Sources */,
@@ -680,6 +754,7 @@
 				DF896F27245C9D7B00438010 /* BaseRepository.swift in Sources */,
 				DFF72928245477F200383701 /* IdentifierCell.swift in Sources */,
 				DF012862244FB5AE00A0508B /* UIView+Extension.swift in Sources */,
+				DF684B5F245E273C00F11C7E /* URLSession+Extension.swift in Sources */,
 				DF8DB61024523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.swift in Sources */,
 				DF40FE1724452DF800CBD522 /* ChuckNorrisRequest.swift in Sources */,
 				DF40FE1124449F8200CBD522 /* ChuckNorrisAPI.swift in Sources */,
@@ -693,6 +768,7 @@
 				DF0FA7C7244E8760006C9170 /* HomeFactsCoordinator.swift in Sources */,
 				DF40FE0E2444967300CBD522 /* BaseCoordinator.swift in Sources */,
 				DF896F1F245C65F300438010 /* IdentifierRepositoryKey.swift in Sources */,
+				DF684B5D245E267B00F11C7E /* URLSessionDataTaskProtocol.swift in Sources */,
 				DF593D4E2447A5FD0045AEA6 /* ChuckNorrisParseError.swift in Sources */,
 				DF98DB692453FB9800D2E47B /* Array+Exntesion.swift in Sources */,
 				DF40FDD5244493AE00CBD522 /* AppDelegate.swift in Sources */,
@@ -711,7 +787,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF40FDEC244493AF00CBD522 /* ChuckNorrisFactsTests.swift in Sources */,
+				DF469097245DDE14000C5482 /* JSONModelFactory.swift in Sources */,
+				DF684B61245E298200F11C7E /* MockURLSessionDataTask.swift in Sources */,
+				DF469094245DD94B000C5482 /* SearchFactsViewModelSpy.swift in Sources */,
+				DF469092245DD8B2000C5482 /* SearchFactsViewModelTest.swift in Sources */,
+				DFA489F2245E1EE300BD5AE7 /* MockURLSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -794,6 +874,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -847,6 +928,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -869,7 +951,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = gabriel.borges.ChuckNorrisFacts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -891,7 +973,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = gabriel.borges.ChuckNorrisFacts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -903,7 +985,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2XBR7ZLNHQ;
 				INFOPLIST_FILE = ChuckNorrisFactsTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -912,7 +994,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = gabriel.borges.ChuckNorrisFactsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChuckNorrisFacts.app/ChuckNorrisFacts";
 			};
 			name = Debug;
@@ -925,7 +1007,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2XBR7ZLNHQ;
 				INFOPLIST_FILE = ChuckNorrisFactsTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -934,7 +1016,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = gabriel.borges.ChuckNorrisFactsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChuckNorrisFacts.app/ChuckNorrisFacts";
 			};
 			name = Release;

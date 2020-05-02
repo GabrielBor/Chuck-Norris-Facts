@@ -9,6 +9,7 @@
 import UIKit
 
 extension UICollectionViewLayoutAttributes {
+    
     func leftAlignFrameWithSectionInset(_ sectionInset: UIEdgeInsets) {
         var frame = self.frame
         frame.origin.x = sectionInset.left

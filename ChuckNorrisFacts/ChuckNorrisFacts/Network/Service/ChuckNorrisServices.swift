@@ -12,8 +12,13 @@ class ChuckNorrisServices {
     
     // MARK: Properties
     
-    var chuckNorrisFetch = ChuckNorrisFetch()
-    var chuckNorrisAPI = ChuckNorrisAPI()
+    var chuckNorrisFetch: ChuckNorrisFetch!
+    var chuckNorrisAPI: ChuckNorrisAPI!
+    
+    init(with session: URLSessionProtocol, api: ChuckNorrisAPI) {
+        chuckNorrisFetch = ChuckNorrisFetch(ChuckNorrisRequest(session))
+        chuckNorrisAPI = api
+    }
     
     // MARK: - Services
     

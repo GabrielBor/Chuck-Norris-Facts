@@ -16,13 +16,24 @@ class ChuckNorrisRequest {
     typealias CompletionChuckNorrisFailure = (_ data: Data?, _ response: URLResponse?, _ error: ChuckNorrisError) -> Void
     typealias CompletionNetworkFailure = (_ data: Data?, _ response: URLResponse?, _ error: NetworkError) -> Void
     
+    // MARK: - Property
+    
+    var session: URLSessionProtocol!
+    
+    // MARK - Initialize
+    
+    init(_ session: URLSessionProtocol) {
+        self.session = session
+    }
+    
     // MARK: - Request
     
     /// This method create a object request for user at requisitions
     /// - Parameters:
     ///   - url: url of service
     ///   - httpMethod: httpMethod
-    func createRequest(from url: URL, httpMethod: ChuckNorrisAPI.HTTPMethod) -> URLRequest {
+    func createRequest(from url: URL?, httpMethod: ChuckNorrisAPI.HTTPMethod) -> URLRequest? {
+        guard let url = url else { return nil }
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod.rawValue
         return request
@@ -34,13 +45,13 @@ class ChuckNorrisRequest {
     ///   - httpMethod: httpMethod
     ///   - success: callback of success with object data and response
     ///   - failure: callback of failure with object data, response and errors of chuck or network
-    func request(_ url: URL,
+    func request(_ url: URL?,
                  httpMethod: ChuckNorrisAPI.HTTPMethod,
                  success: @escaping CompletionSuccess,
                  networkFailure: @escaping CompletionNetworkFailure,
                  chuckNorrisFailure: @escaping CompletionChuckNorrisFailure) {
-        let request = createRequest(from: url, httpMethod: httpMethod)
-        let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        guard let request = createRequest(from: url, httpMethod: httpMethod) else { return }
+        let dataTask = session.task(with: request) { (data, response, error) in
             self.handlerDataTaskResponse(data,
                                          response: response,
                                          error: error,
