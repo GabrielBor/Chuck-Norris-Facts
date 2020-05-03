@@ -21,10 +21,9 @@ class ChuckNorrisSearchFactsViewModel {
     // MARK: - Propeties
     
     var loadingBehaviorRelay: BehaviorRelay<Bool> = BehaviorRelay(value: false)
-    var errorPublish: PublishSubject<ChuckNorrisError> = PublishSubject()
+    var errorPublishSubject: PublishSubject<ChuckNorrisError> = PublishSubject()
     var emptySearchResultPublish: PublishSubject<[String]?> = PublishSubject()
     let listSuggestionBehaviorRelay: BehaviorRelay<[String]> = BehaviorRelay(value: [])
-    var searchCategoryPublish: PublishSubject<ChuckNorrisResultModel> = PublishSubject()
     var listLastSearhcesRelay: BehaviorRelay<[String]> = BehaviorRelay(value: [])
 
     var repository: ChuckNorrisRespository!
@@ -52,7 +51,7 @@ extension ChuckNorrisSearchFactsViewModel {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let suggestions):
-                    self.handlerSuccess(with: suggestions)
+                    self.handlerSuggetionsSuccess(with: suggestions)
                 case .failure(let error):
                     self.handlerFailure(error)
                 }
@@ -68,7 +67,7 @@ extension ChuckNorrisSearchFactsViewModel {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let result):
-                    self.handlerSuccess(with: result)
+                    self.handlerResultSuccess(with: result)
                 case .failure(let error):
                     self.handlerFailure(error)
                 }
@@ -97,7 +96,7 @@ extension ChuckNorrisSearchFactsViewModel {
         }
     }
     
-    func handlerSuccess(with result: ChuckNorrisResultModel) {
+    func handlerResultSuccess(with result: ChuckNorrisResultModel) {
         if result.result.isEmpty {
             emptySearchResultPublish.onNext([])
         } else {
@@ -105,14 +104,14 @@ extension ChuckNorrisSearchFactsViewModel {
         }
     }
     
-    func handlerSuccess(with suggestions: [String]) {
+    func handlerSuggetionsSuccess(with suggestions: [String]) {
         repository.insert(.suggetionsKey, list: suggestions)
         let suggestions = repository.getAll(.suggetionsKey)
         listSuggestionBehaviorRelay.accept(randomSuggestions(suggestions, randomElementsIn: eight))
     }
     
     func handlerFailure(_ error: ChuckNorrisError) {
-        errorPublish.onNext(error)
+        errorPublishSubject.onNext(error)
     }
     
     // MARK: - SaveLastSearch methods

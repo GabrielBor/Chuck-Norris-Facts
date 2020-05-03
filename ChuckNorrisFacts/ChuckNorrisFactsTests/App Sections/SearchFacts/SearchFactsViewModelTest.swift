@@ -22,21 +22,33 @@ class SearchFactsViewModelTest: XCTestCase {
     var api: ChuckNorrisAPI!
     var repository: ChuckNorrisRespository!
     var disposedBag: DisposeBag!
+    var mockDataTask: MockURLSessionDataTask!
+    
+    var searchCategoryFactsSuccess: ((_ result: ChuckNorrisResultModel) -> Void)?
 
     override func setUp() {
         super.setUp()
+        mockDataTask = MockURLSessionDataTask()
         disposedBag = DisposeBag()
         repository = ChuckNorrisRespository()
         mockURLSession = MockURLSession()
         api = ChuckNorrisAPI()
         service = ChuckNorrisServices(with: mockURLSession, api: api)
         viewModel = ChuckNorrisSearchFactsViewModel(service, repository: repository)
+        viewModel.coordinatorDelegate = self
     }
     
     override func tearDown() {
         super.tearDown()
         service = nil
         viewModel = nil
+        mockURLSession = nil
+        api = nil
+        repository = nil
+        disposedBag = nil
+        mockDataTask = nil
+        mockDataTask = nil
+        searchCategoryFactsSuccess = nil
     }
     
     func testRandomSuggestions() {
@@ -48,16 +60,15 @@ class SearchFactsViewModelTest: XCTestCase {
         repository.delete(.suggetionsKey)
     }
     
-    func testFetchListSuggestionFacts() {
+    func testTetchListSuggestionFactsSuccess() {
         
-        let dataTask = MockURLSessionDataTask()
-        mockURLSession.dataTask = dataTask
+        let expectationSuggestions = expectation(description: "Fetch list suggetions sucess")
+        mockURLSession.dataTask = mockDataTask
 
         let sendMockData = try! FactoryTest.makeData(fromJSON: "suggetions_facts_success")
         mockURLSession.success(with: sendMockData)
         
         viewModel.fetchListSuggestionFacts()
-        let expectationSuggestions = expectation(description:"friendCells contains a normal cell")
         
         DispatchQueue.main.async {
             self.viewModel.listSuggestionBehaviorRelay.subscribe { (list) in
@@ -67,5 +78,55 @@ class SearchFactsViewModelTest: XCTestCase {
         }
         
         wait(for: [expectationSuggestions], timeout: 0.1)
+    }
+    
+    func testTetchListSuggestionFactsFailure() {
+        
+        let expectationError = expectation(description: "Fetch list suggetions failure")
+        mockURLSession.dataTask = mockDataTask
+        
+        let error = ChuckNorrisError(nil, error: nil)
+        mockURLSession.failure(with: error)
+        
+        DispatchQueue.main.async {
+            self.viewModel.errorPublishSubject.subscribe { (error) in
+                XCTAssertNotNil(error.element)
+                expectationError.fulfill()
+            }.disposed(by: self.disposedBag)
+        }
+        
+        viewModel.fetchListSuggestionFacts()
+        
+        wait(for: [expectationError], timeout: 0.1)
+    }
+    
+    func testFetchSearchCategoryFactsSuccess() {
+        
+        let expectationFacts = expectation(description: "Fetch list facts sucess")
+        mockURLSession.dataTask = mockDataTask
+        
+        let sendMockData = try! FactoryTest.makeData(fromJSON: "result_facts_list")
+        mockURLSession.success(with: sendMockData)
+        
+        let expectedModel = try! FactoryTest.makeModel(ChuckNorrisResultModel.self, fromJSON: "result_facts_list")
+        
+        viewModel.fetchSearchCategoryFacts(from: "animal")
+        
+        searchCategoryFactsSuccess = { result in
+            XCTAssertEqual(expectedModel.total, result.total)
+            XCTAssertEqual(expectedModel.result, result.result)
+            expectationFacts.fulfill()
+        }
+        
+        wait(for: [expectationFacts], timeout: 0.1)
+    }
+}
+
+// MARK: - ChuckNorrisSearchFactsCoordinatorDelgate
+
+extension SearchFactsViewModelTest: ChuckNorrisSearchFactsCoordinatorDelgate {
+    
+    func backToHomeFacts(_ viewModel: ChuckNorrisSearchFactsViewModel, result: ChuckNorrisResultModel) {
+        searchCategoryFactsSuccess?(result)
     }
 }

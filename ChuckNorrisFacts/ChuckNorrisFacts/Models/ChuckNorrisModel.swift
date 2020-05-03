@@ -38,3 +38,16 @@ struct ChuckNorrisModel: Codable {
         description = try values.decode(String.self, forKey: .description)
     }
 }
+
+extension ChuckNorrisModel: Equatable {
+    
+    public static func == (lhs: ChuckNorrisModel, rhs: ChuckNorrisModel) -> Bool {
+        return lhs.categories == rhs.categories &&
+            lhs.createdAt == rhs.createdAt &&
+            lhs.description == rhs.description &&
+            lhs.iconURL == rhs.iconURL &&
+            lhs.id == rhs.id &&
+            lhs.updatedAt == rhs.updatedAt &&
+            lhs.url == rhs.url
+    }
+}

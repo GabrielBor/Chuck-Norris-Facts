@@ -114,7 +114,7 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
 
 extension ChuckNorrisSearchFactsViewController {
     func emptySearchResultPublish() {
-        viewModel.emptySearchResultPublish.asObserver().observeOn(MainScheduler.instance).subscribe { [weak self] (_) in
+        viewModel.emptySearchResultPublish.asObservable().observeOn(MainScheduler.instance).subscribe { [weak self] (event) in
             guard let self = self else { return }
             let alert = UIAlertController.createSimpleAlert(with: AlertTexts.emptyTitle.rawValue,
                                                             message: AlertTexts.emptyMessage.rawValue,
@@ -133,17 +133,18 @@ extension ChuckNorrisSearchFactsViewController {
 extension ChuckNorrisSearchFactsViewController {
     
     func loadingPublish() {
-        viewModel.loadingBehaviorRelay.asObservable().observeOn(MainScheduler.instance).subscribe { (event) in
+        viewModel.loadingBehaviorRelay.asObservable().observeOn(MainScheduler.instance).subscribe { [weak self] (event) in
+            guard let self = self else { return }
             let isShow = event.element ?? false
             self.loadView.showLoading(isShow, atView: self.navigationController?.view)
         }.disposed(by: disposeBag)
     }
     
     func errorPublish() {
-        viewModel.errorPublish.asObserver().observeOn(MainScheduler.instance).subscribe { [weak self] (error) in
+        viewModel.errorPublishSubject.asObservable().observeOn(MainScheduler.instance).subscribe { [weak self] (event) in
             guard let self = self else { return }
-            let code = error.event.element?.code ?? 0
-            let errorMessage = error.event.element?.message ?? ""
+            let code = event.element?.code ?? 0
+            let errorMessage = event.element?.message ?? ""
             let message = "\(AlertTexts.errorMessage.rawValue)\(code) \(errorMessage)"
             let alert = UIAlertController.createSimpleAlert(with: AlertTexts.errorTitle.rawValue,
                                                             message: message,
