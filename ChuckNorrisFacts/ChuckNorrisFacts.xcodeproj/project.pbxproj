@@ -48,9 +48,6 @@
 		DF8DB61124523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF8DB60F24523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.xib */; };
 		DF8DB61424523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8DB61224523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.swift */; };
 		DF8DB61524523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF8DB61324523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.xib */; };
-		DF90B6F4245F08FE00B16EBD /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF90B6F3245F08FE00B16EBD /* RxTest.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		DF90B6F5245F09A500B16EBD /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF90B6F3245F08FE00B16EBD /* RxTest.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		DF90B6F6245F09A500B16EBD /* RxTest.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF90B6F3245F08FE00B16EBD /* RxTest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DF90F8AD2453CDD30067512F /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF62441A2451C5A400FB2BDD /* RxCocoa.framework */; };
 		DF90F8AE2453CDD30067512F /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF62441A2451C5A400FB2BDD /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DF90F8AF2453CDD30067512F /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF30F78A2451D47E00B75C66 /* RxRelay.framework */; };
@@ -92,7 +89,6 @@
 			files = (
 				DF90F8B02453CDD30067512F /* RxRelay.framework in Embed Frameworks */,
 				DF90F8AE2453CDD30067512F /* RxCocoa.framework in Embed Frameworks */,
-				DF90B6F6245F09A500B16EBD /* RxTest.framework in Embed Frameworks */,
 				DF90F8B22453CDD30067512F /* RxSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -170,7 +166,6 @@
 			files = (
 				DF90F8AF2453CDD30067512F /* RxRelay.framework in Frameworks */,
 				DF90F8AD2453CDD30067512F /* RxCocoa.framework in Frameworks */,
-				DF90B6F5245F09A500B16EBD /* RxTest.framework in Frameworks */,
 				DF90F8B12453CDD30067512F /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,7 +174,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF90B6F4245F08FE00B16EBD /* RxTest.framework in Frameworks */,
 				DFE40B14245E45B800C676E7 /* RxCocoa.framework in Frameworks */,
 				DFE40B15245E45B800C676E7 /* RxRelay.framework in Frameworks */,
 				DFE40B16245E45B800C676E7 /* RxSwift.framework in Frameworks */,
@@ -950,7 +944,6 @@
 		DF40FDF1244493AF00CBD522 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -975,7 +968,6 @@
 		DF40FDF2244493AF00CBD522 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
