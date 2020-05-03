@@ -133,7 +133,7 @@ extension ChuckNorrisSearchFactsViewController {
 extension ChuckNorrisSearchFactsViewController {
     
     func loadingPublish() {
-        viewModel.loadingRelay.asObservable().observeOn(MainScheduler.instance).subscribe { (event) in
+        viewModel.loadingBehaviorRelay.asObservable().observeOn(MainScheduler.instance).subscribe { (event) in
             let isShow = event.element ?? false
             self.loadView.showLoading(isShow, atView: self.navigationController?.view)
         }.disposed(by: disposeBag)
@@ -162,16 +162,18 @@ extension ChuckNorrisSearchFactsViewController {
 extension ChuckNorrisSearchFactsViewController {
     
     func collectionViewDataSource() {
-        viewModel.listSuggestionPublish
-            .asObserver()
+        
+        viewModel.listSuggestionBehaviorRelay
+            .asObservable()
             .observeOn(MainScheduler.instance)
             .bind(to: suggestionCollectionView.rx.items(cellIdentifier: suggestionIdentifier, cellType: ChuckNorrisCategoryCollectionViewCell.self)) { (row, item, cell) in
-                cell.fillCell(item)
+            cell.fillCell(item)
         }.disposed(by: disposeBag)
     }
     
     func setupAfterBindHeightCollectionView() {
-        viewModel.listSuggestionPublish.subscribe {
+        
+        viewModel.listSuggestionBehaviorRelay.asObservable().observeOn(MainScheduler.instance).subscribe { (_) in
             self.heightSuggestionsCollectionView()
         }.disposed(by: disposeBag)
     }
@@ -198,7 +200,7 @@ extension ChuckNorrisSearchFactsViewController: UICollectionViewDelegateFlowLayo
         let size = CGSize.init(width: 200, height: 25)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
         
-        guard let str = try? viewModel.listSuggestionPublish.value()[indexPath.item] else { return CGSize() }
+        let str = viewModel.listSuggestionBehaviorRelay.value[indexPath.item]
         
         let estimatedRect = NSString.init(string: str).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 28)], context: nil)
         

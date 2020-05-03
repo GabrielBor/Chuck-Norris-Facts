@@ -28,7 +28,7 @@ class ChuckNorrisSearchFactsCoordinator: BaseCoordinator {
     
     init() {
         let service = ChuckNorrisServices(with: URLSession.shared, api: ChuckNorrisAPI())
-        let viewModel = ChuckNorrisSearchFactsViewModel(service)
+        let viewModel = ChuckNorrisSearchFactsViewModel(service, repository: ChuckNorrisRespository())
         viewModel.coordinatorDelegate = self
         let viewController = ChuckNorrisSearchFactsViewController(viewModel)
         self.viewController = viewController

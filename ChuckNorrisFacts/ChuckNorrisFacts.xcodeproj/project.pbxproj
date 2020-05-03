@@ -31,8 +31,7 @@
 		DF40FE1A2445391C00CBD522 /* ChuckNorrisFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40FE192445391C00CBD522 /* ChuckNorrisFetch.swift */; };
 		DF469092245DD8B2000C5482 /* SearchFactsViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF469091245DD8B2000C5482 /* SearchFactsViewModelTest.swift */; };
 		DF469094245DD94B000C5482 /* SearchFactsViewModelSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF469093245DD94B000C5482 /* SearchFactsViewModelSpy.swift */; };
-		DF469097245DDE14000C5482 /* JSONModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF469096245DDE14000C5482 /* JSONModelFactory.swift */; };
-		DF46909A245DFB39000C5482 /* suggetions_facts_success.json in Resources */ = {isa = PBXBuildFile; fileRef = DF469099245DFB39000C5482 /* suggetions_facts_success.json */; };
+		DF469097245DDE14000C5482 /* FactoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF469096245DDE14000C5482 /* FactoryTest.swift */; };
 		DF55F96E245724F80083BF78 /* LoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF55F96D245724F80083BF78 /* LoadView.swift */; };
 		DF593D4E2447A5FD0045AEA6 /* ChuckNorrisParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D4D2447A5FD0045AEA6 /* ChuckNorrisParseError.swift */; };
 		DF593D512447D7820045AEA6 /* ChuckNorrisModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF593D502447D7820045AEA6 /* ChuckNorrisModel.swift */; };
@@ -49,6 +48,9 @@
 		DF8DB61124523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF8DB60F24523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.xib */; };
 		DF8DB61424523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8DB61224523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.swift */; };
 		DF8DB61524523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF8DB61324523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.xib */; };
+		DF90B6F4245F08FE00B16EBD /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF90B6F3245F08FE00B16EBD /* RxTest.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		DF90B6F5245F09A500B16EBD /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF90B6F3245F08FE00B16EBD /* RxTest.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		DF90B6F6245F09A500B16EBD /* RxTest.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF90B6F3245F08FE00B16EBD /* RxTest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DF90F8AD2453CDD30067512F /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF62441A2451C5A400FB2BDD /* RxCocoa.framework */; };
 		DF90F8AE2453CDD30067512F /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF62441A2451C5A400FB2BDD /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DF90F8AF2453CDD30067512F /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF30F78A2451D47E00B75C66 /* RxRelay.framework */; };
@@ -61,6 +63,10 @@
 		DFCB02722448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCB02712448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift */; };
 		DFCC4FC0244DF2BC002E9A2B /* ChuckNorrisLinkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFCC4FBF244DF2BC002E9A2B /* ChuckNorrisLinkView.xib */; };
 		DFDD823624568209009A3623 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDD823524568209009A3623 /* UIAlertController+Extension.swift */; };
+		DFE40B14245E45B800C676E7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF62441A2451C5A400FB2BDD /* RxCocoa.framework */; };
+		DFE40B15245E45B800C676E7 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF30F78A2451D47E00B75C66 /* RxRelay.framework */; };
+		DFE40B16245E45B800C676E7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF6244162451C34800FB2BDD /* RxSwift.framework */; };
+		DFE40B17245E5BA100C676E7 /* suggetions_facts_success.json in Resources */ = {isa = PBXBuildFile; fileRef = DF469099245DFB39000C5482 /* suggetions_facts_success.json */; };
 		DFE9C12124460C1400872527 /* ChuckNorrisError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12024460C1400872527 /* ChuckNorrisError.swift */; };
 		DFE9C12324460E8700872527 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12224460E8700872527 /* NetworkError.swift */; };
 		DFE9C12524463C2E00872527 /* ChuckNorrisGenericError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9C12424463C2E00872527 /* ChuckNorrisGenericError.swift */; };
@@ -86,6 +92,7 @@
 			files = (
 				DF90F8B02453CDD30067512F /* RxRelay.framework in Embed Frameworks */,
 				DF90F8AE2453CDD30067512F /* RxCocoa.framework in Embed Frameworks */,
+				DF90B6F6245F09A500B16EBD /* RxTest.framework in Embed Frameworks */,
 				DF90F8B22453CDD30067512F /* RxSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -123,7 +130,7 @@
 		DF40FE192445391C00CBD522 /* ChuckNorrisFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisFetch.swift; sourceTree = "<group>"; };
 		DF469091245DD8B2000C5482 /* SearchFactsViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFactsViewModelTest.swift; sourceTree = "<group>"; };
 		DF469093245DD94B000C5482 /* SearchFactsViewModelSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFactsViewModelSpy.swift; sourceTree = "<group>"; };
-		DF469096245DDE14000C5482 /* JSONModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONModelFactory.swift; sourceTree = "<group>"; };
+		DF469096245DDE14000C5482 /* FactoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryTest.swift; sourceTree = "<group>"; };
 		DF469099245DFB39000C5482 /* suggetions_facts_success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = suggetions_facts_success.json; sourceTree = "<group>"; };
 		DF55F96D245724F80083BF78 /* LoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadView.swift; sourceTree = "<group>"; };
 		DF593D4D2447A5FD0045AEA6 /* ChuckNorrisParseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisParseError.swift; sourceTree = "<group>"; };
@@ -143,6 +150,7 @@
 		DF8DB60F24523400005A4ECB /* ChuckNorrisCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChuckNorrisCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		DF8DB61224523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisPastSearchTableViewCell.swift; sourceTree = "<group>"; };
 		DF8DB61324523448005A4ECB /* ChuckNorrisPastSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChuckNorrisPastSearchTableViewCell.xib; sourceTree = "<group>"; };
+		DF90B6F3245F08FE00B16EBD /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
 		DF90F8B42453E1F20067512F /* UICollectionViewLayoutAttributes+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewLayoutAttributes+Extension.swift"; sourceTree = "<group>"; };
 		DF98DB682453FB9800D2E47B /* Array+Exntesion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Exntesion.swift"; sourceTree = "<group>"; };
 		DFA489F1245E1EE300BD5AE7 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
@@ -162,6 +170,7 @@
 			files = (
 				DF90F8AF2453CDD30067512F /* RxRelay.framework in Frameworks */,
 				DF90F8AD2453CDD30067512F /* RxCocoa.framework in Frameworks */,
+				DF90B6F5245F09A500B16EBD /* RxTest.framework in Frameworks */,
 				DF90F8B12453CDD30067512F /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,6 +179,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF90B6F4245F08FE00B16EBD /* RxTest.framework in Frameworks */,
+				DFE40B14245E45B800C676E7 /* RxCocoa.framework in Frameworks */,
+				DFE40B15245E45B800C676E7 /* RxRelay.framework in Frameworks */,
+				DFE40B16245E45B800C676E7 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,7 +374,7 @@
 		DF469095245DDDFC000C5482 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				DF469096245DDE14000C5482 /* JSONModelFactory.swift */,
+				DF469096245DDE14000C5482 /* FactoryTest.swift */,
 				DFA489F1245E1EE300BD5AE7 /* MockURLSession.swift */,
 				DF684B60245E298200F11C7E /* MockURLSessionDataTask.swift */,
 			);
@@ -396,6 +409,7 @@
 		DF6244152451C34800FB2BDD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DF90B6F3245F08FE00B16EBD /* RxTest.framework */,
 				DF30F78A2451D47E00B75C66 /* RxRelay.framework */,
 				DF62441A2451C5A400FB2BDD /* RxCocoa.framework */,
 				DF6244162451C34800FB2BDD /* RxSwift.framework */,
@@ -707,7 +721,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF46909A245DFB39000C5482 /* suggetions_facts_success.json in Resources */,
+				DFE40B17245E5BA100C676E7 /* suggetions_facts_success.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -787,7 +801,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF469097245DDE14000C5482 /* JSONModelFactory.swift in Sources */,
+				DF469097245DDE14000C5482 /* FactoryTest.swift in Sources */,
 				DF684B61245E298200F11C7E /* MockURLSessionDataTask.swift in Sources */,
 				DF469094245DD94B000C5482 /* SearchFactsViewModelSpy.swift in Sources */,
 				DF469092245DD8B2000C5482 /* SearchFactsViewModelTest.swift in Sources */,
@@ -936,6 +950,8 @@
 		DF40FDF1244493AF00CBD522 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2XBR7ZLNHQ;
@@ -944,6 +960,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = ChuckNorrisFacts/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -958,6 +975,8 @@
 		DF40FDF2244493AF00CBD522 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2XBR7ZLNHQ;
@@ -966,6 +985,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = ChuckNorrisFacts/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -981,9 +1001,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2XBR7ZLNHQ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ChuckNorrisFactsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1003,9 +1028,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2XBR7ZLNHQ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ChuckNorrisFactsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (

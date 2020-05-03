@@ -9,20 +9,39 @@
 import Foundation
 @testable import ChuckNorrisFacts
 
-class MockURLSession: URLSessionProtocol {
-  
-    var nextDataTask = MockURLSessionDataTask()
-    var nextData: Data?
-    var nextError: Error?
-    private (set) var lastURL: URL?
+class MockURLSession {
     
-    func successHttpURLResponse(request: URLRequest) -> URLResponse {
-        return HTTPURLResponse(url: request.url!, statusCode: 200, httpVersion: "HTTP/1.1", headerFields: nil)!
+    // MARK: - Properties
+    
+    var dataTask = MockURLSessionDataTask()
+    private var mockData: Data?
+    private var mockError: ChuckNorrisError?
+    private var mockStatusCode = 0
+    
+    // MARK: - Methods
+    
+    func success(with data: Data?) {
+        mockData = data
+        mockStatusCode = 200
     }
     
+    func failure(with error: ChuckNorrisError?) {
+        mockError = error
+        mockStatusCode = 400
+    }
+    
+    private func registerResponse(request: URLRequest) -> URLResponse {
+        let response = HTTPURLResponse(url: request.url!, statusCode: mockStatusCode, httpVersion: "HTTP/1.1", headerFields: nil)!
+        return response
+    }
+}
+
+// MARK: - URLSessionProtocol
+
+extension MockURLSession: URLSessionProtocol {
+    
     func task(with request: URLRequest, completionHandler: @escaping MockURLSession.DataTaskResult) -> URLSessionDataTaskProtocol {
-        lastURL = request.url
-        completionHandler(nextData, successHttpURLResponse(request: request), nextError)
-        return nextDataTask
+        completionHandler(mockData, registerResponse(request: request), mockError)
+        return dataTask
     }
 }
