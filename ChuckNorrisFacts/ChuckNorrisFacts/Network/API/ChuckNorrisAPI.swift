@@ -47,6 +47,8 @@ class ChuckNorrisAPI {
         case searchCategory = "/jokes/search"
     }
     
+    /// This method create url for use in request
+    /// - Parameter services: Services
     func urlService(_ services: Services) -> URL? {
         var urlComponent = baseURLComponents
         switch services {

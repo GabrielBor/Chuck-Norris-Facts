@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Required methods for implementation of a Repository
 protocol BaseRepository {
     func getAll(_ key: IdentifierRepositoryKey) -> [String]
     func contains(_ key: IdentifierRepositoryKey, value: String) -> Bool

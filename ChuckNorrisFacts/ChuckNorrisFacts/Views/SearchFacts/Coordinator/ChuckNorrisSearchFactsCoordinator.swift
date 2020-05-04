@@ -34,13 +34,15 @@ class ChuckNorrisSearchFactsCoordinator: BaseCoordinator {
         self.viewController = viewController
     }
     
-    // MARK: - Methods
+    // MARK: - Method required
     
     func stop() {
         navigation = nil
         viewController = nil
         childCoordinators = nil
     }
+    
+    // MARK: - Method
     
     func pop() {
         guard let navigation = self.navigation else { return }

@@ -10,14 +10,20 @@ import UIKit
 
 class LoadView: UIView {
     
+    // MARK: - Properties
+    
     var containerView = UIView()
     var loadingView = UIView()
     var activityIndicator = UIActivityIndicatorView()
+    
+    // MARK: Draw UIView
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         setupLoadingView()
     }
+    
+    // MARK: - Private method
     
     private func setupLoadingView() {
         containerView.frame = self.frame
@@ -38,6 +44,8 @@ class LoadView: UIView {
         containerView.addSubview(loadingView)
         self.addSubview(containerView)
     }
+    
+    // MARK: Public method
     
     func showLoading(_ isShow: Bool, atView view: UIView?) {
         if isShow {

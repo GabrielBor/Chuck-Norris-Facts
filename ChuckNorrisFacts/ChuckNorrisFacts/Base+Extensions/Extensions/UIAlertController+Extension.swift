@@ -9,6 +9,14 @@
 import UIKit
 
 extension UIAlertController {
+    
+    /// Create alertController
+    /// - Parameters:
+    ///   - title: String
+    ///   - message: String
+    ///   - style: UIAlertController.Style
+    ///   - titleAction: String
+    ///   - actionAlert: (() -> Void)?
     static func createSimpleAlert(with title: String,
                             message: String,
                             style: UIAlertController.Style,

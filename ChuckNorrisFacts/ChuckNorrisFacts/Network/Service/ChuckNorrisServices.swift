@@ -15,6 +15,8 @@ class ChuckNorrisServices {
     var chuckNorrisFetch: ChuckNorrisFetch!
     var chuckNorrisAPI: ChuckNorrisAPI!
     
+    // MARK: - Initialize
+    
     init(with session: URLSessionProtocol, api: ChuckNorrisAPI) {
         chuckNorrisFetch = ChuckNorrisFetch(ChuckNorrisRequest(session))
         chuckNorrisAPI = api
