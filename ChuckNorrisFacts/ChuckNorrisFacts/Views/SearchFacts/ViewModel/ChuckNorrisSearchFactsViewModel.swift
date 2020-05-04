@@ -22,7 +22,7 @@ class ChuckNorrisSearchFactsViewModel {
     
     var loadingBehaviorRelay: BehaviorRelay<Bool> = BehaviorRelay(value: false)
     var errorPublishSubject: PublishSubject<ChuckNorrisError> = PublishSubject()
-    var emptySearchResultPublish: PublishSubject<[String]?> = PublishSubject()
+    var emptySearchResultBehaviorRelay: BehaviorRelay<[String]>?
     let listSuggestionBehaviorRelay: BehaviorRelay<[String]> = BehaviorRelay(value: [])
     var listLastSearhcesRelay: BehaviorRelay<[String]> = BehaviorRelay(value: [])
 
@@ -98,7 +98,7 @@ extension ChuckNorrisSearchFactsViewModel {
     
     func handlerResultSuccess(with result: ChuckNorrisResultModel) {
         if result.result.isEmpty {
-            emptySearchResultPublish.onNext([])
+            emptySearchResultBehaviorRelay = BehaviorRelay(value: [])
         } else {
             coordinatorDelegate?.backToHomeFacts(self, result: result)
         }

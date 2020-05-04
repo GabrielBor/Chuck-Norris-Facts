@@ -113,8 +113,9 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
 // MARK: - EmptySearchResult Alert
 
 extension ChuckNorrisSearchFactsViewController {
+    
     func emptySearchResultPublish() {
-        viewModel.emptySearchResultPublish.asObservable().observeOn(MainScheduler.instance).subscribe { [weak self] (event) in
+        viewModel.emptySearchResultBehaviorRelay?.asObservable().observeOn(MainScheduler.instance).subscribe { [weak self] (event) in
             guard let self = self else { return }
             let alert = UIAlertController.createSimpleAlert(with: AlertTexts.emptyTitle.rawValue,
                                                             message: AlertTexts.emptyMessage.rawValue,
