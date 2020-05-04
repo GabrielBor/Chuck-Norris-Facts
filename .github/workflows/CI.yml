@@ -12,7 +12,7 @@ jobs:
     
     strategy:
       matrix:
-        test: ['platform=iOS Simulator,OS=12.1,name=iPhone 8', 'platform=iOS Simulator,OS=13.2.2,name=iPhone 8']
+        test: ['platform=iOS Simulator,OS=13.2.2,name=iPhone 8']
         destination: ['generic/platform=iOS']
         xcode: ['/Applications/Xcode_11.2.1.app/Contents/Developer']
     steps:
