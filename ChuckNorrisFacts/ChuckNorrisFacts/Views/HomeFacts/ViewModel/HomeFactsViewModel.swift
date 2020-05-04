@@ -8,10 +8,11 @@
 
 import UIKit
 import RxSwift
+import RxRelay
 
 //MARK: - CoordinatorDelegate
 
-protocol HomeFactsViewModelDelegate: AnyObject {
+protocol HomeFactsCoordinatorDelegate: AnyObject {
     func goToSearchFacts(_ viewModel: HomeFactsViewModel)
 }
 
@@ -28,18 +29,20 @@ class HomeFactsViewModel {
     // MARK: - Properties
     
     var factsList: [ChuckNorrisModel] = []
-    var factsPublish: PublishSubject<[ChuckNorrisModel]> = PublishSubject()
-    weak var delegate: HomeFactsViewModelDelegate?
+    var factsPublishSubject: PublishSubject<[ChuckNorrisModel]> = PublishSubject()
+    weak var coordinatorDelegate: HomeFactsCoordinatorDelegate?
     
     // MARK: - Methods
     
     func updateFactsList(with newFactsList: [ChuckNorrisModel]) {
         factsList = newFactsList
-        factsPublish.onNext(factsList)
+        factsPublishSubject.onNext(newFactsList)
     }
 
     func sizeFont(for fact: String) -> CGFloat {
-        return fact.count > SizeFont.numberMaxOfCaracter.hashValue ? SizeFont.maxFontSize.rawValue : SizeFont.minFontSize.rawValue
+        let maxCharacter = Int(SizeFont.numberMaxOfCaracter.rawValue)
+        let decisionSizeFont = fact.count < maxCharacter
+        return decisionSizeFont ? SizeFont.maxFontSize.rawValue : SizeFont.minFontSize.rawValue
     }
     
     func setUncategorizedIfNeeded(_ category: String?) -> String {
@@ -56,6 +59,6 @@ class HomeFactsViewModel {
     // MARK: - Coordinator method
     
     func goToSearchFacts() {
-        delegate?.goToSearchFacts(self)
+        coordinatorDelegate?.goToSearchFacts(self)
     }
 }
