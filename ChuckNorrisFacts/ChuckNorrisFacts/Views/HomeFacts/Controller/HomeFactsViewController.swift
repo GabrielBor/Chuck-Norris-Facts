@@ -124,7 +124,8 @@ class HomeFactsViewController: UIViewController {
 extension HomeFactsViewController  {
     
     func tableViewDataSource() {
-        viewModel.factsPublish.bind(to: factsTableView.rx.items(cellIdentifier: homeFactsIdentifier, cellType: HomeFactTableViewCell.self)) { (row, item, cell) in
+        
+        viewModel.factsPublishSubject.bind(to: factsTableView.rx.items(cellIdentifier: homeFactsIdentifier, cellType: HomeFactTableViewCell.self)) { (row, item, cell) in
             cell.fillCell(item.description, category: self.viewModel.setUncategorizedIfNeeded(item.categories.first))
             cell.handlerFontDescriptionLabel(self.viewModel.sizeFont(for: item.description))
             self.sharedFactTapped(from: cell, urlString: item.url)

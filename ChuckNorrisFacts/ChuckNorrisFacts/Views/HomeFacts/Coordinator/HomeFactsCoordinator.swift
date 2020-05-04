@@ -21,7 +21,7 @@ class HomeFactsCoordinator: BaseCoordinator {
     init() {
         childCoordinators = []
         let viewModel = HomeFactsViewModel()
-        viewModel.delegate = self
+        viewModel.coordinatorDelegate = self
         let viewController = HomeFactsViewController(viewModel)
         self.viewController = viewController
     }
@@ -37,7 +37,7 @@ class HomeFactsCoordinator: BaseCoordinator {
 
 // MARK: - HomeFactsViewModelDelegate
 
-extension HomeFactsCoordinator: HomeFactsViewModelDelegate {
+extension HomeFactsCoordinator: HomeFactsCoordinatorDelegate {
     func goToSearchFacts(_ viewModel: HomeFactsViewModel) {
         guard let navigation = navigation else { return }
         let coordinator = ChuckNorrisSearchFactsCoordinator()

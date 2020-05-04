@@ -56,6 +56,7 @@
 		DF90F8B52453E1F20067512F /* UICollectionViewLayoutAttributes+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF90F8B42453E1F20067512F /* UICollectionViewLayoutAttributes+Extension.swift */; };
 		DF98DB692453FB9800D2E47B /* Array+Exntesion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF98DB682453FB9800D2E47B /* Array+Exntesion.swift */; };
 		DFA489F2245E1EE300BD5AE7 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA489F1245E1EE300BD5AE7 /* MockURLSession.swift */; };
+		DFB4A68D246050DA00915E66 /* HomeFactsViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB4A68C246050DA00915E66 /* HomeFactsViewModelTest.swift */; };
 		DFCB02722448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCB02712448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift */; };
 		DFCC4FC0244DF2BC002E9A2B /* ChuckNorrisLinkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFCC4FBF244DF2BC002E9A2B /* ChuckNorrisLinkView.xib */; };
 		DFDD823624568209009A3623 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDD823524568209009A3623 /* UIAlertController+Extension.swift */; };
@@ -149,6 +150,7 @@
 		DF90F8B42453E1F20067512F /* UICollectionViewLayoutAttributes+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewLayoutAttributes+Extension.swift"; sourceTree = "<group>"; };
 		DF98DB682453FB9800D2E47B /* Array+Exntesion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Exntesion.swift"; sourceTree = "<group>"; };
 		DFA489F1245E1EE300BD5AE7 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		DFB4A68C246050DA00915E66 /* HomeFactsViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFactsViewModelTest.swift; sourceTree = "<group>"; };
 		DFCB02712448ECA100B995E0 /* ChuckNorrisSearchFactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisSearchFactsViewModel.swift; sourceTree = "<group>"; };
 		DFCC4FBF244DF2BC002E9A2B /* ChuckNorrisLinkView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChuckNorrisLinkView.xib; sourceTree = "<group>"; };
 		DFDD823524568209009A3623 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 		DF469090245DD68B000C5482 /* HomeFacts */ = {
 			isa = PBXGroup;
 			children = (
+				DFB4A68C246050DA00915E66 /* HomeFactsViewModelTest.swift */,
 			);
 			path = HomeFacts;
 			sourceTree = "<group>";
@@ -798,6 +801,7 @@
 			files = (
 				DF469097245DDE14000C5482 /* FactoryTest.swift in Sources */,
 				DF684B61245E298200F11C7E /* MockURLSessionDataTask.swift in Sources */,
+				DFB4A68D246050DA00915E66 /* HomeFactsViewModelTest.swift in Sources */,
 				DF469092245DD8B2000C5482 /* SearchFactsViewModelTest.swift in Sources */,
 				DFA489F2245E1EE300BD5AE7 /* MockURLSession.swift in Sources */,
 			);
