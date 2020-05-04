@@ -4,7 +4,7 @@ This project shows the facts of the career of actor Carlos Ray Norris known as C
 
 # Installation
 
-Use xcode 11.2.1 to open the project, it is using carthage as a dependency manager. This project use:
+Use xcode 11.2.1 to open the project, it is using carthage as a dependency manager, before open project use the command in terminal ```carthage update --platform iOS```. This project use:
 
 * Xcode 11.2.1
 * Swift 5.0
@@ -13,6 +13,8 @@ Use xcode 11.2.1 to open the project, it is using carthage as a dependency manag
 # Framework used
 
 * [RxSwift - 5.0](https://github.com/ReactiveX/RxSwift)
+* RxCocoa
+* RxRelay
 
 # Network layer
 
