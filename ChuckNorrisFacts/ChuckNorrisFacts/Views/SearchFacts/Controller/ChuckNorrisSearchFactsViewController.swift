@@ -48,7 +48,7 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
         setupNavigationBar()
         registerCells()
         searchBarSearchButtonClicked()
-        loadingPublish()
+        loadingBehaviorRelay()
         bindCollectionViewSuggestions()
         bindTableViewPastSearch()
         emptySearchResultPublish()
@@ -133,7 +133,7 @@ extension ChuckNorrisSearchFactsViewController {
 
 extension ChuckNorrisSearchFactsViewController {
     
-    func loadingPublish() {
+    func loadingBehaviorRelay() {
         viewModel.loadingBehaviorRelay.asObservable().observeOn(MainScheduler.instance).subscribe { [weak self] (event) in
             guard let self = self else { return }
             let isShow = event.element ?? false
@@ -159,7 +159,7 @@ extension ChuckNorrisSearchFactsViewController {
     }
 }
 
-// MARK: - ColectionViewDataSource
+// MARK: - ColectionViewDataSource with rx bind
 
 extension ChuckNorrisSearchFactsViewController {
     
@@ -181,7 +181,7 @@ extension ChuckNorrisSearchFactsViewController {
     }
 }
 
-// MARK: - UICollectionViewDelegate
+// MARK: - UICollectionViewDelegate with rx modelSelected
 
 extension ChuckNorrisSearchFactsViewController {
     
@@ -229,7 +229,7 @@ extension ChuckNorrisSearchFactsViewController {
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - UITableViewDelegate with rx modelSelected
 
 extension ChuckNorrisSearchFactsViewController: UITableViewDelegate {
     
@@ -246,7 +246,7 @@ extension ChuckNorrisSearchFactsViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - UISearchBarDelegate
+// MARK: - UISearchBarDelegate with rx searchButtonClicked
 
 extension ChuckNorrisSearchFactsViewController {
     

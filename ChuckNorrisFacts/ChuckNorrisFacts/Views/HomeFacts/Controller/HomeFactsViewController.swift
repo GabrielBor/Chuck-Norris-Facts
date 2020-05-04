@@ -119,7 +119,7 @@ class HomeFactsViewController: UIViewController {
     }
 }
 
-//MARK: - TableViewRxBindDataSource
+//MARK: - TableViewDataSource with rx items
 
 extension HomeFactsViewController  {
     

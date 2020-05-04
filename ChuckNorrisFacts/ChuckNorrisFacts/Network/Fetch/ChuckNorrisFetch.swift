@@ -20,6 +20,12 @@ class ChuckNorrisFetch {
         self.chuckNorrisRequest = chuckNorrisRequest
     }
     
+    /// Request  to service return T
+    /// - Parameters:
+    ///   - url: URL?
+    ///   - httpMethod: ChuckNorrisAPI.HTTPMethod
+    ///   - dataType: T.Type
+    ///   - completion: @escaping (Result<T, ChuckNorrisError>) -> Void
     func fetch<T: Codable>(url: URL?,
                            httpMethod: ChuckNorrisAPI.HTTPMethod,
                            dataType: T.Type,
@@ -41,6 +47,12 @@ class ChuckNorrisFetch {
         }
     }
     
+    /// Request  to service return [T]
+    /// - Parameters:
+    ///   - url: URL?
+    ///   - httpMethod: ChuckNorrisAPI.HTTPMethod
+    ///   - dataType: [T].Type
+    ///   - completion: @escaping (Result<[T], ChuckNorrisError>) -> Void
     func fetch<T: Codable>(url: URL?,
                            httpMethod: ChuckNorrisAPI.HTTPMethod,
                            dataType: [T].Type,

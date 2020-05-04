@@ -9,6 +9,7 @@
 import Foundation
 
 public enum ChuckNorrisError: Error {
+    
     case parse(ChuckNorrisParseError?)
     case network(NetworkError)
     case client(_ error: Error?, _ statusCode: Int)

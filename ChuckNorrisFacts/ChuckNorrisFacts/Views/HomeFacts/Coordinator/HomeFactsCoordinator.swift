@@ -26,7 +26,7 @@ class HomeFactsCoordinator: BaseCoordinator {
         self.viewController = viewController
     }
     
-    // MARK: - Mehtod required
+    // MARK: - Method required
     
     func stop() {
         navigation = nil

@@ -10,6 +10,8 @@ import UIKit
 
 extension UIView {
     
+    /// This method pinned subView in your parent view.
+    /// - Parameter view: UIView
     func pinnedSubView(_ view: UIView) {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
@@ -18,11 +20,21 @@ extension UIView {
         view.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
     
+    /// Setup cornerRadius in everything that originates from view
+    /// - Parameters:
+    ///   - cornerRadius: CGFloat
+    ///   - maskToBounds: Bool
     func cornerRadius(_ cornerRadius: CGFloat, maskToBounds: Bool) {
         self.layer.cornerRadius = cornerRadius
         self.layer.masksToBounds = maskToBounds
     }
     
+    /// Setup shadow around view
+    /// - Parameters:
+    ///   - size: CGSize
+    ///   - color: UIColor
+    ///   - opacity: Float
+    ///   - shadowRadius: CGFloat
     func shadowAroundView(_ size: CGSize, color: UIColor, opacity: Float, shadowRadius: CGFloat) {
         self.layer.shadowOffset = size
         self.layer.shadowColor = color.cgColor

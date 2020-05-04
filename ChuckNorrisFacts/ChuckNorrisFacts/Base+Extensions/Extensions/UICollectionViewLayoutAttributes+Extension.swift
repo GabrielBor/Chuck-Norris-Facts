@@ -10,6 +10,8 @@ import UIKit
 
 extension UICollectionViewLayoutAttributes {
     
+    /// Align left frame of sections in collectionView
+    /// - Parameter sectionInset: UIEdgeInsets
     func leftAlignFrameWithSectionInset(_ sectionInset: UIEdgeInsets) {
         var frame = self.frame
         frame.origin.x = sectionInset.left

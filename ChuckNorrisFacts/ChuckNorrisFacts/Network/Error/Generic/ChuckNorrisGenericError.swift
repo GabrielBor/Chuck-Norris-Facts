@@ -9,9 +9,9 @@
 import Foundation
 
 public enum ChuckNorrisGenericMessages: String {
-    case parse = "Não foi possível fazer o parseamento do objeto"
-    case generic, unknown = "Algo deu errado, tente novamente mais tarde."
-    case notConnectedToInternet = "Sem conexão com a internet :(. Por favor verifique o seu wifi ou dados do dispositivo móvel."
+    case parse = "Could not parse the object"
+    case generic, unknown = "Something went wrong, try again later."
+    case notConnectedToInternet = "No internet connection :(. Please check your wifi or mobile device data."
 }
 
 public protocol ChuckNorrisGenericError: LocalizedError {
