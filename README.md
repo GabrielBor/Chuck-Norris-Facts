@@ -36,7 +36,7 @@ I'm using URLSession to do all the requisition of the app together with URLCompo
 * HomeFactsViewModel - 100%
 * HomeFactsViewModel - 100%
 
-# Continuos integrartion with Github Actions
+# Continuos Integration with Github Actions
 
 I'm using Github Actions to run the app and unit tests. It works from commits in the develop branch and pull requests to the master.
 
