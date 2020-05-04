@@ -20,3 +20,7 @@ jobs:
       env:
           DEVELOPER_DIR: ${{ matrix.xcode }}
       run: xcodebuild -project 'ChuckNorrisFacts/ChuckNorrisFacts.xcodeproj' -scheme 'ChuckNorrisFacts' -destination "${{ matrix.destination }}" -configuration Release build CODE_SIGNING_ALLOWED=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+    - name: Run Tests
+      env:
+          DEVELOPER_DIR: ${{ matrix.xcode }}
+      run: xcodebuild -project 'ChuckNorrisFacts/ChuckNorrisFacts.xcodeproj' -scheme 'ChuckNorrisFacts' -destination "${{ matrix.destination }}" test
