@@ -113,8 +113,9 @@ class ChuckNorrisSearchFactsViewController: UIViewController {
 // MARK: - EmptySearchResult Alert
 
 extension ChuckNorrisSearchFactsViewController {
+    
     func emptySearchResultPublish() {
-        viewModel.emptySearchResultPublish.asObserver().observeOn(MainScheduler.instance).subscribe { [weak self] (_) in
+        viewModel.emptySearchResultBehaviorRelay?.asObservable().observeOn(MainScheduler.instance).subscribe { [weak self] (event) in
             guard let self = self else { return }
             let alert = UIAlertController.createSimpleAlert(with: AlertTexts.emptyTitle.rawValue,
                                                             message: AlertTexts.emptyMessage.rawValue,
@@ -133,17 +134,18 @@ extension ChuckNorrisSearchFactsViewController {
 extension ChuckNorrisSearchFactsViewController {
     
     func loadingPublish() {
-        viewModel.loadingRelay.asObservable().observeOn(MainScheduler.instance).subscribe { (event) in
+        viewModel.loadingBehaviorRelay.asObservable().observeOn(MainScheduler.instance).subscribe { [weak self] (event) in
+            guard let self = self else { return }
             let isShow = event.element ?? false
             self.loadView.showLoading(isShow, atView: self.navigationController?.view)
         }.disposed(by: disposeBag)
     }
     
     func errorPublish() {
-        viewModel.errorPublish.asObserver().observeOn(MainScheduler.instance).subscribe { [weak self] (error) in
+        viewModel.errorPublishSubject.asObservable().observeOn(MainScheduler.instance).subscribe { [weak self] (event) in
             guard let self = self else { return }
-            let code = error.event.element?.code ?? 0
-            let errorMessage = error.event.element?.message ?? ""
+            let code = event.element?.code ?? 0
+            let errorMessage = event.element?.message ?? ""
             let message = "\(AlertTexts.errorMessage.rawValue)\(code) \(errorMessage)"
             let alert = UIAlertController.createSimpleAlert(with: AlertTexts.errorTitle.rawValue,
                                                             message: message,
@@ -162,16 +164,18 @@ extension ChuckNorrisSearchFactsViewController {
 extension ChuckNorrisSearchFactsViewController {
     
     func collectionViewDataSource() {
-        viewModel.listSuggestionPublish
-            .asObserver()
+        
+        viewModel.listSuggestionBehaviorRelay
+            .asObservable()
             .observeOn(MainScheduler.instance)
             .bind(to: suggestionCollectionView.rx.items(cellIdentifier: suggestionIdentifier, cellType: ChuckNorrisCategoryCollectionViewCell.self)) { (row, item, cell) in
-                cell.fillCell(item)
+            cell.fillCell(item)
         }.disposed(by: disposeBag)
     }
     
     func setupAfterBindHeightCollectionView() {
-        viewModel.listSuggestionPublish.subscribe {
+        
+        viewModel.listSuggestionBehaviorRelay.asObservable().observeOn(MainScheduler.instance).subscribe { (_) in
             self.heightSuggestionsCollectionView()
         }.disposed(by: disposeBag)
     }
@@ -198,7 +202,7 @@ extension ChuckNorrisSearchFactsViewController: UICollectionViewDelegateFlowLayo
         let size = CGSize.init(width: 200, height: 25)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
         
-        guard let str = try? viewModel.listSuggestionPublish.value()[indexPath.item] else { return CGSize() }
+        let str = viewModel.listSuggestionBehaviorRelay.value[indexPath.item]
         
         let estimatedRect = NSString.init(string: str).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 28)], context: nil)
         

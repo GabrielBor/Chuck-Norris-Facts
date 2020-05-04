@@ -12,3 +12,9 @@ struct ChuckNorrisResultModel: Codable {
     let total: Int
     let result: [ChuckNorrisModel]
 }
+
+extension ChuckNorrisResultModel: Equatable {
+    public static func == (lhs: ChuckNorrisResultModel, rhs: ChuckNorrisResultModel) -> Bool {
+        return lhs.result == rhs.result && lhs.total == rhs.total
+    }
+}

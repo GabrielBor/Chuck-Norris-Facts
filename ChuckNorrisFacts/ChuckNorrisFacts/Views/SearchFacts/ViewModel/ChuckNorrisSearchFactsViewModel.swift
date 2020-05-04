@@ -20,22 +20,22 @@ class ChuckNorrisSearchFactsViewModel {
     
     // MARK: - Propeties
     
-    var loadingRelay: BehaviorRelay<Bool> = BehaviorRelay(value: false)
-    var errorPublish: PublishSubject<ChuckNorrisError> = PublishSubject()
-    var emptySearchResultPublish: PublishSubject<[String]?> = PublishSubject()
-    var listSuggestionPublish: BehaviorSubject<[String]> = BehaviorSubject(value: [])
-    var searchCategoryPublish: PublishSubject<ChuckNorrisResultModel> = PublishSubject()
+    var loadingBehaviorRelay: BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    var errorPublishSubject: PublishSubject<ChuckNorrisError> = PublishSubject()
+    var emptySearchResultBehaviorRelay: BehaviorRelay<[String]>?
+    let listSuggestionBehaviorRelay: BehaviorRelay<[String]> = BehaviorRelay(value: [])
     var listLastSearhcesRelay: BehaviorRelay<[String]> = BehaviorRelay(value: [])
-    
-    var repository = ChuckNorrisRespository()
-    let randomNumber = 8
+
+    var repository: ChuckNorrisRespository!
+    let eight = 8
     var service: ChuckNorrisServices!
     weak var coordinatorDelegate: ChuckNorrisSearchFactsCoordinatorDelgate?
     
     // MARK: - Initialize
     
-    init(_ service: ChuckNorrisServices) {
+    init(_ service: ChuckNorrisServices, repository: ChuckNorrisRespository) {
         self.service = service
+        self.repository = repository
     }
 }
 
@@ -44,14 +44,14 @@ class ChuckNorrisSearchFactsViewModel {
 extension ChuckNorrisSearchFactsViewModel {
     
     func fetchListSuggestionFacts() {
-        loadingRelay.accept(true)
+        loadingBehaviorRelay.accept(true)
         service.fetchListCategoryFacts { [weak self] result in
             guard let self = self else { return }
-            self.loadingRelay.accept(false)
+            self.loadingBehaviorRelay.accept(false)
             DispatchQueue.main.async {
                 switch result {
                 case .success(let suggestions):
-                    self.handlerSuccess(with: suggestions)
+                    self.handlerSuggetionsSuccess(with: suggestions)
                 case .failure(let error):
                     self.handlerFailure(error)
                 }
@@ -60,14 +60,14 @@ extension ChuckNorrisSearchFactsViewModel {
     }
     
     func fetchSearchCategoryFacts(from category: String) {
-        loadingRelay.accept(true)
+        loadingBehaviorRelay.accept(true)
         service.fetchSearchCategoryFact(category) { [weak self] result in
             guard let self = self else { return }
-            self.loadingRelay.accept(false)
+            self.loadingBehaviorRelay.accept(false)
             DispatchQueue.main.async {
                 switch result {
                 case .success(let result):
-                    self.handlerSuccess(with: result)
+                    self.handlerResultSuccess(with: result)
                 case .failure(let error):
                     self.handlerFailure(error)
                 }
@@ -82,9 +82,9 @@ extension ChuckNorrisSearchFactsViewModel {
     
     // MARK: - Suggestions methods
     
-    func randomSuggestions(_ suggestions: [String]) -> [String] {
+    func randomSuggestions(_ suggestions: [String], randomElementsIn: Int) -> [String] {
         let random = suggestions
-        return random[randomPick: randomNumber]
+        return random[randomPick: randomElementsIn]
     }
     
     func fetchRuleSuggestions() {
@@ -92,28 +92,26 @@ extension ChuckNorrisSearchFactsViewModel {
         if suggestions.isEmpty {
             fetchListSuggestionFacts()
         } else {
-            listSuggestionPublish.onNext(randomSuggestions(suggestions))
-            listSuggestionPublish.onCompleted()
+            listSuggestionBehaviorRelay.accept(randomSuggestions(suggestions, randomElementsIn: eight))
         }
     }
     
-    func handlerSuccess(with result: ChuckNorrisResultModel) {
+    func handlerResultSuccess(with result: ChuckNorrisResultModel) {
         if result.result.isEmpty {
-            emptySearchResultPublish.onNext([])
+            emptySearchResultBehaviorRelay = BehaviorRelay(value: [])
         } else {
             coordinatorDelegate?.backToHomeFacts(self, result: result)
         }
     }
     
-    func handlerSuccess(with suggestions: [String]) {
+    func handlerSuggetionsSuccess(with suggestions: [String]) {
         repository.insert(.suggetionsKey, list: suggestions)
         let suggestions = repository.getAll(.suggetionsKey)
-        listSuggestionPublish.onNext(randomSuggestions(suggestions))
-        listSuggestionPublish.onCompleted()
+        listSuggestionBehaviorRelay.accept(randomSuggestions(suggestions, randomElementsIn: eight))
     }
     
     func handlerFailure(_ error: ChuckNorrisError) {
-        errorPublish.onNext(error)
+        errorPublishSubject.onNext(error)
     }
     
     // MARK: - SaveLastSearch methods

@@ -10,13 +10,21 @@ import Foundation
 
 class ChuckNorrisFetch {
     
-    func fetch<V: Codable>(url: URL?,
+    // MARK: - Property
+    
+    var chuckNorrisRequest: ChuckNorrisRequest!
+    
+    // MARK: - Initialize
+    
+    init(_ chuckNorrisRequest: ChuckNorrisRequest) {
+        self.chuckNorrisRequest = chuckNorrisRequest
+    }
+    
+    func fetch<T: Codable>(url: URL?,
                            httpMethod: ChuckNorrisAPI.HTTPMethod,
-                           dataType: V.Type,
-                           completion: @escaping (Result<V, ChuckNorrisError>) -> Void) {
-        guard let url = url else { return }
-        let request = ChuckNorrisRequest()
-        request.request(url, httpMethod: httpMethod, success: { (data, response) in
+                           dataType: T.Type,
+                           completion: @escaping (Result<T, ChuckNorrisError>) -> Void) {
+        chuckNorrisRequest.request(url, httpMethod: httpMethod, success: { (data, response) in
             guard let data = data,
                 let parse = ChuckNorrisParse.JSONDecodable(to: dataType, from: data) else {
                     completion(.failure(ChuckNorrisError.parse(nil)))
@@ -33,13 +41,11 @@ class ChuckNorrisFetch {
         }
     }
     
-    func fetch<V: Codable>(url: URL?,
+    func fetch<T: Codable>(url: URL?,
                            httpMethod: ChuckNorrisAPI.HTTPMethod,
-                           dataType: [V].Type,
-                           completion: @escaping (Result<[V], ChuckNorrisError>) -> Void) {
-        guard let url = url else { return }
-        let request = ChuckNorrisRequest()
-        request.request(url, httpMethod: httpMethod, success: { (data, response) in
+                           dataType: [T].Type,
+                           completion: @escaping (Result<[T], ChuckNorrisError>) -> Void) {
+        chuckNorrisRequest.request(url, httpMethod: httpMethod, success: { (data, response) in
             guard let data = data,
                 let parse = ChuckNorrisParse.JSONDecodable(to: dataType, from: data) else {
                     completion(.failure(ChuckNorrisError.parse(nil)))

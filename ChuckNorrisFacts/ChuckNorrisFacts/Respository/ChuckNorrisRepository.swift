@@ -40,4 +40,8 @@ class ChuckNorrisRespository: BaseRepository {
         guard let list = userDefaults.array(forKey: key.rawValue) as? [String] else { return false }
         return list.contains(value)
     }
+    
+    func delete(_ key: IdentifierRepositoryKey) {
+        userDefaults.removeObject(forKey: key.rawValue)
+    }
 }
