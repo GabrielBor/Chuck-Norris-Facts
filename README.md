@@ -10,6 +10,10 @@ Use xcode 11.2.1 to open the project, it is using carthage as a dependency manag
 * Swift 5.0
 * iOS 12.0 or later
 
+# Architecture
+
+Use MVVM + Coordinator
+
 # Framework used
 
 * [RxSwift - 5.0](https://github.com/ReactiveX/RxSwift)
