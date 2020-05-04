@@ -29,7 +29,7 @@ I'm using URLSession to do all the requisition of the app together with URLCompo
 
 # Preview app
 
-<img src=images/launch.png> <img src=images/homeFactsEmpty.png> <img src=images/homeFacts.png> <img src=images/searchFacts.png> <img src=images/shareFacts.png>
+<img src=images/launch.png alt="" width="190" height="340"> <img src=images/homeFactsEmpty.png alt="" width="190" height="340"> <img src=images/homeFacts.png alt="" width="190" height="340"> <img src=images/searchFacts.png alt="" width="190" height="340"> <img src=images/shareFacts.png alt="" width="190" height="340">
 
 # ViewModel code coverage with Unit test
 
