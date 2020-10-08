@@ -50,7 +50,3 @@ I'm using Github Actions to run the app and unit tests. It works from commits in
 
 * **Gabriel Borges** - *iOS developer* - [Linkedin](https://www.linkedin.com/in/gabriel-borges-034420100/)
 * **Phone number:** (34) 99947 - 3324
-
-# OBS
-
-I couldn't do the UI test part, I received a demand that I'm working hard on and I wouldn't do it properly and with good code, I hope you understand. I am very grateful for the challenge and it was a very good challenge, I learned new things that I had never touched. I apologize and thank you in advance. Thank you all <3.
