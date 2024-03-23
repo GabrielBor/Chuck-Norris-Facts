@@ -49,7 +49,6 @@ I'm using Github Actions to run the app and unit tests. It works from commits in
 # Author
 
 * **Gabriel Borges** - *iOS developer* - [Linkedin](https://www.linkedin.com/in/gabriel-borges-034420100/)
-* **Phone number:** (34) 99947 - 3324
 
 # OBS
 
